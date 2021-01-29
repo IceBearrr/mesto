@@ -1,7 +1,7 @@
 # Проект 4: Место
 
-### Обзор
+### Делаем первые шаги в  js
 
-* Figma
-* Картинки
+* Используется  js, css, html
+* https://icebearrr.github.io/mesto/
 
