@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="pages/index.css" type="text/css">
+        <title>Mesto</title>
+    </head>
+    <body>
+
+        <div class="page">
+
+            <header class="header">
+                <img class="header__logo" src="images/__logo.png" alt="логотип">
+                <hr class="header__line">
+            </header>
+        
+            <main class="content">
+
+                <section class="profile">
+                    <div class="profile__cell">
+                    <img class="profile__image" src="images/Jack.jpg" alt="Аватар"></div>
+                    <div class="profile__info">
+                        <div class="profile__wrapper">
+                            <p class="profile__name">Жак-Ив Кусто</p>
+                            <button class="profile__button-edit"><img class="profile__button-edit" src="images/edit-button.png"></button>
+                        </div>
+                        <p class="profile__description">Исследователь океана</p>
+                    </div>>
+                    <button class="profile__button-add"> <img class="profile__button-add-image" src="images/add-button.png"></button>
+                </section>
+
+                <section class="popup">
+                    <div class="popup__block">
+                    <form class="popup__container" name="popup-form">
+                        <button class="popup__close" type="button" name="btn-close"/><img class="popup__close" src="images/close-icon.png"></button>
+                        <p class="popup__title">Редактировать профиль</p>
+                        <input class="popup__name" name="name" placeholder="Имя" type="text" value="Жак-Ив Кусто">
+                        <div class="popup__border"></div>
+                        <input class="popup__description" name="description" placeholder="О себе" type="text" value="Исследователь океана">
+                        <div class="popup__border"></div>
+
+                        <button class="popup__button-save" type="button">Сохранить</button>
+                    </form>
+                    </div>
+                </section>
+
+                <section class="elements">
+                    <ul class="elements__cell">
+                        <li class="element">
+                            <img class="element__image" src="images/kara4aevsk.jpg" alt="Карачаевск">
+                            <div class="element__cell">
+                                <p class="element__place-name">Карачаевск</p>
+                                <button class="element__like" class="element__like_active" type="checkbox">
+                                    <img src="images/like.png" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__image" src="images/gora.jpg" alt="Гора Эльбрус">
+                            <div class="element__cell">
+                                <p class="element__place-name">Гора Эльбрус</p>
+                                <button class="element__like" type="checkbox">
+                                    <img src="images/like.png" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__image" src="images/dombai.jpg" alt="Домбай">
+                            <div class="element__cell">
+                                <p class="element__place-name">Домбай</p>
+                                <button class="element__like">
+                                    <img src="images/like.png" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__image" src="images/gora.jpg" alt="Гора Эльбрус">
+                            <div class="element__cell">
+                                <p class="element__place-name">Гора Эльбрус</p>
+                                <button class="element__like">
+                                    <img src="images/like.png" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__image" src="images/dombai.jpg" alt="Домбай">
+                            <div class="element__cell">
+                                <p class="element__place-name">Домбай</p>
+                                <button class="element__like">
+                                    <img src="images/like.png" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                        <li class="element">
+                            <img class="element__image" src="images/kara4aevsk.jpg" alt="Карачаево-Черкессия">
+                            <div class="element__cell">
+                                <p class="element__place-name">Карачаево-Черкессия</p>
+                                <button class="element__like">
+                                    <img src="images/like.png" alt="Лайк">
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <footer class="footer">
+                    <p class="footer__text"> &copy; 2021 Mesto Russia</p>
+                </footer>
+            </main>
+        </div>
+    <script src="script.js"></script>
+</body>
+</html>
