@@ -12,7 +12,7 @@
 
 @media screen and (max-width: 1024px) {
     .elements__cell {
-        width: 90%;
+        /*width: 90%;*/
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
         margin-left: auto;
@@ -24,7 +24,7 @@
 
 @media screen and (max-width: 768px) {
     .elements__cell {
-        width: 90%;
+        /*width: 90%;* /
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(3, 1fr);
         margin-left: auto;
