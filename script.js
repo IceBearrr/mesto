@@ -14,18 +14,18 @@ console.log(nameValue);
 console.log(jobValue);
 
 
-editButton.addEventListener('click', function() {
-    nameValue =  profileName.textContent;
+editButton.addEventListener('click', function () {
+    nameValue = profileName.textContent;
     formElement.classList.add('popup_opened');
     console.log("open");
 });
 
-popupClose.addEventListener('click', function() {
+popupClose.addEventListener('click', function () {
     formElement.classList.remove('popup_opened');
 });
 
 
-popupSave.addEventListener('click', function(){
+popupSave.addEventListener('click', function () {
 
     let popupName = document.querySelector('.popup__name');
     let popupDescription = document.querySelector('.popup__description');
