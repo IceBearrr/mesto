@@ -1,0 +1,13 @@
+
+.profile__button-edit {
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.profile__button-edit:hover {
+    opacity: 0.6;
+}

@@ -1,0 +1,28 @@
+.profile__button-add {
+    background: transparent;
+    margin-left: auto;
+    border: 0;
+    padding: 0;
+}
+
+
+@media all and (max-width: 320px) {
+    .profile__button-add {
+        width: calc(100% - 2 * 19px);
+        margin: auto;
+        padding: 0;
+    }
+}
+
+.profile__button-add:hover {
+    opacity: 0.6;
+}
+
+@media all and (max-width: 767px) {
+    .profile__button-add {
+        max-width: 282px;
+        margin: 0 auto;
+        width: calc(100% - 2 * 19px);
+        flex-direction: column;
+    }
+}

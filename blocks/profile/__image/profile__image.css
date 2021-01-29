@@ -1,5 +1,7 @@
-.profile__cell {
-    width: 168.75px;
-    height: 127.5px;
-    display: flex;
+
+.profile__image {
+    border-radius: 50%;
+    max-width: 120px;
+    max-height: 120px;
+    margin: 0 auto;
 }
