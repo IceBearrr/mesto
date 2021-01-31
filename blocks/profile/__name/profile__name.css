@@ -1,18 +1,24 @@
 
 .profile__name {
-    font-family: Inter;
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
     line-height: 48px;
     color: #FFFFFF;
-    margin: 22px 25px 16px 0;
+    margin: 22px auto 16px 0;
+    text-overflow: ellipsis; 
+    max-width: 294px; 
+    overflow: hidden; 
+    white-space: nowrap;
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 767px) {
     .profile__name {
         font-size: 27px;
         line-height: 33px;
         text-align: center;
+        margin-top: 0;
+        margin-left: 10px;
+        max-width: 189px; 
     }
 }
