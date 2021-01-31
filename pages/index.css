@@ -16,7 +16,6 @@
 @import url(../blocks/profile/__wrapper/profile__wrapper.css);
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__border/popup__border.css);
 @import url(../blocks/popup/__button-save/popup__button-save.css);
 @import url(../blocks/popup/__close/popup__close.css);
 @import url(../blocks/popup/__container/popup__container.css);

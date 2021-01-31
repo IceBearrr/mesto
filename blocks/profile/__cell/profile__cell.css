@@ -2,8 +2,9 @@
     width: 168.75px;
     display: flex;
 }
+
 @media all and (max-width: 767px) {
     .profile__cell {
-        margin: 0 auto 22.25px; 
+        margin: 0 auto 22.25px;
     }
 }

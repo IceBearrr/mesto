@@ -8,7 +8,7 @@ let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 
 
-function openEditPopup(){
+function openEditPopup() {
     let nameValue = nameInput.value;
     let jobValue = jobInput.value;
     nameValue = profileName.textContent;
@@ -16,12 +16,12 @@ function openEditPopup(){
     formElement.classList.add('popup_opened');
 }
 
-function closeEditPopup(){
+function closeEditPopup() {
     formElement.classList.remove('popup_opened');
 }
 
 
-function saveEditPopup(evt){
+function saveEditPopup(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;

@@ -6,9 +6,9 @@
     line-height: 48px;
     color: #FFFFFF;
     margin: 22px auto 16px 0;
-    text-overflow: ellipsis; 
-    max-width: 294px; 
-    overflow: hidden; 
+    text-overflow: ellipsis;
+    max-width: 294px;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -19,6 +19,6 @@
         text-align: center;
         margin-top: 0;
         margin-left: 10px;
-        max-width: 189px; 
+        max-width: 189px;
     }
 }
