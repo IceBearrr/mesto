@@ -30,4 +30,4 @@ editButton.addEventListener('click', openEditPopup);
 
 popupClose.addEventListener('click', closeEditPopup);
 
-popupSave.addEventListener('submit', saveEditPopup);
+addEventListener('submit', saveEditPopup);
