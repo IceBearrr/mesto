@@ -1,0 +1,19 @@
+
+.popup__block {
+    position: fixed;
+    top: 195px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    max-width: 430px;
+}
+
+
+@media all and (max-width: 767px) {
+    .popup__block {
+        max-width: 282px;
+        top: 123px;
+    }
+}
+

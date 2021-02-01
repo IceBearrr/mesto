@@ -12,7 +12,7 @@
     white-space: nowrap;
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 767px) {
     .profile__description {
         max-width: 282px;
         font-size: 14px;

@@ -1,18 +1,13 @@
 .popup__container {
     display: flex;
     flex-direction: column;
-    max-width: 430px;
     background: #FFFFFF;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
     opacity: 1;
     align-self: center;
     justify-content: center;
-    position: absolute;
+    float: left;
+    width: 100%;
 }
 
-@media all and (max-width: 767px) {
-    .popup__container {
-        max-width: 282px;
-    }
-}
