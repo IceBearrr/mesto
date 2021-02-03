@@ -10,6 +10,8 @@ let profileDescription = document.querySelector('.profile__description');
 function openEditPopup() {
     nameValue = profileName.textContent;
     jobValue = profileDescription.textContent;
+    profileName.textContent = nameInput.value;
+    profileDescription.textContent = jobInput.value;
     popup.classList.add('popup_opened');
 }
 

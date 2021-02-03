@@ -4,8 +4,9 @@
     object-fit: cover;
     position: absolute;
     top: -37px;
+    left: 435px;
     width: 40px;
-    height: 40px;
+    height: 40px; 
     border: none;
     background-image: url('../../../images/close-icon.svg');
 }
@@ -19,6 +20,7 @@
     .popup__close {
         margin-left: -25px;
         top: -40px;
+        left: 270px;
         background-image: url('../../../images/close-icon-s.svg');
         width: 26px;
         height: 26px;

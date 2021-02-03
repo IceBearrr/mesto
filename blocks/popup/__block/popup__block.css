@@ -1,7 +1,7 @@
 
 .popup__block {
-    position: fixed;
-    top: 195px;
+    position: relative;
+    top: 0;
     margin: auto;
     left: 0;
     right: 0;
@@ -13,7 +13,6 @@
 @media all and (max-width: 767px) {
     .popup__block {
         max-width: 282px;
-        top: 123px;
     }
 }
 
