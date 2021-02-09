@@ -8,7 +8,20 @@ let profileDescription = document.querySelector('.profile__description');
 let formUser = document.querySelector('.popup__container');
 let addButton = document.querySelector('.profile__button-add');
 
+// nameInput.value = profileName.textContent;
+// jobInput.value = profileDescription.textContent;
 
+// const popupType = {
+//     popupOpened: function openEditPopup() {
+//         popup.classList.add('popup_opened');},
+//     popupClose: function closeEditPopup() {
+//         popup.classList.remove('popup_opened');},
+//     popupSave: function saveEditPopup(evt) {
+//         evt.preventDefault();
+//         profileName.textContent = nameInput.value;
+//         profileDescription.textContent = jobInput.value;
+//         closeEditPopup();}
+// }
 
 function openEditPopup() {
     nameInput.value = profileName.textContent;
@@ -67,16 +80,17 @@ const initialCards = [
     }
   ];
 
+const elementCell = document.querySelector('.elements__cell');
+  
 //находим template
 const templateEl = document.querySelector('.template'); 
 
 //добавляем карточки
 function render() {
     const html = initialCards
-        .map(getItemHTML)
-        .join('')
+        .map(getCard)
 
-    templateEl.append(...html);
+        elementCell.append(...html);
 }
 //console.log(templateEl);
 
@@ -100,7 +114,7 @@ function getCard(item) {
       linkOfPlace.src = item.link;
 
 
-//     // const removeBtn = newItem.querySelector('.button_remove');
+//const removeBtn = newItem.querySelector('.button_remove');
 //     // removeBtn.addEventListener('click', handleDelete);
 
 //     // const duplicateBtn = newItem.querySelector('.button_duplicate');
@@ -115,18 +129,12 @@ render();
 
 
 
-
-//   function openAddPopup() {
-//     // placeInput.value = profileName.textContent;
-//     // jobInput.value = profileDescription.textContent;
-//     popup.classList.add('popup_opened');
-// }
-// addButton.addEventListener('click', openAddPopup);
-
-
-
-
-// const template = document.querySelector('.elements__cell');
+function openAddPopup() {
+placeInput.value = profileName.textContent;
+jobInput.value = profileDescription.textContent;
+popup.classList.add('popup_opened');
+}
+addButton.addEventListener('click', openAddPopup);
 
 
 
@@ -134,9 +142,9 @@ render();
 
 //функция удаления карточки
 
-const handleClick = event => {
+const removeBtn = event => {
     event.target.closest('.element').remove()
 }
   
 document.querySelectorAll('.element__remove').forEach(item =>
-item.addEventListener("click", handleClick));
+item.addEventListener("click", removeBtn));
