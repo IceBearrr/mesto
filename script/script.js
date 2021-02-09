@@ -91,8 +91,7 @@ function render() {
         .map(getCard)
 
         elementCell.append(...html);
-}
-//console.log(templateEl);
+};
 
 //задаем template код
 function getItemHTML(item) {
