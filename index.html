@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pages/index.css" type="text/css">
     <title>Место</title>
+    <script src="script/script.js" defer></script>
 </head>
 
 <body>
@@ -34,52 +35,17 @@
         </section>
 
         <section class="elements">
-            <ul class="elements__cell">
-                <li class="element">
-                    <img class="element__image" src="images/kara4aevsk.jpg" alt="Карачаевск">
+            <ul class="elements__cell">           
+                <!-- <li class="element">
+                    <img class="element__image" src="" alt="">
+                    <button class="element__remove" aria-label="Удаление" type="button"></button>
                     <div class="element__cell">
-                        <h2 class="element__place-name">Карачаевск</h2>
+                        <h2 class="element__place-name"></h2>
                         <button class="element__like" aria-label="Лайк" type="button"></button>
                     </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/gora.jpg" alt="Гора Эльбрус">
-                    <div class="element__cell">
-                        <h2 class="element__place-name">Гора Эльбрус</h2>
-                        <button class="element__like" aria-label="Лайк" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/dombai.jpg" alt="Домбай">
-                    <div class="element__cell">
-                        <h2 class="element__place-name">Домбай</h2>
-                        <button class="element__like" aria-label="Лайк" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/gora.jpg" alt="Гора Эльбрус">
-                    <div class="element__cell">
-                        <h2 class="element__place-name">Гора Эльбрус</h2>
-                        <button class="element__like" aria-label="Лайк" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/dombai.jpg" alt="Домбай">
-                    <div class="element__cell">
-                        <h2 class="element__place-name">Домбай</h2>
-                        <button class="element__like" aria-label="Лайк" type="button"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="images/kara4aevsk.jpg" alt="Карачаево-Черкессия">
-                    <div class="element__cell">
-                        <h2 class="element__place-name">Карачаево-Черкессия</h2>
-                        <button class="element__like" aria-label="Лайк" type="button"></button>
-                    </div>
-                </li>
+                </li> -->
             </ul>
         </section>
-
         <div class="popup">
             <div class="popup__block">
                 <form class="popup__container" name="popupForm">
@@ -94,6 +60,20 @@
                 <button class="popup__close" aria-label="Закрыть" type="button" name="btn-close"></button>
             </div>
         </div>
+        <div class="popup">
+            <div class="popup__block">
+                <form class="popup__container" name="popupForm">
+                    <h2 class="popup__title">Новое место</h2>
+                    <input class="popup__input popup__input_enter_place" name="name" placeholder="Название" type="text"
+                           value="">
+                    <input class="popup__input popup__input_enter_foto" name="foto" placeholder="Ссылка на картинку"
+                           type="text" value="">
+
+                    <button class="popup__button-save" type="submit">Сохранить</button>
+                </form>
+                <button class="popup__close" aria-label="Закрыть" type="button" name="btn-close"></button>
+            </div>
+        </div>
     </main>
 
     <footer class="footer">
@@ -101,7 +81,18 @@
     </footer>
 
 </div>
-<script src="script/script.js"></script>
+
+    <template class="template">           
+        <li class="element">
+            <img class="element__image" src="" alt="фото">
+            <button class="element__remove" aria-label="Удаление" type="button"></button>
+            <div class="element__cell">
+                <h2 class="element__place-name"></h2>
+                <button class="element__like" aria-label="Лайк" type="button"></button>
+            </div>
+        </li>
+    </template>
+
 </body>
 
 </html>
