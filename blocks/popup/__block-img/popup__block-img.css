@@ -1,0 +1,12 @@
+
+.popup__block-img {
+    position: relative; 
+    top: 0;
+    margin: auto;
+    left: 0;
+    right: 0;  
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.9);
+    max-width: 75vw;
+    max-height: 75vh;
+}

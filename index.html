@@ -11,32 +11,32 @@
 
 <body>
 
-<div class="page">
+    <div class="page">
 
-    <header class="header">
-        <img class="header__logo" src="images/__logo_b.svg" alt="логотип">
-    </header>
+        <header class="header">
+            <img class="header__logo" src="images/__logo_b.svg" alt="логотип">
+        </header>
 
-    <main class="content">
+        <main class="content">
 
-        <section class="profile">
-            <div class="profile__cell">
-                <img class="profile__image" src="images/Jack.jpg" alt="Аватар">
-            </div>
-            <div class="profile__info">
-                <div class="profile__wrapper">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <button class="profile__button-edit" aria-label="Добавить" type="button"></button>
+            <section class="profile">
+                <div class="profile__cell">
+                    <img class="profile__image" src="images/Jack.jpg" alt="Аватар">
                 </div>
-                <p class="profile__description">Исследователь океана</p>
-            </div>
+                <div class="profile__info">
+                    <div class="profile__wrapper">
+                        <h1 class="profile__name">Жак-Ив Кусто</h1>
+                        <button class="profile__button-edit" aria-label="Добавить" type="button"></button>
+                    </div>
+                    <p class="profile__description">Исследователь океана</p>
+                </div>
 
-            <button class="profile__button-add" type="button"></button>
-        </section>
+                <button class="profile__button-add" type="button"></button>
+            </section>
 
-        <section class="elements">
-            <ul class="elements__cell">           
-                <!-- <li class="element"> 
+            <section class="elements">
+                <ul class="elements__cell">
+                    <!-- <li class="element"> 
                     <img class="element__image" src="images/kara4aevsk.jpg" alt="Карачаевск"> 
                     <button class="element__remove" aria-label="Удаление" type="button"></button>
                     <div class="element__cell"> 
@@ -44,64 +44,57 @@
                         <button class="element__like" aria-label="Лайк" type="button"></button> 
                     </div> 
                 </li>  -->
-            </ul>
-        </section>
-        <div class="popup popup__edit">
-            <div class="popup__block">
-                <form class="popup__container" name="popupForm">
-                    <h2 class="popup__title">Редактировать профиль</h2>
-                    <input class="popup__input popup__input_enter_name" name="name" placeholder="Имя" type="text"
-                           value="Жак-Ив Кусто">
-                    <input class="popup__input popup__input_enter_description" name="description" placeholder="О себе"
-                           type="text" value="Исследователь океана">
+                </ul>
+            </section>
+            
+            <div class="popup popup__edit">
+                <div class="popup__block">
+                    <form class="popup__container" name="popupForm">
+                        <h2 class="popup__title">Редактировать профиль</h2>
+                        <input class="popup__input popup__input_enter_name" name="name" placeholder="Имя" type="text"
+                            value="Жак-Ив Кусто">
+                        <input class="popup__input popup__input_enter_description" name="description"
+                            placeholder="О себе" type="text" value="Исследователь океана">
 
-                    <button class="popup__button-save" type="submit">Сохранить</button>
-                </form>
-                <button class="popup__close popup__close-edit" aria-label="Закрыть" type="button" name="btn-close"></button>
+                        <button class="popup__button-save" type="submit">Сохранить</button>
+                    </form>
+                    <button class="popup__close popup__close-edit" aria-label="Закрыть" type="button"
+                        name="btn-close"></button>
+                </div>
             </div>
-        </div>
 
-        <div class="popup popup__add">
-            <div class="popup__block">
-                <form class="popup__container" name="popupForm">
-                    <h2 class="popup__title">Новое место</h2>
-                    <input class="popup__input popup__input_enter_place" name="name" placeholder="Название" type="text"
-                           value="">
-                    <input class="popup__input popup__input_enter_foto" name="foto" placeholder="Ссылка на картинку"
-                           type="text" value="">
+            <div class="popup popup__add">
+                <div class="popup__block">
+                    <form class="popup__container" name="popupForm">
+                        <h2 class="popup__title">Новое место</h2>
+                        <input class="popup__input popup__input_enter_place" name="name" placeholder="Название"
+                            type="text" value="">
+                        <input class="popup__input popup__input_enter_foto" name="foto" placeholder="Ссылка на картинку"
+                            type="text" value="">
 
-                    <button class="popup__button-save" type="submit">Сохранить</button>
-                </form>
-                <button class="popup__close popup__close-add" aria-label="Закрыть" type="button" name="btn-close"></button>
+                        <button class="popup__button-save" type="submit">Сохранить</button>
+                    </form>
+                    <button class="popup__close popup__close-add" aria-label="Закрыть" type="button"
+                        name="btn-close"></button>
+                </div>
             </div>
-        </div>
 
-
-
-
-        <div class="popup popup__img">
-            <div class="popup__block">
-                <img src="" class="popup__block__img">
-                <button class="popup__close popup__close-add" aria-label="Закрыть" type="button" name="btn-close"></button>
+            <div class="popup popup__img">
+                <div class="popup__block-img">
+                    <button class="popup__close-add" aria-label="Закрыть" type="button" name="btn-close"></button>
+                    <img src="" class="popup__img-card" alt="фото">
+                    <div class="popup__title-pic"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- <div class="popup popup_pic">
-            <form class="popup__container-pic" name="popupForm">
-                <img class="popup__image" src="" alt="фото"> 
-                <h2 class="popup__title-pic"></h2>
-            </form>
-            <button class="popup__close popup__close-pic" aria-label="Закрыть" type="button" name="btn-close"></button>
-        </div> -->
-    </main>
+        </main>
 
-    <footer class="footer">
-        <p class="footer__text"> &copy; 2021 Mesto Russia</p>
-    </footer>
+        <footer class="footer">
+            <p class="footer__text"> &copy; 2021 Mesto Russia</p>
+        </footer>
+    </div>
 
-</div>
-
-    <template class="template">           
+    <template class="template">
         <li class="element">
             <img class="element__image" src="" alt="фото">
             <button class="element__remove" aria-label="Удаление" type="button"></button>

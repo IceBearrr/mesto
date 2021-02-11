@@ -13,14 +13,15 @@ let fotoInput = document.querySelector('.popup__input_enter_foto');
 let popupAdd = document.querySelector('.popup__add');
 let placeName;
 let picPopup = document.querySelector('.popup__img');
-let pic = document.querySelector('.popup__block__img');
+let pic = document.querySelector('.popup__img-card');
+
 
 
 // попап имя
 function openEditPopup() {
-    nameInput.value = profileName.textContent;
-    jobInput.value = profileDescription.textContent;
-    popupEdit.classList.add('popup_opened');
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileDescription.textContent;
+  popupEdit.classList.add('popup_opened');
 }
 editButton.addEventListener('click', openEditPopup);
 
@@ -38,6 +39,71 @@ function saveEditPopup(evt) {
 formUser.addEventListener('submit', saveEditPopup);
 
 
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+const elementCell = document.querySelector('.elements__cell');
+
+//находим template
+const templateEl = document.querySelector('.template');
+
+//добавляем карточки
+function render() {
+  const html = initialCards
+    .map(getCard)
+
+  elementCell.append(...html);
+};
+
+//задаем template код
+function getItemHTML(item) {
+  return ` <li class="element">
+                <img class="element__image" src="${item.link}" alt="">
+                <button class="element__remove" aria-label="Удаление" type="button"></button>
+                <div class="element__cell">
+                    <h2 class="element__place-name">${item.name}</h2>
+                    <button class="element__like" aria-label="Лайк" type="button"></button>
+                </div>
+            </li>`
+}
+
+function getCard(item) {
+  const newCard = templateEl.content.cloneNode(true);
+  const nameOfPlace = newCard.querySelector('.element__place-name');
+  nameOfPlace.textContent = item.name;
+  const linkOfPlace = newCard.querySelector('.element__image');
+  linkOfPlace.src = item.link;
+
+  return newCard;
+}
+
+render();
+
+
 // попап карточка
 function openAddPopup() {
   placeInput.value;
@@ -52,167 +118,78 @@ function closeAddPopup() {
 popupAddClose.addEventListener('click', closeAddPopup);
 
 
+
+
+//функция добавления карточки
+
 function saveAddPopup(evt) {
   evt.preventDefault();
   placeName.textContent = placeInput.value;
   foto.textContent = fotoInput.value;
+  const cardItem = getCard({name: placeName.textContent});
+  elementCell.prepend(cardItem);
   closeAddPopup();
+  
 }
 formUser.addEventListener('submit', saveAddPopup);
 
+// function saveAddPopup() {
+    
+//     placeName.textContent = placeInput.value;
+//     foto.textContent = fotoInput.value;
+//     const cardItem = getCard({});
+//     elementCell.prepend(cardItem);
 
+//     closeAddPopup();
+//   }
+//   formUser.addEventListener('submit', saveAddPopup);
 
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
-const elementCell = document.querySelector('.elements__cell');
-  
-//находим template
-const templateEl = document.querySelector('.template'); 
-
-//добавляем карточки
-function render() {
-    const html = initialCards
-        .map(getCard)
-
-        elementCell.append(...html);
-};
-
-//задаем template код
-function getItemHTML(item) {
-    return ` <li class="element">
-                <img class="element__image" src="${item.link}" alt="">
-                <button class="element__remove" aria-label="Удаление" type="button"></button>
-                <div class="element__cell">
-                    <h2 class="element__place-name">${item.name}</h2>
-                    <button class="element__like" aria-label="Лайк" type="button"></button>
-                </div>
-            </li>`
-}
-
-function getCard(item) {
-      const newCard = templateEl.content.cloneNode(true);
-      const nameOfPlace = newCard.querySelector('.element__place-name');
-      nameOfPlace.textContent = item.name;
-      const linkOfPlace = newCard.querySelector('.element__image');
-      linkOfPlace.src = item.link;
-
-     return newCard;
-}
-
-render();
 
 
 //функция удаления карточки
 
 const removeBtn = event => {
-    event.target.closest('.element').remove()
+  event.target.closest('.element').remove()
 }
-  
+
 document.querySelectorAll('.element__remove').forEach(item =>
-item.addEventListener("click", removeBtn));
+  item.addEventListener("click", removeBtn));
 
 
 
 //условие на лайк
 
-
-
 const likeBtn = event => {
-    // event.target.closest('.element').remove()
-    if (event.target.getAttribute("class") === "element__like")
-        event.target.classList.add('element__like_black');
-    else
-        event.target.classList.remove('element__like_black');
-
-    // this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')
-
+  // event.target.closest('.element').remove()
+  if (event.target.getAttribute("class") === "element__like")
+    event.target.classList.add('element__like_black');
+  else
+    event.target.classList.remove('element__like_black');
 }
 
 document.querySelectorAll('.element__like').forEach(item =>
-    item.addEventListener("click", likeBtn));
-
-// onclick="this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')";
-
-
-
+  item.addEventListener("click", likeBtn));
 
 
 //побольше
 
-
-
 const picBtn = event => {
-    // event.target.closest('.element').remove()
+  let popupTitlePic = document.querySelector('.popup__title-pic');
+  let textPic = event.target.parentElement.lastElementChild.firstElementChild.textContent
+  popupTitlePic.textContent = textPic;
 
-    //event.target.classList.add('popup_opened');
-    console.log("пикчер Бог" + picPopup);
-    //picPopup.src = event.target.element__image.src;
-    pic.setAttribute("src",event.target.src);
-    picPopup.classList.add('popup_opened');
-
-
+  pic.setAttribute("src", event.target.src);
+  picPopup.classList.add('popup_opened');
 }
 
 document.querySelectorAll('.element__image').forEach(item =>
-    item.addEventListener("click", picBtn));
+  item.addEventListener("click", picBtn));
 
 
 picPopup.addEventListener('click', closePicPopup);
 
 function closePicPopup() {
-    picPopup.classList.remove('popup_opened');
+  picPopup.classList.remove('popup_opened');
 }
-// onclick="this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')";
 
 
-
-
-// const likeBtn = document.querySelector('.element__like');
-
-// function activeLike() {
-//   const likeBtn = document.querySelector('.element__like');
-//   likeBtn.onclick = function() {
-//     if (this.innerHTML === likeBtn) this.innerHTML = '.element__like:active';
-//     else this.innerHTML = likeBtn;
-//     //предотвращаем переход по ссылке href
-//     return false;
-//   }
-
-//  }
-
-// $('.element__like').on('click', function() {
-//   $('.element__like').toggleClass('element__like:active');
-// });
-
-
-// for (const likeBtn = document.querySelector('.element__like')) {
-//   button.addEventListener('click', function() {
-//     this.classList.toggle('clicked');
-//     this.parentNode.classList.toggle('.element__like:active');
-//   });
-// }
