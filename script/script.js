@@ -142,6 +142,22 @@ item.addEventListener("click", removeBtn));
 
 //условие на лайк
 
+
+
+const likeBtn = event => {
+    // event.target.closest('.element').remove()
+    if (event.target.getAttribute("class") === "element__like")
+        event.target.classList.add('element__like_black');
+    else
+        event.target.classList.remove('element__like_black');
+
+    // this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')
+
+}
+
+document.querySelectorAll('.element__like').forEach(item =>
+    item.addEventListener("click", likeBtn));
+
 onclick="this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')";
 
 
