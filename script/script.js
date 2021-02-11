@@ -12,7 +12,9 @@ let placeInput = document.querySelector('.popup__input_enter_place');
 let fotoInput = document.querySelector('.popup__input_enter_foto');
 let popupAdd = document.querySelector('.popup__add');
 let placeName;
-let foto;
+let picPopup = document.querySelector('.popup__img');
+let pic = document.querySelector('.popup__block__img');
+
 
 // попап имя
 function openEditPopup() {
@@ -34,10 +36,6 @@ function saveEditPopup(evt) {
   closeEditPopup();
 }
 formUser.addEventListener('submit', saveEditPopup);
-
-
-
-
 
 
 // попап карточка
@@ -158,7 +156,40 @@ const likeBtn = event => {
 document.querySelectorAll('.element__like').forEach(item =>
     item.addEventListener("click", likeBtn));
 
-onclick="this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')";
+// onclick="this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')";
+
+
+
+
+
+//побольше
+
+
+
+const picBtn = event => {
+    // event.target.closest('.element').remove()
+
+    //event.target.classList.add('popup_opened');
+    console.log("пикчер Бог" + picPopup);
+    //picPopup.src = event.target.element__image.src;
+    pic.setAttribute("src",event.target.src);
+    picPopup.classList.add('popup_opened');
+
+
+}
+
+document.querySelectorAll('.element__image').forEach(item =>
+    item.addEventListener("click", picBtn));
+
+
+picPopup.addEventListener('click', closePicPopup);
+
+function closePicPopup() {
+    picPopup.classList.remove('popup_opened');
+}
+// onclick="this.className = (this.className == '.element__like' ? '.element__like:active' : '.element__like')";
+
+
 
 
 // const likeBtn = document.querySelector('.element__like');
