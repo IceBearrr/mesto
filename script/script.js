@@ -1,5 +1,5 @@
 const editButton = document.querySelector('.profile__button-edit');
-const popupEdit = document.querySelector('.popup__edit');
+const popupEdit = document.querySelector('.popup_edit');
 let nameInput = document.querySelector('.popup__input_enter_name');
 let jobInput = document.querySelector('.popup__input_enter_description');
 const popupEditClose = document.querySelector('.popup__close-edit');
@@ -10,9 +10,9 @@ const formUser = document.querySelector('.popup__container');
 const addButton = document.querySelector('.profile__button-add');
 let placeInput = document.querySelector('.popup__input_enter_place');
 let fotoInput = document.querySelector('.popup__input_enter_foto');
-const popupAdd = document.querySelector('.popup__add');
+const popupAdd = document.querySelector('.popup_add');
 let placeName;
-const picPopup = document.querySelector('.popup__img');
+const picPopup = document.querySelector('.popup_img');
 const pic = document.querySelector('.popup__img-card');
 const formPic = document.querySelector('.popup__block-img');
 
