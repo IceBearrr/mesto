@@ -112,7 +112,7 @@ function closeAddPopup() {
 }
 popupAddClose.addEventListener('click', closeAddPopup);
 
-const btnSave = document.querySelector('.popup__button-save;')
+const btnSave = document.querySelector('.popup__button-save')
 
 //функция добавления карточки
 function addNewElement(event) {
