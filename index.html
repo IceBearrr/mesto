@@ -46,7 +46,7 @@
                 </li>  -->
                 </ul>
             </section>
-            
+
             <div class="popup popup__edit">
                 <div class="popup__block">
                     <form class="popup__container" name="popupForm">
@@ -80,11 +80,11 @@
             </div>
 
             <div class="popup popup__img">
-                <div class="popup__block-img">
+                <form class="popup__block-img" name="formPic">
                     <button class="popup__close-add" aria-label="Закрыть" type="button" name="btn-close"></button>
                     <img src="" class="popup__img-card" alt="фото">
                     <div class="popup__title-pic"></div>
-                </div>
+                </form>
             </div>
 
         </main>
@@ -97,7 +97,7 @@
     <template class="template">
         <li class="element">
             <img class="element__image" src="" alt="фото">
-            <button class="element__remove" aria-label="Удаление" type="button"></button>
+            <button class="element__remove" aria-label="Удаление" type="submit"></button>
             <div class="element__cell">
                 <h2 class="element__place-name"></h2>
                 <button class="element__like" aria-label="Лайк" type="button"></button>

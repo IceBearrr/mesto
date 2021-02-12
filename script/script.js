@@ -1,20 +1,20 @@
-let editButton = document.querySelector('.profile__button-edit');
-let popupEdit = document.querySelector('.popup__edit');
+const editButton = document.querySelector('.profile__button-edit');
+const popupEdit = document.querySelector('.popup__edit');
 let nameInput = document.querySelector('.popup__input_enter_name');
 let jobInput = document.querySelector('.popup__input_enter_description');
-let popupEditClose = document.querySelector('.popup__close-edit');
-let popupAddClose = document.querySelector('.popup__close-add');
+const popupEditClose = document.querySelector('.popup__close-edit');
+const popupAddClose = document.querySelector('.popup__close-add');
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
-let formUser = document.querySelector('.popup__container');
-let addButton = document.querySelector('.profile__button-add');
+const formUser = document.querySelector('.popup__container');
+const addButton = document.querySelector('.profile__button-add');
 let placeInput = document.querySelector('.popup__input_enter_place');
 let fotoInput = document.querySelector('.popup__input_enter_foto');
-let popupAdd = document.querySelector('.popup__add');
+const popupAdd = document.querySelector('.popup__add');
 let placeName;
-let picPopup = document.querySelector('.popup__img');
-let pic = document.querySelector('.popup__img-card');
-
+const picPopup = document.querySelector('.popup__img');
+const pic = document.querySelector('.popup__img-card');
+const formPic = document.querySelector('.popup__block-img');
 
 
 // попап имя
@@ -67,16 +67,11 @@ const initialCards = [
 ];
 
 const elementCell = document.querySelector('.elements__cell');
-
-//находим template
 const templateEl = document.querySelector('.template');
 
 //добавляем карточки
 function render() {
-  const html = initialCards
-    .map(getCard)
-
-  elementCell.append(...html);
+  elementCell.append(...initialCards.map(getCard));
 };
 
 //задаем template код
@@ -117,33 +112,21 @@ function closeAddPopup() {
 }
 popupAddClose.addEventListener('click', closeAddPopup);
 
-
-
+const btnSave = document.querySelector('.popup__button-save;')
 
 //функция добавления карточки
-
-function saveAddPopup(evt) {
-  evt.preventDefault();
-  placeName.textContent = placeInput.value;
-  foto.textContent = fotoInput.value;
-  const cardItem = getCard({name: placeName.textContent});
-  elementCell.prepend(cardItem);
+function addNewElement(event) {
+  event.preventDefault();
+  elementCell.prepend(
+    getCard({
+      name: placeInput.value,
+      link: fotoInput.value,
+    })
+  );
   closeAddPopup();
-  
 }
-formUser.addEventListener('submit', saveAddPopup);
 
-// function saveAddPopup() {
-    
-//     placeName.textContent = placeInput.value;
-//     foto.textContent = fotoInput.value;
-//     const cardItem = getCard({});
-//     elementCell.prepend(cardItem);
-
-//     closeAddPopup();
-//   }
-//   formUser.addEventListener('submit', saveAddPopup);
-
+btnSave.addEventListener('submit', addNewElement);
 
 
 //функция удаления карточки
@@ -191,5 +174,3 @@ picPopup.addEventListener('click', closePicPopup);
 function closePicPopup() {
   picPopup.classList.remove('popup_opened');
 }
-
-
