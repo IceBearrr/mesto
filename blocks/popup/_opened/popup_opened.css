@@ -8,6 +8,9 @@
     display: flex;
     opacity: 1;
     transition-delay: 0s, 0s;
-    -webkit-animation: bounce 1s;
-
+    -webkit-animation: bounce 1s linear;
 }
+
+
+
+
