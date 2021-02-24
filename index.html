@@ -49,12 +49,12 @@
 
             <div class="popup popup_edit">
                 <div class="popup__block">
-                    <form class="popup__container" name="popupForm">
+                    <form class="popup__container" name="popupForm" novalidate>
                         <h2 class="popup__title">Редактировать профиль</h2>
                         <input class="popup__input popup__input_enter_name" name="name" placeholder="Имя" type="text"
-                            value="Жак-Ив Кусто">
+                            value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
                         <input class="popup__input popup__input_enter_description" name="description"
-                            placeholder="О себе" type="text" value="Исследователь океана">
+                            placeholder="О себе" type="text" value="Исследователь океана"  minlength="2" maxlength="200" required>
 
                         <button class="popup__button-save" type="submit">Сохранить</button>
                     </form>
@@ -65,12 +65,12 @@
 
             <div class="popup popup_add">
                 <div class="popup__block">
-                    <form class="popup__container popup__container_add" name="popupForm">
+                    <form class="popup__container popup__container_add" name="popupForm" novalidate>
                         <h2 class="popup__title">Новое место</h2>
                         <input class="popup__input popup__input_enter_place" name="name" placeholder="Название"
-                            type="text" value="">
+                            type="url" value=""  minlength="2" maxlength="30" required>
                         <input class="popup__input popup__input_enter_foto" name="foto" placeholder="Ссылка на картинку"
-                            type="text" value="">
+                            type="url" value="" required>
 
                         <button class="popup__button-save" type="submit">Сохранить</button>
                     </form>
@@ -80,7 +80,7 @@
             </div>
 
             <div class="popup popup_img">
-                <form class="popup__block-img" name="formPic">
+                <form class="popup__block-img" name="formPic" novalidate>
                     <button class="popup__close popup__close-add" aria-label="Закрыть" type="button" name="btn-close"></button>
                     <img src="images/kara4aevsk.jpg" class="popup__img-card" alt="фото">
                     <div class="popup__title-pic"></div>

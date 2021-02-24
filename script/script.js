@@ -15,6 +15,7 @@ const popupAdd = document.querySelector('.popup_add');
 const picPopup = document.querySelector('.popup_img');
 const pic = document.querySelector('.popup__img-card');
 const popupTitlePic = document.querySelector('.popup__title-pic');
+const popupClose = document.querySelector('.popup__close');
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
@@ -155,3 +156,23 @@ addButton.addEventListener('click', function () {
 popupAddClose.addEventListener('click', function () {
     closePopup(popupAdd)
 });
+
+function popupCloseESC(evt) {
+  // console.log("close");
+  if (evt.key === 'Esc');
+    closePopup(popupEdit);
+    closePopup(picPopup);
+    closePopup(popupAdd);
+}
+
+document.addEventListener('keydown', popupCloseESC);
+
+function popupCloseOverlay() {
+  console.log("close");
+  
+    closePopup(popupEdit);
+    closePopup(picPopup);
+    closePopup(popupAdd);
+}
+
+document.addEventListener('click', popupCloseOverlay);
