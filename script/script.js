@@ -178,78 +178,32 @@ popupAddClose.addEventListener('click', function () {
 // document.addEventListener('click', popupCloseOverlay);
 
 
-// Вынесем все необходимые элементы формы в константы
-const formElement = document.querySelector('.popup__container');
-const formInput = formElement.querySelector('.popup__input');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+// // Вынесем все необходимые элементы формы в константы
+// const formElement = document.querySelector('.popup__container');
+// const formInput = formElement.querySelector('.popup__input');
+// const formError = formElement.querySelector(`.${formInput.id}-error`);
 
-formElement.addEventListener('submit', function (evt) {
-  // Отменим стандартное поведение
-  evt.preventDefault();
-});
-
-// Слушатель события input
-formInput.addEventListener('input', function (evt) {
-  // Выведем в консоль значение свойства validity.valid поля ввода, 
-  // на котором слушаем событие input
-  console.log(evt.target.validity);
-}); 
-
-// // Функция, которая добавляет класс с ошибкой
-// const showInputError = (element, errorMessage) => {
-//   element.classList.add('popup__input_type_error');
-//     // Показываем сообщение об ошибке
-//     formError.textContent = errorMessage;
-//     formError.classList.add('popup__input-error_active');
-// };
-
-// // Функция, которая удаляет класс с ошибкой
-// const hideInputError = (element) => {
-//   element.classList.remove('popup__input_type_error');
-//   formError.classList.remove('popup__input-error_active');
-//   // Очистим ошибку
-//   formError.textContent = '';
-// };
-
-// // Функция, которая проверяет валидность поля
-// const isValid = () => {
-//   if (!formInput.validity.valid) {
-//     // Передадим сообщение об ошибке вторым аргументом
-//     showInputError(formInput, formInput.validationMessage);
-//   } else {
-//     // Если проходит, скроем
-//     hideInputError(formInput);
-//   }
-// };
- 
-// // formElement.addEventListener('submit', function (evt) {
-// //   // Отменим стандартное поведение по сабмиту
-// //   evt.preventDefault();
-// // });
-
-// // Вызовем функцию isValid на каждый ввод символа
-// formInput.addEventListener('input', isValid); 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// formElement.addEventListener('submit', function (evt) {
+//   // Отменим стандартное поведение
+//   evt.preventDefault();
+// });
 
 // // Слушатель события input
 // formInput.addEventListener('input', function (evt) {
 //   // Выведем в консоль значение свойства validity.valid поля ввода, 
 //   // на котором слушаем событие input
-//   console.log(evt.target.validity.valid);
+//   console.log(evt.target.validity);
 // }); 
+
+
+
+// // 
+
+
+
+
+
+
+
+
+
