@@ -23,7 +23,15 @@
         margin: 0 22px 30px;
     }
 }
-
+/* 
 .popup__input:invalid {
-    border: 1px solid #FF0000;
-}
+    border: 1px solid;
+    border-bottom-color:   #FF0000;
+} */
+
+.form__input_type_error {
+    border-bottom-color: red;
+  
+    /* Нижняя рамка будет становиться красной всякий раз, 
+    когда введённые данные некорректны */
+  } 

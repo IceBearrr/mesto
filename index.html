@@ -47,15 +47,20 @@
                 </ul>
             </section>
 
+
+            <!-- Вы пропустили это поле. 
+            Введите адрес сайта.-->
+
             <div class="popup popup_edit">
                 <div class="popup__block">
                     <form class="popup__container" name="popupForm" novalidate>
                         <h2 class="popup__title">Редактировать профиль</h2>
-                        <input class="popup__input popup__input_enter_name" name="name" placeholder="Имя" type="text"
+                        <input id="name-input" class="popup__input popup__input_enter_name" name="name" placeholder="Имя" type="text"
                             value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
-                        <input class="popup__input popup__input_enter_description" name="description"
+                            <span class="name-input-error popup__input-error"></span>
+                        <input id="job-input" class="popup__input popup__input_enter_description" name="description"
                             placeholder="О себе" type="text" value="Исследователь океана"  minlength="2" maxlength="200" required>
-
+                            <span class="job-input-error popup__input-error"></span>
                         <button class="popup__button-save" type="submit">Сохранить</button>
                     </form>
                     <button class="popup__close popup__close-edit" aria-label="Закрыть" type="button"
@@ -67,11 +72,12 @@
                 <div class="popup__block">
                     <form class="popup__container popup__container_add" name="popupForm" novalidate>
                         <h2 class="popup__title">Новое место</h2>
-                        <input class="popup__input popup__input_enter_place" name="name" placeholder="Название"
-                            type="url" value=""  minlength="2" maxlength="30" required>
-                        <input class="popup__input popup__input_enter_foto" name="foto" placeholder="Ссылка на картинку"
+                        <input id="placename-input" class="popup__input popup__input_enter_place" name="name" placeholder="Название"
+                            type="text" value=""  minlength="2" maxlength="30" required>
+                            <span class="placename-input-error popup__input-error"></span>
+                        <input id="foto-input" class="popup__input popup__input_enter_foto" name="foto" placeholder="Ссылка на картинку"
                             type="url" value="" required>
-
+                            <span class="foto-input-error popup__input-error"></span>
                         <button class="popup__button-save" type="submit">Сохранить</button>
                     </form>
                     <button class="popup__close popup__close-add" aria-label="Закрыть" type="button"
