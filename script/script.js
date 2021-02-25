@@ -178,57 +178,101 @@ popupAddClose.addEventListener('click', function () {
 // document.addEventListener('click', popupCloseOverlay);
 
 
-// Вынесем все необходимые элементы формы в константы
-const formElement = document.querySelector('.popup__container');
-const formInput = formElement.querySelector('.popup__input');
-const formError = formElement.querySelector(`.${formInput.id}-error`);
+// // Вынесем все необходимые элементы формы в константы
 
-formElement.addEventListener('submit', function (evt) {
-  // Отменим стандартное поведение
-  evt.preventDefault();
-});
+// const formError = formElement.querySelector(`.${formInput.id}-error`);
 
-// Слушатель события input
-formInput.addEventListener('input', function (evt) {
-  // Выведем в консоль значение свойства validity.valid поля ввода, 
-  // на котором слушаем событие input
-  console.log(evt.target.validity);
-}); 
+// formElement.addEventListener('submit', function (evt) {
+//   // Отменим стандартное поведение
+//   evt.preventDefault();
+// });
+
+
+
+
+
+
+// const formElement = document.querySelector('.popup__container');
+// const inputElement = formElement.querySelector('.popup__input');
+
 
 // // Функция, которая добавляет класс с ошибкой
-// const showInputError = (element, errorMessage) => {
-//   element.classList.add('popup__input_type_error');
-//     // Показываем сообщение об ошибке
-//     formError.textContent = errorMessage;
-//     formError.classList.add('popup__input-error_active');
-// };
+// function showInputError (formElement, inputElement, errorMessage, options) {
+//     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//     inputElement.classList.add(options.inputErrorClass);
+//     errorElement.textContent = errorMessage;
+//     errorElement.classList.add(options.errorClass);
+//   };
+  
 
 // // Функция, которая удаляет класс с ошибкой
-// const hideInputError = (element) => {
-//   element.classList.remove('popup__input_type_error');
-//   formError.classList.remove('popup__input-error_active');
-//   // Очистим ошибку
-//   formError.textContent = '';
-// };
+// function hideInputError (formElement, inputElement, options) {
+//     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+//     inputElement.classList.remove(options.inputErrorClass);
+//     errorElement.textContent = "";
+//     errorElement.classList.remove(options.errorClass);
+//   };
+  
 
-// // Функция, которая проверяет валидность поля
-// const isValid = () => {
-//   if (!formInput.validity.valid) {
-//     // Передадим сообщение об ошибке вторым аргументом
-//     showInputError(formInput, formInput.validationMessage);
+//   // Функция, которая проверяет валидность поля
+// function isValid(formElement, inputElement, options ) {
+//   if (!inputElement.validity.valid) {
+//     showInputError(formElement, inputElement, inputElement.validationMessage, options );
 //   } else {
-//     // Если проходит, скроем
-//     hideInputError(formInput);
+//     hideInputError(formElement, inputElement, options);
 //   }
 // };
  
-// // formElement.addEventListener('submit', function (evt) {
-// //   // Отменим стандартное поведение по сабмиту
-// //   evt.preventDefault();
-// // });
+    
+//   function setEventListeners (formElement, options) {
 
-// // Вызовем функцию isValid на каждый ввод символа
-// formInput.addEventListener('input', isValid); 
+//     const inputList = Array.from(formElement.querySelectorAll(options.inputSelector));
+//     const buttonElement = formElement.querySelector(options.submitButtonSelector);
+//     toggleButtonState(inputList, buttonElement, options);
+
+//     inputList.forEach((inputElement) => {
+//         inputElement.addEventListener("input", () => {
+//             isValid(formElement, inputElement, options);
+//             toggleButtonState(inputList, buttonElement, options);
+//         })
+//     })
+//   };
+
+//   function enableValidation(options) {
+//     const formList = Array.from(document.querySelectorAll(options.formSelector));
+  
+//     formList.forEach((formElement) => {
+//         formElement.addEventListener('submit', (evt) => {
+//             evt.preventDefault();
+//         })
+//       setEventListeners(formElement, options);
+//     })
+//   };
+
+// function hasInvalidInput(inputList) {
+//     return inputList.some((inputElement) => {
+//         return !inputElement.validity.valid;
+//     })
+// };
+
+// function toggleButtonState(inputList, buttonElement, options) {
+//     if(hasInvalidInput(inputList)) {
+//         buttonElement.setAttribute('disabled', true);
+//         buttonElement.classList.add(options.inactiveButtonClass);
+//     }
+// };
+
+//   // включение валидации вызовом enableValidation
+// // все настройки передаются при вызове
+
+// enableValidation({
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   submitButtonSelector: '.popup__button',
+//   inactiveButtonClass: 'popup__button_disabled',
+//   inputErrorClass: 'popup__input_type_error',
+//   errorClass: 'popup__error_visible'
+// });
 
 
 
@@ -237,19 +281,3 @@ formInput.addEventListener('input', function (evt) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-// // Слушатель события input
-// formInput.addEventListener('input', function (evt) {
-//   // Выведем в консоль значение свойства validity.valid поля ввода, 
-//   // на котором слушаем событие input
-//   console.log(evt.target.validity.valid);
-// }); 

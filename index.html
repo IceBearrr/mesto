@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="pages/index.css" type="text/css">
     <title>Место</title>
     <script src="script/script.js" defer></script>
+    <script src="script/validate.js" defer></script>
 </head>
 
 <body>
@@ -53,7 +54,7 @@
 
             <div class="popup popup_edit">
                 <div class="popup__block">
-                    <form class="popup__container" name="popupForm" novalidate>
+                    <form class="popup__container popup__form" name="popupForm" novalidate>
                         <h2 class="popup__title">Редактировать профиль</h2>
                         <input id="name-input" class="popup__input popup__input_enter_name" name="name" placeholder="Имя" type="text"
                             value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
@@ -70,7 +71,7 @@
 
             <div class="popup popup_add">
                 <div class="popup__block">
-                    <form class="popup__container popup__container_add" name="popupForm" novalidate>
+                    <form class="popup__container popup__form popup__container_add" name="popupForm" novalidate>
                         <h2 class="popup__title">Новое место</h2>
                         <input id="placename-input" class="popup__input popup__input_enter_place" name="name" placeholder="Название"
                             type="text" value=""  minlength="2" maxlength="30" required>

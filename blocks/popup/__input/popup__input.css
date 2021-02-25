@@ -23,15 +23,15 @@
         margin: 0 22px 30px;
     }
 }
-/* 
-.popup__input:invalid {
-    border: 1px solid;
-    border-bottom-color:   #FF0000;
-} */
 
-.form__input_type_error {
-    border-bottom-color: red;
+  .popup__input_type_error:invalid {
+    border: 2px dashed red;
+  }
   
-    /* Нижняя рамка будет становиться красной всякий раз, 
-    когда введённые данные некорректны */
-  } 
+  .popup__input_type_error:invalid:required {
+    background-image: linear-gradient(to right, pink, lightgreen);
+  }
+  
+  .popup__input_type_error:valid {
+    border: 2px solid black;
+  }
