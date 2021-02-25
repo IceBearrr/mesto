@@ -60,7 +60,7 @@ const enableValidation = () => {
         formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        const fieldsetList = Array.from(formElement.querySelectorAll('.form__set'));
+        const fieldsetList = Array.from(formElement.querySelectorAll('.popup__form__set'));
         fieldsetList.forEach((fieldset) => {
             setEventListeners(fieldset);
         });

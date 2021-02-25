@@ -42,7 +42,7 @@
 }
 
 
-.form__set {
+.popup__form__set {
     width: 99%;
     height: 100%;
     padding: 0;
@@ -50,7 +50,7 @@
     border: none;
 }
 
-.form__field {
+.popup__form__field {
     width: 358px;
     height: 44px;
     margin: auto;
