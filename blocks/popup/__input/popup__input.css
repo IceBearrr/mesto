@@ -1,17 +1,17 @@
-
 .popup__input {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 17px;
     color: #000000;
-    margin: 0 36px 30px;
+    margin: 0 36px 0;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding-bottom: 13px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    width: 358px;
 }
 
 .popup__input:hover {
@@ -24,14 +24,34 @@
     }
 }
 
-  .popup__input_type_error:invalid {
-    border: 2px dashed red;
-  }
-  
-  .popup__input_type_error:invalid:required {
+.popup__input-error {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    margin: 5px 36px 13px;
+    color: #FF0000;
+}
+
+.popup__input_type_error:invalid:required {
     background-image: linear-gradient(to right, pink, lightgreen);
-  }
-  
-  .popup__input_type_error:valid {
+}
+
+.popup__input_type_error:valid {
     border: 2px solid black;
-  }
+}
+
+
+.form__set {
+    width: 99%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.form__field {
+    width: 358px;
+    height: 44px;
+    margin: auto;
+}
