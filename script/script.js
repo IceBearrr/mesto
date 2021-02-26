@@ -6,8 +6,8 @@ const popupEditClose = document.querySelector('.popup__close-edit');
 const popupAddClose = document.querySelector('.popup__close-add');
 const profileName = document.querySelector('.profile__name');
 const profileDescription = document.querySelector('.profile__description');
-const formUser = document.querySelector('.popup__container');
-const formUserAdd = document.querySelector('.popup__container_add');
+const formUserNew = document.querySelector('.popup__container_add');
+const formUser = document.querySelector('.popup__container_edit');
 const addButton = document.querySelector('.profile__button-add');
 const placeInput = document.querySelector('.popup__input_enter_place');
 const fotoInput = document.querySelector('.popup__input_enter_foto');
@@ -43,7 +43,7 @@ popupEditClose.addEventListener('click', function () {
     closePopup(popupEdit)
 });
 
-function saveEditPopup(evt) {
+function saveEditPopup(evt) {console.log("save edit")
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
@@ -53,8 +53,9 @@ function saveEditPopup(evt) {
 formUser.addEventListener('submit', saveEditPopup);
 
 //функция добавления карточки
-function addNewElement(event) {
-  event.preventDefault();
+function addNewElement(evt) {
+    console.log("save");
+    evt.preventDefault();
   elementCell.prepend(
     getCard({
       name: placeInput.value,
@@ -64,7 +65,9 @@ function addNewElement(event) {
   closePopup(popupAdd);
 }
 
-formUserAdd.addEventListener('submit', addNewElement);
+
+formUserNew.addEventListener('submit', addNewElement);
+
 
 const initialCards = [
     {

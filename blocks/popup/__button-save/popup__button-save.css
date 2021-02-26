@@ -8,13 +8,14 @@
     line-height: 22px;
     text-align: center;
     padding: 0;
-    pointer-events:none;
     border: 1px solid #000000;
     box-sizing: border-box;
 }
 
 
 .popup__button-deactive {
+    pointer-events:none;
+
     background: #FFFFFF;
     color: black;
     opacity: 0.2;
