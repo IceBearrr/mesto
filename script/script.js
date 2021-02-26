@@ -16,9 +16,47 @@ const picPopup = document.querySelector('.popup_img');
 const pic = document.querySelector('.popup__img-card');
 const popupTitlePic = document.querySelector('.popup__title-pic');
 
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+
+const elementCell = document.querySelector('.elements__cell');
+const templateEl = document.querySelector('.template');
+
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', popupCloseESC);
+    popup.addEventListener('click', function () {
+        //const open_popup = document.querySelector('.popup_opened');
+        if ( event.target === popup) {
+            closePopup(popup);
+        }
+    });
+
 }
 
 function closePopup(popup) {
@@ -27,12 +65,7 @@ function closePopup(popup) {
 }
 
 
-document.addEventListener('click', function () {
-    let open_popup = document.querySelector('.popup_opened');
-    if (open_popup !== null && event.target === open_popup) {
-        closePopup(open_popup);
-    }
-});
+
 
 
 editButton.addEventListener('click', function () {
@@ -69,35 +102,6 @@ function addNewElement(evt) {
 formUserNew.addEventListener('submit', addNewElement);
 
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
-
-const elementCell = document.querySelector('.elements__cell');
-const templateEl = document.querySelector('.template');
 
 //добавляем карточки
 function render() {
@@ -153,12 +157,6 @@ render();
 
 
 
-// попап карточка
-function openAddPopup() {
-    placeInput.value;
-    fotoInput.value;
-}
-
 addButton.addEventListener('click', function () {
     openPopup(popupAdd)
 });
@@ -169,13 +167,12 @@ popupAddClose.addEventListener('click', function () {
 
 function popupCloseESC(evt) {
   if (evt.key === 'Escape') {
-      closePopup(popupEdit);
-      closePopup(picPopup);
-      closePopup(popupAdd);
+      const open_popup = document.querySelector('.popup_opened');
+      closePopup(open_popup);
+
   }
 }
 
-document.addEventListener('keydown', popupCloseESC);
 
 
 
