@@ -50,18 +50,24 @@ const templateEl = document.querySelector('.template');
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', popupCloseESC);
-    popup.addEventListener('click', function () {
-        //const open_popup = document.querySelector('.popup_opened');
-        if ( event.target === popup) {
-            closePopup(popup);
-        }
-    });
-
 }
+
+
+function closePopupByOverlay(evt) {
+    if ( event.target === event.currentTarget) {
+        closePopup(event.target);
+    }
+}
+
+popupEdit.addEventListener('click', closePopupByOverlay);
+popupAdd.addEventListener('click', closePopupByOverlay);
+picPopup.addEventListener('click', closePopupByOverlay);
+
+
 
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-
+    document.removeEventListener('keydown', popupCloseESC);
 }
 
 
