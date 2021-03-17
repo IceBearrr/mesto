@@ -21,6 +21,7 @@ export default class Card {
 
         generateCard() {
             this._element = this._getTemplate();
+            this._setEventListeners();
             this._element.querySelector('.element__image').textContent = this._image;
             this._element.querySelector('.element__place-name').textContent = this._caption;
 
@@ -58,23 +59,24 @@ export default class Card {
         }
 
 
-        function createCard(item) {
-            const card = new Card(link, name, '.template');
-            const cardElement = card.generateCard();
-            return cardElement;
-           }
+        // function createCard(item) {
+        //     const card = new Card(link, name, '.template');
+        //     return card.generateCard();
+             
+        //    }
+           
 
-
-    //initialCards.forEach((item) => {
-    initialCards.forEach((item) => {
-        createCard(item);
+    // //initialCards.forEach((item) => {
+    // initialCards.forEach((item) => {
+    //     createCard(item);
         
-        // Создадим экземпляр карточки
-        //const card = new Card(item.text, item.image);
-        // Создаём карточку и возвращаем наружу
-        const cardElement = createCard(item);
+    //     // Создадим экземпляр карточки
+    //     //const card = new Card(item.text, item.image);
+    //     // Создаём карточку и возвращаем наружу
+    //     const cardElement = createCard(item);
     
-        // Добавляем в DOM
-        document.body.append(cardElement);
-    }); 
+    //     // Добавляем в DOM
+    //     document.body.append(cardElement);
+    // }); 
 
+   

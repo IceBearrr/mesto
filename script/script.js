@@ -1,7 +1,7 @@
 import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-Card();
-FormValidator();
+//import FormValidator from './FormValidator.js';
+
+//FormValidator();
 
 const editButton = document.querySelector('.profile__button-edit');
 const popupEdit = document.querySelector('.popup_edit');
@@ -112,9 +112,9 @@ formUserNew.addEventListener('submit', addNewElement);
 
 
 //добавляем карточки
-function render() {
-    elementCell.append(...initialCards.map(getCard));
-};
+// function render() {
+//     elementCell.append(...initialCards.map(getCard));
+// };
 
 function getCard(item) {
     const newCard = templateEl.content.cloneNode(true);
@@ -139,7 +139,7 @@ function getCard(item) {
 
 
 
-render();
+// render();
 
 
 
@@ -158,3 +158,25 @@ function popupCloseESC(evt) {
 
   }
 }
+
+// //initialCards.forEach((item) => {
+//     initialCards.forEach((item) => {
+//         createCard(item);
+        
+//         // Создадим экземпляр карточки
+//         //const card = new Card(item.text, item.image);
+//         // Создаём карточку и возвращаем наружу
+//         const cardElement = createCard(item);
+    
+//         // Добавляем в DOM
+//         document.body.append(cardElement);
+//     }); 
+
+    initialCards.forEach((item) => {
+  // Создадим экземпляр карточки
+  const card = new Card(item.link, item.name);
+  // Создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
+  // Добавляем в DOM
+        document.body.append(cardElement);
+    }); 
