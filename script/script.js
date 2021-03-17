@@ -1,3 +1,8 @@
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+Card();
+FormValidator();
+
 const editButton = document.querySelector('.profile__button-edit');
 const popupEdit = document.querySelector('.popup_edit');
 const nameInput = document.querySelector('.popup__input_enter_name');
@@ -43,8 +48,8 @@ const initialCards = [
     }
 ];
 
-const elementCell = document.querySelector('.elements__cell');
-const templateEl = document.querySelector('.template');
+// const elementCell = document.querySelector('.elements__cell');
+// const templateEl = document.querySelector('.template');
 
 
 function openPopup(popup) {
@@ -69,9 +74,6 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', popupCloseESC);
 }
-
-
-
 
 
 editButton.addEventListener('click', function () {
@@ -136,28 +138,6 @@ function getCard(item) {
 }
 
 
-function cardDelete(event) {
-    const targetEl = event.target;
-    const targetItem = targetEl.closest('.element');
-    targetItem.remove();
-}
-
-function cardLike(event) {
-    if (event.target.getAttribute("class") === "element__like")
-        event.target.classList.add('element__like_black');
-    else
-        event.target.classList.remove('element__like_black');
-}
-
-function picOpen(item) {
-    popupTitlePic.textContent = item.name
-    pic.setAttribute("src", item.link);
-    openPopup(picPopup);
-}
-
-picPopup.addEventListener('click', function () {
-    closePopup(picPopup)
-});
 
 render();
 
@@ -178,13 +158,3 @@ function popupCloseESC(evt) {
 
   }
 }
-
-
-
-
-
-
-
-
-
-
