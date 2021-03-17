@@ -1,7 +1,6 @@
 import Card from './Card.js';
-//import FormValidator from './FormValidator.js';
+// import FormValidator from './FormValidator.js';
 
-//FormValidator();
 
 const editButton = document.querySelector('.profile__button-edit');
 const popupEdit = document.querySelector('.popup_edit');
@@ -48,7 +47,7 @@ const initialCards = [
     }
 ];
 
-// const elementCell = document.querySelector('.elements__cell');
+const elementCell = document.querySelector('.elements__cell');
 // const templateEl = document.querySelector('.template');
 
 
@@ -111,38 +110,6 @@ formUserNew.addEventListener('submit', addNewElement);
 
 
 
-//добавляем карточки
-// function render() {
-//     elementCell.append(...initialCards.map(getCard));
-// };
-
-function getCard(item) {
-    const newCard = templateEl.content.cloneNode(true);
-    const nameOfPlace = newCard.querySelector('.element__place-name');
-    nameOfPlace.textContent = item.name;
-    const linkOfPlace = newCard.querySelector('.element__image');
-    linkOfPlace.src = item.link;
-
-    const removeBtn = newCard.querySelector('.element__remove');
-    removeBtn.addEventListener('click', cardDelete);
-
-    const likeBtn = newCard.querySelector('.element__like');
-    likeBtn.addEventListener('click', cardLike);
-
-    const picBtn = newCard.querySelector('.element__image');
-    picBtn.addEventListener('click', () => {
-        picOpen(item)
-    });
-
-    return newCard;
-}
-
-
-
-// render();
-
-
-
 addButton.addEventListener('click', function () {
     openPopup(popupAdd)
 });
@@ -159,19 +126,6 @@ function popupCloseESC(evt) {
   }
 }
 
-// //initialCards.forEach((item) => {
-//     initialCards.forEach((item) => {
-//         createCard(item);
-        
-//         // Создадим экземпляр карточки
-//         //const card = new Card(item.text, item.image);
-//         // Создаём карточку и возвращаем наружу
-//         const cardElement = createCard(item);
-    
-//         // Добавляем в DOM
-//         document.body.append(cardElement);
-//     }); 
-
     initialCards.forEach((item) => {
   // Создадим экземпляр карточки
   console.log('pic - ' + item.name);
@@ -179,5 +133,9 @@ function popupCloseESC(evt) {
   // Создаём карточку и возвращаем наружу
   const cardElement = card.generateCard();
   // Добавляем в DOM
-        document.body.append(cardElement);
+    elementCell.append(cardElement);
     }); 
+
+
+    
+    //const FormValidator = new FormValidator(configuration, formElement);

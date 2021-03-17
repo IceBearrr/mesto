@@ -51,39 +51,13 @@ export default class Card {
         _cardLike() {
             this._element.querySelector('.element__like').classList.toggle('element__like_black');
         }
-        
         // _picOpen() {
-        //     popupTitlePic.textContent = item.name
-        //     pic.setAttribute("src", item.link);
-        //     openPopup(picPopup);
-        // }
-        
-        // picPopup.addEventListener('click', function () {
-        //     closePopup(picPopup)
-        // });
-        
+        //     const pic = document.querySelector('.popup__img-card');
+        //     const popupTitlePic = document.querySelector('.popup__title-pic');
+        //     const picPopup = document.querySelector('.popup_img');
+        //     pic.src = this._image;
+        //     popupTitlePic.textContent = this._caption;
+        //     picPopup.classList.add('.popup_opened');
 
-        }
-
-
-        // function createCard(item) {
-        //     const card = new Card(link, name, '.template');
-        //     return card.generateCard();
-             
-        //    }
-           
-
-    // //initialCards.forEach((item) => {
-    // initialCards.forEach((item) => {
-    //     createCard(item);
-        
-    //     // Создадим экземпляр карточки
-    //     //const card = new Card(item.text, item.image);
-    //     // Создаём карточку и возвращаем наружу
-    //     const cardElement = createCard(item);
-    
-    //     // Добавляем в DOM
-    //     document.body.append(cardElement);
-    // }); 
-
-   
+        //       }
+            }
