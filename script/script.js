@@ -174,7 +174,8 @@ function popupCloseESC(evt) {
 
     initialCards.forEach((item) => {
   // Создадим экземпляр карточки
-  const card = new Card(item.link, item.name);
+  console.log('pic - ' + item.name);
+  const card = new Card( item.name, item.link,);
   // Создаём карточку и возвращаем наружу
   const cardElement = card.generateCard();
   // Добавляем в DOM
