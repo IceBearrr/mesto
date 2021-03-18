@@ -55,29 +55,6 @@ const elementCell = document.querySelector('.elements__cell');
 
 
 
-// class ProfilePopup extends Popup {
-//     // your logic 
-//     save() {}
-//     _setEventListeners() {
-//       this.$saveBtn.addEventListener('click', () => this.save())
-//     }
-//  }
-
-//  class AddCardPopup extends Popup {
-//     addCard(value1, value2) {}
-//     _setEventListeners() {
-//       this.$addCardForm.addEventListener('submit', (e) => {
-//          // get your input's values
-//          // put them into addCard()
-//       })
-//     }
-//  }
-
-
-
-
-
-
 
 
 function openPopup(popup) {
@@ -88,7 +65,7 @@ function openPopup(popup) {
 
 function closePopupByOverlay(evt) {
     if ( evt.target === evt.currentTarget) {
-        closePopup(event.target);
+        closePopup(evt.target);
     }
 }
 

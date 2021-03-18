@@ -2,8 +2,8 @@
 export default class Card {
     constructor(name, link, cardSelector) {
         this._caption = name;
-        console.log('picname - ' + name);
-        console.log('picurl - ' + link);
+        // console.log('picname - ' + name);
+        // console.log('picurl - ' + link);
 
 
         this._image = link;
@@ -28,7 +28,7 @@ export default class Card {
             this._element = this._getTemplate();
             this._setEventListeners();
             this._element.querySelector('.element__image').src = this._image;
-            console.log('picurlimg - ' + this._image);
+            //console.log('picurlimg - ' + this._image);
 
             this._element.querySelector('.element__place-name').textContent = this._caption;
 
