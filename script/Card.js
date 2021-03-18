@@ -40,8 +40,8 @@ export default class Card {
             this._cardDelete() });
             this._element.querySelector('.element__like').addEventListener('click', () => {
             this._cardLike() });
-            // this._element.querySelector('.element__image').addEventListener('click', () => {
-            // this._picOpen() });
+            this._element.querySelector('.element__image').addEventListener('click', () => {
+            this._picOpen() });
           }
 
         _cardDelete() {
@@ -51,13 +51,15 @@ export default class Card {
         _cardLike() {
             this._element.querySelector('.element__like').classList.toggle('element__like_black');
         }
-        // _picOpen() {
-        //     const pic = document.querySelector('.popup__img-card');
-        //     const popupTitlePic = document.querySelector('.popup__title-pic');
-        //     const picPopup = document.querySelector('.popup_img');
-        //     pic.src = this._image;
-        //     popupTitlePic.textContent = this._caption;
-        //     picPopup.classList.add('.popup_opened');
-
-        //       }
+        _picOpen() {
+            const pic = document.querySelector('.popup__img-card');
+            const popupTitlePic = document.querySelector('.popup__title-pic');
+            const picPopup = document.querySelector('.popup_img');
+            pic.src = this._image;
+            popupTitlePic.textContent = this._caption;
+            picPopup.classList.add('popup_opened');
+           
+              }
             }
+
+            

@@ -17,8 +17,8 @@ const placeInput = document.querySelector('.popup__input_enter_place');
 const fotoInput = document.querySelector('.popup__input_enter_foto');
 const popupAdd = document.querySelector('.popup_add');
 const picPopup = document.querySelector('.popup_img');
-const pic = document.querySelector('.popup__img-card');
-const popupTitlePic = document.querySelector('.popup__title-pic');
+// const pic = document.querySelector('.popup__img-card');
+// const popupTitlePic = document.querySelector('.popup__title-pic');
 
 const initialCards = [
     {
@@ -51,6 +51,35 @@ const elementCell = document.querySelector('.elements__cell');
 // const templateEl = document.querySelector('.template');
 
 
+
+
+
+
+// class ProfilePopup extends Popup {
+//     // your logic 
+//     save() {}
+//     _setEventListeners() {
+//       this.$saveBtn.addEventListener('click', () => this.save())
+//     }
+//  }
+
+//  class AddCardPopup extends Popup {
+//     addCard(value1, value2) {}
+//     _setEventListeners() {
+//       this.$addCardForm.addEventListener('submit', (e) => {
+//          // get your input's values
+//          // put them into addCard()
+//       })
+//     }
+//  }
+
+
+
+
+
+
+
+
 function openPopup(popup) {
     popup.classList.add('popup_opened');
     document.addEventListener('keydown', popupCloseESC);
@@ -58,7 +87,7 @@ function openPopup(popup) {
 
 
 function closePopupByOverlay(evt) {
-    if ( event.target === event.currentTarget) {
+    if ( evt.target === evt.currentTarget) {
         closePopup(event.target);
     }
 }
@@ -97,7 +126,7 @@ function addNewElement(evt) {
     console.log("save");
     evt.preventDefault();
   elementCell.prepend(
-    getCard({
+    generateCard({
       name: placeInput.value,
       link: fotoInput.value,
     })
