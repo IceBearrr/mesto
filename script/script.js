@@ -1,5 +1,5 @@
 import Card from './Card.js';
-// import FormValidator from './FormValidator.js';
+import FormValidator from './FormValidator.js';
 
 
 const editButton = document.querySelector('.profile__button-edit');
@@ -51,10 +51,14 @@ const elementCell = document.querySelector('.elements__cell');
 // const templateEl = document.querySelector('.template');
 
 
-
-
-
-
+initialCards.forEach((item) => {
+    // Создадим экземпляр карточки
+    const card = new Card(item.name, item.link,);
+    // Создаём карточку и возвращаем наружу
+    const cardElement = card.generateCard();
+    // Добавляем в DOM
+    elementCell.append(cardElement);
+});
 
 
 function openPopup(popup) {
@@ -64,7 +68,7 @@ function openPopup(popup) {
 
 
 function closePopupByOverlay(evt) {
-    if ( evt.target === evt.currentTarget) {
+    if (evt.target === evt.currentTarget) {
         closePopup(evt.target);
     }
 }
@@ -74,11 +78,14 @@ popupAdd.addEventListener('click', closePopupByOverlay);
 picPopup.addEventListener('click', closePopupByOverlay);
 
 
-
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', popupCloseESC);
 }
+
+picPopup.addEventListener('click', function () {
+    closePopup(picPopup)
+});
 
 
 editButton.addEventListener('click', function () {
@@ -89,7 +96,7 @@ popupEditClose.addEventListener('click', function () {
     closePopup(popupEdit)
 });
 
-function saveEditPopup(evt) {console.log("save edit")
+function saveEditPopup(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileDescription.textContent = jobInput.value;
@@ -98,22 +105,17 @@ function saveEditPopup(evt) {console.log("save edit")
 
 formUser.addEventListener('submit', saveEditPopup);
 
+
 //функция добавления карточки
 function addNewElement(evt) {
-    console.log("save");
+    const cardAdd = new Card(placeInput.value, fotoInput.value);
     evt.preventDefault();
-  elementCell.prepend(
-    generateCard({
-      name: placeInput.value,
-      link: fotoInput.value,
-    })
-  );
-  closePopup(popupAdd);
+    elementCell.prepend(cardAdd.generateCard());
+    closePopup(popupAdd);
 }
 
 
 formUserNew.addEventListener('submit', addNewElement);
-
 
 
 addButton.addEventListener('click', function () {
@@ -125,23 +127,40 @@ popupAddClose.addEventListener('click', function () {
 });
 
 function popupCloseESC(evt) {
-  if (evt.key === 'Escape') {
-      const open_popup = document.querySelector('.popup_opened');
-      closePopup(open_popup);
+    if (evt.key === 'Escape') {
+        const open_popup = document.querySelector('.popup_opened');
+        closePopup(open_popup);
 
-  }
+    }
 }
 
-    initialCards.forEach((item) => {
-  // Создадим экземпляр карточки
-  console.log('pic - ' + item.name);
-  const card = new Card( item.name, item.link,);
-  // Создаём карточку и возвращаем наружу
-  const cardElement = card.generateCard();
-  // Добавляем в DOM
-    elementCell.append(cardElement);
-    }); 
 
+const setEventListeners = (formElement) => {
 
-    
-    //const FormValidator = new FormValidator(configuration, formElement);
+    const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
+    const buttonElement = formElement.querySelector('.popup__button-save');
+    //toggleButtonState(inputList, buttonElement);
+
+    inputList.forEach((inputElement) => {
+        const NewValidator = new FormValidator(formElement, inputList, inputElement, buttonElement)
+
+        inputElement.addEventListener('input', function () {
+            NewValidator.checkInputValidity();
+            NewValidator.toggleButtonState();
+        });
+    });
+};
+
+const enableValidation = () => {
+    const formList = Array.from(document.querySelectorAll('.popup__form'));
+    formList.forEach((formElement) => {
+        formElement.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+        });
+        const fieldsetList = Array.from(formElement.querySelectorAll('.popup__set'));
+        fieldsetList.forEach((fieldset) => {
+            setEventListeners(fieldset);
+        });
+    });
+};
+enableValidation();
