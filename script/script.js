@@ -48,7 +48,6 @@ const initialCards = [
 ];
 
 const elementCell = document.querySelector('.elements__cell');
-// const templateEl = document.querySelector('.template');
 
 
 initialCards.forEach((item) => {

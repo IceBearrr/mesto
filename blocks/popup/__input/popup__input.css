@@ -33,9 +33,6 @@
     color: #FF0000;
 }
 
-.popup__input_type_error:invalid:required {
-    background-image: linear-gradient(to right, pink, lightgreen);
-}
 
 .popup__input_type_error:valid {
     border: 2px solid black;
