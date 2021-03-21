@@ -1,13 +1,17 @@
+import {openPopup} from './script.js'
+
 export default class Card {
     constructor(name, link, cardSelector) {
         this._caption = name;
         this._image = link;
+        this._cardSelector = cardSelector;
+
     }
 
-    _getTemplate() {
+    _getTemplate(cardSelector) {
         // забираем разметку из HTML и клонируем элемент
         const newCard = document
-            .querySelector('.template')
+            .querySelector(this._cardSelector)
             .content
             .querySelector('.element')
             .cloneNode(true);
@@ -50,9 +54,7 @@ export default class Card {
         const picPopup = document.querySelector('.popup_img');
         pic.src = this._image;
         popupTitlePic.textContent = this._caption;
-        picPopup.classList.add('popup_opened');
-
+        openPopup(picPopup);
     }
 }
 
-            

@@ -1,55 +1,78 @@
 export default class FormValidator {
 
-    constructor(formElement, inputList, inputElement, buttonElement) {
+    constructor(formElement, Properties) {
         this._formElement = formElement;
-        this._inputList = inputList;
-        this._inputElement = inputElement;
-
-        this._buttonElement = buttonElement;
-
+        this._Properties = Properties;
     }
 
 
-    _showInputError(errorMessage) {
-        const errorElement = this._formElement.querySelector(`.${this._inputElement.id}-error`);
-        this._inputElement.classList.add('popup__input_type_error');
+    _showInputError = (inputElement, errorMessage) => {
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+        inputElement.classList.add(this._Properties.typeError);
         errorElement.textContent = errorMessage;
-        errorElement.classList.add('popup__input-error_active');
+        errorElement.classList.add(this._Properties.typeActive);
     };
 
-    _hideInputError() {
-        const errorElement = this._formElement.querySelector(`.${this._inputElement.id}-error`);
-        this._inputElement.classList.remove('popup__input_type_error');
-        errorElement.classList.remove('popup__input-error_active');
+    _hideInputError = (inputElement) => {
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
+        inputElement.classList.remove(this._Properties.typeError);
+        errorElement.classList.remove(this._Properties.typeActive);
         errorElement.textContent = '';
     };
 
-    checkInputValidity() {
-        if (!this._inputElement.validity.valid) {
-            this._showInputError(this._inputElement.validationMessage);
+    _checkInputValidity = (formElement, inputElement) => {
+        if (!inputElement.validity.valid) {
+            this._showInputError(inputElement, inputElement.validationMessage);
         } else {
-            this._hideInputError();
+            this._hideInputError(inputElement);
         }
     };
 
-    _hasInvalidInput() {
-        return this._inputList.some(() => {
-            return !this._inputElement.validity.valid;
+
+    _hasInvalidInput = (inputList) => {
+        return inputList.some((inputElement) => {
+            return !inputElement.validity.valid;
         })
     }
 
-    toggleButtonState() {
+    _toggleButtonState = (inputList, buttonElement) => {
 
-        if (this._hasInvalidInput(this._inputList)) {
-            this._buttonElement.classList.add('popup__button-deactive');
-            this._buttonElement.classList.remove('popup__button-inactive');
+        if (this._hasInvalidInput(inputList)) {
+            buttonElement.classList.add('popup__button-deactive');
+            buttonElement.classList.remove('popup__button-inactive');
 
         } else {
-            this._buttonElement.classList.remove('popup__button-deactive');
-            this._buttonElement.classList.add('popup__button-inactive');
+            buttonElement.classList.remove('popup__button-deactive');
+            buttonElement.classList.add('popup__button-inactive');
 
         }
     };
 
+
+    _setEventListeners = (fieldset) => {
+
+        const inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
+        const buttonElement = this._formElement.querySelector('.popup__button-save');
+        this._toggleButtonState(inputList, buttonElement);
+
+        inputList.forEach((inputElement) => {
+            const NewValidator = new FormValidator(this._formElement, inputList, inputElement, buttonElement)
+
+            inputElement.addEventListener('input', function () {
+                NewValidator._checkInputValidity(this._formElement, inputElement);
+                NewValidator._toggleButtonState(inputList, buttonElement);
+            });
+        });
+    };
+
+    enableValidation() {
+        this._formElement.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+        });
+        const fieldsetList = Array.from(this._formElement.querySelectorAll('.popup__set'));
+        fieldsetList.forEach((fieldset) => {
+            this._setEventListeners(fieldset);
+        });
+    };
 
 }
