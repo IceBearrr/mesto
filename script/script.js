@@ -110,10 +110,16 @@ function addNewElement(evt) {
     const cardAdd = new Card(placeInput.value, fotoInput.value, ".template");
     evt.preventDefault();
     elementCell.prepend(cardAdd.generateCard());
+
+    //this._element.querySelector('.popup__button-save').classList.toggle('popup__button_disabled');
+
     const formElement = popupAdd.querySelector('form');
     formElement.reset();
     closePopup(popupAdd);
-   // $(saveBtn).attr('disabled',true);
+    //const popupBtnSave = document.querySelector(".popup__button-save");
+    //popupBtnSave.setAttribute('disabled',true);
+    //popupBtnSave.querySelector('.popup__button-save').classList.toggle('popup__button_disabled');
+
 }
 
 
@@ -137,23 +143,17 @@ function popupCloseESC(evt) {
 }
 
 
-
-const PropertiesValidation = {
+const propertiesValidation = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
     inputErrorClass: 'popup__input_type_error',
-    typeActive: 'popup__input_type_error'
+    errorClass: 'popup__error_visible'
 }
 
-// {
-//   formSelector: '.popup__form',
-//   inputSelector: '.popup__input',
-//   submitButtonSelector: '.popup__button',
-//   inactiveButtonClass: 'popup__button_disabled',
-//   inputErrorClass: 'popup__input_type_error',
-//   errorClass: 'popup__error_visible'
-// };
+const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation);
+cardValidationEdit.enableValidation();
 
-const cardValidationEdit = new FormValidator(formElementEdit, PropertiesValidation);
-const cardElementEdit = cardValidationEdit.enableValidation();
-
-const cardValidationAdd = new FormValidator(formElementAdd, PropertiesValidation);
-const cardElementAdd = cardValidationAdd.enableValidation();
+const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation);
+cardValidationAdd.enableValidation();
