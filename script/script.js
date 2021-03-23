@@ -147,7 +147,8 @@ const propertiesValidation = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button-deactive',
+    inactiveButtonClass: 'popup__button-inactive',
+    deactiveButtonClass: 'popup__button-deactive',
     inputErrorClass: 'popup__input_type_error',
     errorClass: 'popup__error_visible'
 }

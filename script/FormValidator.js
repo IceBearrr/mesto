@@ -35,32 +35,33 @@ export default class FormValidator {
         })
     }
 
-    _toggleButtonState = (inputList, buttonElement) => {
+    _toggleButtonState = (inputList, buttonElement, properties) => {
 
         if (this._hasInvalidInput(inputList)) {
-            buttonElement.classList.add('popup__button-deactive');
-            buttonElement.classList.remove('popup__button-inactive');
+            console.log("dsfd" + properties.deactiveButtonClass)
+            buttonElement.classList.add(properties.deactiveButtonClass);
+            buttonElement.classList.remove(properties.inactiveButtonClass);
 
         } else {
-            buttonElement.classList.remove('popup__button-deactive');
-            buttonElement.classList.add('popup__button-inactive');
+            buttonElement.classList.remove(properties.deactiveButtonClass);
+            buttonElement.classList.add(properties.inactiveButtonClass);
 
         }
     };
 
 
     _setEventListeners = () => {
-
+        const properties = this._Properties;
         const inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
         const buttonElement = this._formElement.querySelector('.popup__button-save');
-        this._toggleButtonState(inputList, buttonElement);
+        this._toggleButtonState(inputList, buttonElement,properties);
 
         inputList.forEach((inputElement) => {
             const newValidator = new FormValidator(this._formElement, inputList, inputElement, buttonElement)
 
             inputElement.addEventListener('input', function () {
                 newValidator._checkInputValidity(inputElement);
-                newValidator._toggleButtonState(inputList, buttonElement);
+                newValidator._toggleButtonState(inputList, buttonElement, properties);
             });
         });
     };
@@ -70,8 +71,8 @@ export default class FormValidator {
             evt.preventDefault();
         });
         const fieldsetList = Array.from(this._formElement.querySelectorAll('.popup__set'));
-        fieldsetList.forEach((fieldset) => {
-            this._setEventListeners(fieldset);
+        fieldsetList.forEach(() => {
+            this._setEventListeners();
         });
     };
 
