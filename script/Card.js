@@ -8,7 +8,7 @@ export default class Card {
 
     }
 
-    _getTemplate(cardSelector) {
+    _getTemplate() {
         // забираем разметку из HTML и клонируем элемент
         const newCard = document
             .querySelector(this._cardSelector)
@@ -24,6 +24,7 @@ export default class Card {
         this._element = this._getTemplate();
         this._setEventListeners();
         this._element.querySelector('.element__image').src = this._image;
+        this._element.querySelector('.element__image').alt = this._caption;
         this._element.querySelector('.element__place-name').textContent = this._caption;
         return this._element;
     }
@@ -53,6 +54,7 @@ export default class Card {
         const popupTitlePic = document.querySelector('.popup__title-pic');
         const picPopup = document.querySelector('.popup_img');
         pic.src = this._image;
+        pic.alt = this._caption;
         popupTitlePic.textContent = this._caption;
         openPopup(picPopup);
     }

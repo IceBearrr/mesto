@@ -20,6 +20,7 @@ const formElementEdit = document.querySelector('.popup__container_edit');
 const formElementAdd = document.querySelector('.popup__container_add');
 const picPopup = document.querySelector('.popup_img');
 const elementCell = document.querySelector('.elements__cell');
+// const saveBtn = document.querySelector('.popup__button-save');
 
 const initialCards = [
     {
@@ -112,6 +113,7 @@ function addNewElement(evt) {
     const formElement = popupAdd.querySelector('form');
     formElement.reset();
     closePopup(popupAdd);
+   // $(saveBtn).attr('disabled',true);
 }
 
 
@@ -137,10 +139,18 @@ function popupCloseESC(evt) {
 
 
 const PropertiesValidation = {
-    typeError: 'popup__input_type_error',
+    inputErrorClass: 'popup__input_type_error',
     typeActive: 'popup__input_type_error'
 }
 
+// {
+//   formSelector: '.popup__form',
+//   inputSelector: '.popup__input',
+//   submitButtonSelector: '.popup__button',
+//   inactiveButtonClass: 'popup__button_disabled',
+//   inputErrorClass: 'popup__input_type_error',
+//   errorClass: 'popup__error_visible'
+// };
 
 const cardValidationEdit = new FormValidator(formElementEdit, PropertiesValidation);
 const cardElementEdit = cardValidationEdit.enableValidation();
