@@ -54,7 +54,7 @@ export default class Card {
         const popupTitlePic = document.querySelector('.popup__title-pic');
         const picPopup = document.querySelector('.popup_img');
         pic.src = this._image;
-        //pic.alt = this._caption;
+        pic.alt = this._caption;
         popupTitlePic.textContent = this._caption;
         openPopup(picPopup);
     }

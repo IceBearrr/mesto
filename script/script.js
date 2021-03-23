@@ -111,7 +111,7 @@ function addNewElement(evt) {
     evt.preventDefault();
     elementCell.prepend(cardAdd.generateCard());
 
-    //this._element.querySelector('.popup__button-save').classList.toggle('popup__button_disabled');
+    popupAdd.querySelector('.popup__button-save').classList.add('popup__button-deactive');
 
     const formElement = popupAdd.querySelector('form');
     formElement.reset();
