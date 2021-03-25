@@ -5,6 +5,7 @@ export default class Card {
         this._caption = name;
         this._image = link;
         this._cardSelector = cardSelector;
+        this._element__image = element.querySelector('.element__image')
 
     }
 
@@ -23,8 +24,8 @@ export default class Card {
     generateCard() {
         this._element = this._getTemplate();
         this._setEventListeners();
-        this._element.querySelector('.element__image').src = this._image;
-        this._element.querySelector('.element__image').alt = this._caption;
+        this._element__image.src = this._image;
+        this._element__image.alt = this._caption;
         this._element.querySelector('.element__place-name').textContent = this._caption;
         return this._element;
     }
@@ -36,7 +37,7 @@ export default class Card {
         this._element.querySelector('.element__like').addEventListener('click', () => {
             this._cardLike()
         });
-        this._element.querySelector('.element__image').addEventListener('click', () => {
+        this._element__image.addEventListener('click', () => {
             this._picOpen()
         });
     }
