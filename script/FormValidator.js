@@ -1,22 +1,22 @@
 export default class FormValidator {
 
-    constructor(formElement, Properties) {
+    constructor(formElement, properties) {
         this._formElement = formElement;
-        this._Properties = Properties;
+        this._properties = properties;
     }
 
 
     _showInputError = (inputElement, errorMessage) => {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-        inputElement.classList.add(this._Properties.inputErrorClass);
+        inputElement.classList.add(this._properties.inputErrorClass);
         errorElement.textContent = errorMessage;
-        errorElement.classList.add(this._Properties.inputErrorClass);
+        errorElement.classList.add(this._properties.inputErrorClass);
     };
 
     _hideInputError = (inputElement) => {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-        inputElement.classList.remove(this._Properties.inputErrorClass);
-        errorElement.classList.remove(this._Properties.inputErrorClass);
+        inputElement.classList.remove(this._properties.inputErrorClass);
+        errorElement.classList.remove(this._properties.inputErrorClass);
         errorElement.textContent = '';
     };
 
@@ -51,7 +51,7 @@ export default class FormValidator {
 
 
     _setEventListeners = () => {
-        const properties = this._Properties;
+        const properties = this._properties;
         const inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
         const buttonElement = this._formElement.querySelector('.popup__button-save');
         this._toggleButtonState(inputList, buttonElement,properties);

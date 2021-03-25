@@ -20,7 +20,6 @@ const formElementEdit = document.querySelector('.popup__container_edit');
 const formElementAdd = document.querySelector('.popup__container_add');
 const picPopup = document.querySelector('.popup_img');
 const elementCell = document.querySelector('.elements__cell');
-// const saveBtn = document.querySelector('.popup__button-save');
 
 const initialCards = [
     {
@@ -111,15 +110,11 @@ function addNewElement(evt) {
     evt.preventDefault();
     elementCell.prepend(cardAdd.generateCard());
 
-    popupAdd.querySelector('.popup__button-save').classList.add('popup__button-deactive');
+    popupAdd.querySelector('.popup__button-save').classList.add(properties.deactiveButtonClass);
 
     const formElement = popupAdd.querySelector('form');
     formElement.reset();
     closePopup(popupAdd);
-    //const popupBtnSave = document.querySelector(".popup__button-save");
-    //popupBtnSave.setAttribute('disabled',true);
-    //popupBtnSave.querySelector('.popup__button-save').classList.toggle('popup__button_disabled');
-
 }
 
 
