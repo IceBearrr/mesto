@@ -40,10 +40,12 @@ export default class UserInfo{
             profileDescription.textContent = jobInput.value;
             closePopup(popupEdit);
         }
+        // const formUser = document.querySelector('.popup__container_edit');
+        // formUser.addEventListener('submit', setUserInfo);
 }
-import {formUser} from '../utils/constants.js';
+
         
-        formUser.addEventListener('submit', setUserInfo);
+        
 
 // function saveEditPopup(evt) {
 //     evt.preventDefault();
@@ -53,3 +55,5 @@ import {formUser} from '../utils/constants.js';
 // }
 
 // formUser.addEventListener('submit', saveEditPopup);
+
+
