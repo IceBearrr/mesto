@@ -1,4 +1,4 @@
-import {openPopup} from './script.js'
+//import openPopup from './script.js'
 
 export default class Card {
     constructor(name, link, cardSelector) {
@@ -6,7 +6,6 @@ export default class Card {
         this._image = link;
         this._cardSelector = cardSelector;
         this._element__image = element.querySelector('.element__image')
-
     }
 
     _getTemplate() {
@@ -61,3 +60,6 @@ export default class Card {
     }
 }
 
+
+
+    
