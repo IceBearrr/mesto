@@ -1,11 +1,11 @@
-//import openPopup from './script.js'
+//import openPopup from '../script.js'
 
 export default class Card {
     constructor(name, link, cardSelector) {
         this._caption = name;
         this._image = link;
         this._cardSelector = cardSelector;
-        this._element__image = element.querySelector('.element__image')
+        //this._element__image = element.querySelector('.element__image') Белый
     }
 
     _getTemplate() {
@@ -15,6 +15,8 @@ export default class Card {
             .content
             .querySelector('.element')
             .cloneNode(true);
+        console.log("топ ");
+
 
         // вернём DOM-элемент карточки
         return newCard;
@@ -22,10 +24,13 @@ export default class Card {
 
     generateCard() {
         this._element = this._getTemplate();
-        this._setEventListeners();
+        //this._setEventListeners();
+        this._element__image = this._element.querySelector('.element__image')
         this._element__image.src = this._image;
         this._element__image.alt = this._caption;
         this._element.querySelector('.element__place-name').textContent = this._caption;
+        console.log("что то рисую " + this._element);
+
         return this._element;
     }
 
@@ -37,7 +42,7 @@ export default class Card {
             this._cardLike()
         });
         this._element__image.addEventListener('click', () => {
-            this._picOpen()
+            //this._picOpen()
         });
     }
 
@@ -56,7 +61,7 @@ export default class Card {
         pic.src = this._image;
         pic.alt = this._caption;
         popupTitlePic.textContent = this._caption;
-        openPopup(picPopup);
+        //openPopup(picPopup);
     }
 }
 

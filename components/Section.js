@@ -15,12 +15,13 @@ export default class Section {
     constructor({ items, renderer }, containerSelector) {
         this._renderedItems = items;
         this._renderer = renderer;
-        this._container = document.querySelector(containerSelector);
-      }
+        this._container = document.querySelector(containerSelector); //Белый
+        //this._container = containerSelector;
+    }
       
       //Содержит публичный метод addItem, который принимает DOM-элемент и добавляет его в контейнер.
       addItem(element) {
-        this._container.append(element);
+        this._container.append(element); //мб что то не то добавляет сюда
       }
     
       //Метод удаляет всё содержимое поля _container.
@@ -29,10 +30,13 @@ export default class Section {
       }
     
       renderItems() {
-        this.clear();
+        //this.clear();
     
         this._renderedItems.forEach(item => {
+            console.log("идем " + item);
           this._renderer(item);
+            console.log("топ " + item);
+
         });
       }
     }

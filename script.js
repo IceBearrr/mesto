@@ -8,7 +8,11 @@ import PopupWithForm from './components/PopupWithForm.js';
 import PopupWithImage from './components/PopupWithImage.js';
 import Popup from './components/Popup.js';
 
+const elementCell = document.querySelector('.elements__cell');
 
+
+//picPopup = '.popup_img';
+const popup_tag = '.popup_img';
 
 const propertiesValidation = {
     formSelector: '.popup__form',
@@ -36,24 +40,29 @@ const popupJob = popupEdit.querySelector('.popup__input_enter_description');
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        const openImg = new PopupWithImage(item.name, item.link, picPopup)
+        const openImg = new PopupWithImage(item.name, item.link, popup_tag)
         const card = new Card(item.name, item.link, ".template", () => openImg.open());
         const cardElement = card.generateCard();
-        cardList.addItem(cardElement);
-    }}, picPopup);
+        elementCell.append(cardElement);
+
+        //cardList.addItem(cardElement); Белый тут что - то ломается
+        console.log("топ " + cardElement);
+
+    }}, popup_tag);
 
 // отрисовка карточек
 cardList.renderItems();
+console.log("топ топ топ рисуем")
 
 
-// инициализация формы
-const formRenderer = new Section({
-    data: []
-  }, formSection);
-  
-  const formElement = form.generateForm();
-  
-  formRenderer.setItem(formElement);
+// // инициализация формы Это что за покемон?!
+// const formRenderer = new Section({
+//     data: []
+//   }, formSection);
+//
+//   const formElement = form.generateForm();
+//
+//   formRenderer.setItem(formElement);
 
 //Данные профиля
 const formAutor = new PopupWithForm(popupName,
@@ -66,16 +75,16 @@ const formAutor = new PopupWithForm(popupName,
     })
 
 
-    const form = new SubmitForm({
-        formSelector: '.popup__container_edit',
-        handleFormSubmit: () => {
-          const card = new UserInfo(popupName, popupJob);
-          card.setUserInfo();
-          const cardElement = card.generateCard();
-      
-          cardsList.addItem(cardElement);
-        }
-      });
+    // const form = new SubmitForm({ Это что за покемон?!
+    //     formSelector: '.popup__container_edit',
+    //     handleFormSubmit: () => {
+    //       const card = new UserInfo(popupName, popupJob);
+    //       card.setUserInfo();
+    //       const cardElement = card.generateCard();
+    //
+    //       cardsList.addItem(cardElement);
+    //     }
+    //   });
 
 
 
