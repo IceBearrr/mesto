@@ -1,21 +1,23 @@
-// Создайте класс PopupWithImage, который наследует от Popup. 
-// Этот класс должен перезаписывать родительский метод open. 
-// В методе open класса PopupWithImage нужно вставлять в попап картинку и 
-// атрибут src изображения и подпись к картинке.
-
 import Popup from './Popup.js';
 
 export default class PopupWithImage extends Popup{
-    constructor(data, popupSelector){
-        super(popupSelector);
-        this._caption = data.name;
-        this._image = data.link;
-        
+        constructor(popupSelector, caption, image){
+        super();
+        this._caption = caption;
+        this._image = image;
+        this.popupSelector = document.querySelector(popupSelector);
     }
 
     open() {
-        this._popup.classList.add('popup_opened');
-        this._element__image.src = this._image;
-        this._element__image.alt = this._caption;
+        this.popupSelector.classList.add('popup_opened');
+        this.setEventListeners();
+        document.addEventListener('keydown', (evt) => this._handleEscClose(evt));
+        this.popupSelector.addEventListener('click', (evt) => this._closePopupByOverlay(evt));
+        this._picPopup = this.popupSelector.querySelector('.popup__img-card');
+        this._picPopupText = this.popupSelector.querySelector('.popup__title-pic');
+
+        this._picPopup.src = this._image;
+        this._picPopup.alt = this._caption;
+        this._picPopupText.textContent  = this._caption;
     }
 }

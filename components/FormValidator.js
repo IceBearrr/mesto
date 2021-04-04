@@ -38,7 +38,6 @@ export default class FormValidator {
     _toggleButtonState = (inputList, buttonElement, properties) => {
 
         if (this._hasInvalidInput(inputList)) {
-            console.log("dsfd" + properties.deactiveButtonClass)
             buttonElement.classList.add(properties.deactiveButtonClass);
             buttonElement.classList.remove(properties.inactiveButtonClass);
 

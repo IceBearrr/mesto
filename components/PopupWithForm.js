@@ -1,35 +1,30 @@
 import Popup from './Popup.js';
-import UserInfo from './UserInfo.js'
-//import formUser from '../utils/constants.js';
-
 
 export default class PopupWithForm extends Popup{
     constructor({popupSelector, handleFormSubmit}){
-        super(popupSelector);
-        this._popupSelector = popupSelector;
+        super();
+        this.popupSelector = document.querySelector(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
     }
  
     // собирает данные всех полей формы.  
     _getInputValues() {
-        this._inputList = this._element.querySelectorAll('.form__input');
-        
+        this._inputList = this.popupSelector.querySelectorAll('.popup__input');
         this._formValues = {};
         this._inputList.forEach(input => this._formValues[input.name] = input.value);
         
         return this._formValues;
       }
-// Перезаписывает родительский метод setEventListeners. 
-// Метод setEventListeners класса PopupWithForm должен не только добавлять обработчик 
-// клика иконке закрытия, но и добавлять обработчик сабмита формы.
 
+// Перезаписывает родительский метод setEventListeners. 
    
-    _setEventListeners() {
-        this._element.addEventListener('submit', (evt) => {
-          evt.preventDefault();
-          this._handleFormSubmit(this._getInputValues());
-    
-          this._element.reset();
+    setEventListeners() {
+        super.setEventListeners();   
+         this.popupSelector.addEventListener('submit', (evt) => {
+         evt.preventDefault();
+        this._handleFormSubmit(this._getInputValues());
+
+          this.close();
         })
       }
 
@@ -41,9 +36,8 @@ export default class PopupWithForm extends Popup{
       }
 // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
 
-    //close() {
-
-    //}   
-
-// Для каждого попапа создавайте свой экземпляр класса PopupWithForm.
+    close() {
+      const formElementAdd = document.querySelector('.popup__container_add');
+      formElementAdd.reset();
+      super.close();}
 }
