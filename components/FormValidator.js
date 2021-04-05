@@ -53,7 +53,7 @@ export default class FormValidator {
         const properties = this._properties;
         const inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
         const buttonElement = this._formElement.querySelector('.popup__button-save');
-        this._toggleButtonState(inputList, buttonElement,properties);
+        this._toggleButtonState(inputList, buttonElement, properties);
 
         inputList.forEach((inputElement) => {
             const newValidator = new FormValidator(this._formElement, inputList, inputElement, buttonElement)

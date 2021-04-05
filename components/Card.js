@@ -37,8 +37,10 @@ export default class Card {
             this._cardLike()
         });
 
-        const picOpen = new PopupWithImage('.popup_img',  this._caption, this._image)
-        this._element.querySelector('.element__image').addEventListener('click',function(){ picOpen.open()});
+        const picOpen = new PopupWithImage('.popup_img', this._caption, this._image)
+        this._element.querySelector('.element__image').addEventListener('click', function () {
+            picOpen.open()
+        });
     }
 
     _cardDelete() {
