@@ -7,21 +7,28 @@ export default class FormValidator {
 
 
     _showInputError = (inputElement, errorMessage) => {
-        const errorElement = this._formElement.querySelector("." + '${inputElement.id}' + "-error");
-        inputElement.classList.add(this._properties.inputErrorClass);
+        const elem = this._formElement.querySelector("." + inputElement.classList[1]).parentNode;
+
+        const errorElement = elem.querySelector("span");
+
+        inputElement.classList.add('popup__input_type_error');
         errorElement.textContent = errorMessage;
-        errorElement.classList.add(this._properties.inputErrorClass);
+        errorElement.classList.add('popup__input_type_error');
     };
 
     _hideInputError = (inputElement) => {
-        const errorElement = this._formElement.querySelector("." + '${inputElement.id}' + "-error");
-        inputElement.classList.remove(this._properties.inputErrorClass);
-        errorElement.classList.remove(this._properties.inputErrorClass);
+        const elem = this._formElement.querySelector("." + inputElement.classList[1]).parentNode;
+        const errorElement = elem.querySelector("span");
+        inputElement.classList.remove('popup__input_type_error');
+        errorElement.classList.remove('popup__input_type_error');
         errorElement.textContent = '';
     };
 
     _checkInputValidity = (inputElement) => {
         if (!inputElement.validity.valid) {
+            console.log("inputElement" + inputElement);
+            console.log("inputElement" + inputElement.validationMessage);
+
             this._showInputError(inputElement, inputElement.validationMessage);
         } else {
             this._hideInputError(inputElement);
