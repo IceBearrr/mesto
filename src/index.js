@@ -1,10 +1,13 @@
-import Card from './components/Card.js';
-import UserInfo from './components/UserInfo.js';
-import Section from './components/Section.js';
-import FormValidator from './components/FormValidator.js';
-import {initialCards, formElementEdit, formElementAdd, elementCell, addButton, editButton} from './utils/constants.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import PopupWithImage from './components/PopupWithImage.js';
+import '../pages/index.css'; // добавьте импорт главного файла стилей
+
+
+import Card from '../components/Card.js';
+import UserInfo from '../components/UserInfo.js';
+import Section from '../components/Section.js';
+import FormValidator from '../components/FormValidator.js';
+import {initialCards, formElementEdit, formElementAdd, elementCell, addButton, editButton} from '../utils/constants.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
 
 const popup_tag = '.popup_img';
 

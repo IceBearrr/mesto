@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pages/index.css" type="text/css">
+<!--    <link rel="stylesheet" href="../pages/index.css" type="text/css">-->
     <title>Место</title>
 
 </head>
@@ -14,14 +14,14 @@
 <div class="page">
 
     <header class="header">
-        <img class="header__logo" src="images/__logo_b.svg" alt="логотип">
+        <img class="header__logo" src="<%=require('../images/__logo_b.svg')%>" alt="логотип">
     </header>
 
     <main class="content">
 
         <section class="profile">
             <div class="profile__cell">
-                <img class="profile__image" src="images/Jack.jpg" alt="Аватар">
+                <img class="profile__image" src="<%=require('../images/Jack.jpg')%>" alt="Аватар">
             </div>
             <div class="profile__info">
                 <div class="profile__wrapper">
@@ -111,7 +111,7 @@
             <form class="popup__block-img" name="formPic" novalidate>
                 <button class="popup__close popup__close-add" aria-label="Закрыть" type="button"
                         name="btn-close"></button>
-                <img src="images/kara4aevsk.jpg" class="popup__img-card" alt="фото">
+                <img src="<%=require('../images/kara4aevsk.jpg')%>" class="popup__img-card" alt="фото">
                 <div class="popup__title-pic"></div>
             </form>
         </div>
@@ -125,7 +125,7 @@
 
 <template class="template">
     <li class="element">
-        <img class="element__image" src="images/kara4aevsk.jpg" alt="фото">
+        <img class="element__image" src="<%=require('../images/kara4aevsk.jpg')%>" alt="фото">
         <button class="element__remove" aria-label="Удаление" type="submit"></button>
         <div class="element__cell">
             <h2 class="element__place-name"></h2>
@@ -133,7 +133,7 @@
         </div>
     </li>
 </template>
-<script type="module" src="script.js"></script>
+<!--<script type="module" src="../script.js"></script>-->
 </body>
 
 </html>
