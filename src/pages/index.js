@@ -1,4 +1,4 @@
-import '../pages/index.css'; // добавьте импорт главного файла стилей
+import './index.css'; // добавьте импорт главного файла стилей
 
 
 import Card from '../components/Card.js';
@@ -24,29 +24,57 @@ const propertiesValidation = {
 const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation);
 cardValidationEdit.enableValidation();
 
+
 const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation);
 cardValidationAdd.enableValidation();
+cardValidationAdd.disableSubmitButton(propertiesValidation);
+
+const openImg = new PopupWithImage(popup_tag);
+
+
+function createCard(item) {
+    const card = new Card({
+        name: item.name,
+        link: item.link,
+        cardSelector: ".template",
+        handleCardClick: () => {
+            openImg.open(item.name, item.link)
+        }
+    });
+    //const section = new Section({item, renderer}, "elementCell")
+    //const section = new Section({item}, "elementCell",elements__cell)
+    const cardElement = card.generateCard();
+    //section.addItem(cardElement);
+    //elementCell.append(cardElement);
+    return cardElement;
+}
 
 //Добавление карточек при загрузке страницы
 const cardList = new Section({
     items: initialCards,
     renderer: (item) => {
-        const openImg = new PopupWithImage(item.name, item.link, popup_tag);
-        const card = new Card(item.name, item.link, ".template", () => openImg.open());
-        const cardElement = card.generateCard();
-        elementCell.append(cardElement);
-    }
-}, popup_tag);
+        //const openImg = new PopupWithImage(item.name, item.link, popup_tag);
+        return createCard(item);
+    },
+    containerSelector: '.elements__cell'
+});
 
-// отрисовка карточек
+
 cardList.renderItems();
+
 
 //Добавление карточки
 const popudAAd = new PopupWithForm({
     popupSelector: ".popup_add",
     handleFormSubmit: (item) => {
-        console.log("item" + item.foto);
-        const card = new Card(item.name, item.foto, ".template", () => openImg.open());
+        const card = new Card({
+            name: item.name,
+            link: item.link,
+            cardSelector: ".template",
+            handleCardClick: () => {
+                openImg.open(item.name, item.link)
+            }
+        });
         const cardElement = card.generateCard();
         elementCell.prepend(cardElement);
     }
@@ -55,13 +83,25 @@ addButton.addEventListener('click', function () {
     popudAAd.open()
 });
 
+
+//
+// const popudAAd = new PopupWithForm({
+//     popupSelector: ".popup_add",
+//     handleFormSubmit: (item) => {
+//         createCard(item)
+//     },
+// });
+// addButton.addEventListener('click', function () {
+//     popudAAd.open()
+// });
+
 //Данные профиля
+const card = new UserInfo();
+
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item) => {
-        console.log("item" + item.name, item.description);
-        const card = new UserInfo({nameInputSelector: item.name, jobInputSelector: item.description});
-        card.setUserInfo();
+        card.setUserInfo(item.name, item.description);
     }
 });
 
