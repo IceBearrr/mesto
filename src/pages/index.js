@@ -51,7 +51,7 @@ function createCard(item) {
 
 //Добавление карточек при загрузке страницы
 const cardList = new Section({
-    items: initialCards,
+    //items: initialCards,
     renderer: (item) => {
         //const openImg = new PopupWithImage(item.name, item.link, popup_tag);
         return createCard(item);
@@ -60,26 +60,22 @@ const cardList = new Section({
 });
 
 
-cardList.renderItems();
+cardList.renderItems(initialCards);
 
 
 //Добавление карточки
 const popudAAd = new PopupWithForm({
     popupSelector: ".popup_add",
     handleFormSubmit: (item) => {
-        const card = new Card({
-            name: item.name,
-            link: item.foto,
-            cardSelector: ".template",
-            handleCardClick: () => {
-                openImg.open(item.name, item.foto)
-            }
-        });
-        const cardElement = card.generateCard();
-        elementCell.prepend(cardElement);
+        cardList.renderItems(    [{
+            name: item.name ,
+            link: item.foto
+        }]);
+
     }
 });
 addButton.addEventListener('click', function () {
+
     popudAAd.open()
 });
 

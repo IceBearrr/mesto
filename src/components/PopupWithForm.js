@@ -28,8 +28,8 @@ export default class PopupWithForm extends Popup {
             evt.preventDefault();
             this._handleFormSubmit(this._getInputValues());
 
-            this._container = document.querySelector('.elements__cell');
-            this._container.append(this.generateForm());
+            //this._container = document.querySelector('.elements__cell');
+            //this._container.append(this.generateForm());
             this.close();
         })
     }
