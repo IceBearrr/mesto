@@ -4,7 +4,7 @@
   "description": "### Делаем первые шаги в js. Mesto - Приложение для обмена фотографиями с элементами социальной сети, позволяющее выкладывать фотографии, применять к ним фильтры, а также распространять их через свой сервис и ряд других социальных сетей.",
   "main": "script.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "rimraf dist && webpack --mode production",
     "dev": "webpack serve"
   },
   "repository": {
@@ -25,16 +25,17 @@
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.2.0",
-    "cssnano": "^4.1.10",
+    "cssnano": "^4.1.11",
     "html-webpack-plugin": "^5.3.1",
-    "mini-css-extract-plugin": "^1.4.0",
+    "mini-css-extract-plugin": "^1.4.1",
     "postcss-loader": "^5.2.0",
-    "webpack": "^5.30.0",
+    "webpack": "^5.31.0",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "core-js": "^3.10.0",
+    "core-js": "^3.10.1",
+    "jquery": "^3.6.0",
     "rimraf": "^3.0.2"
   }
 }

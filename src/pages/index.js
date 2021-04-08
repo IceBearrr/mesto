@@ -1,11 +1,10 @@
-import './index.css'; // добавьте импорт главного файла стилей
-
+import './index.css'; 
 
 import Card from '../components/Card.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
-import {initialCards, formElementEdit, formElementAdd, elementCell, addButton, editButton} from '../utils/constants.js';
+import {initialCards, formElementEdit, formElementAdd, addButton, editButton} from '../utils/constants.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
@@ -41,11 +40,8 @@ function createCard(item) {
             openImg.open(item.name, item.link)
         }
     });
-    //const section = new Section({item, renderer}, "elementCell")
-    //const section = new Section({item}, "elementCell",elements__cell)
+    
     const cardElement = card.generateCard();
-    //section.addItem(cardElement);
-    //elementCell.append(cardElement);
     return cardElement;
 }
 
@@ -78,18 +74,6 @@ addButton.addEventListener('click', function () {
 
     popudAAd.open()
 });
-
-
-//
-// const popudAAd = new PopupWithForm({
-//     popupSelector: ".popup_add",
-//     handleFormSubmit: (item) => {
-//         createCard(item)
-//     },
-// });
-// addButton.addEventListener('click', function () {
-//     popudAAd.open()
-// });
 
 //Данные профиля
 const card = new UserInfo();

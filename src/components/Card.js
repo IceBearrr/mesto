@@ -1,5 +1,3 @@
-import PopupWithImage from './PopupWithImage.js'
-
 export default class Card {
     constructor({name, link, cardSelector, handleCardClick}) {
         this._caption = name;
@@ -37,9 +35,6 @@ export default class Card {
         this._element.querySelector('.element__like').addEventListener('click', () => {
             this._cardLike()
         });
-
-        //const picOpen = new PopupWithImage('.popup_img', this._caption, this._image)
-
         this._element.querySelector('.element__image').addEventListener('click', () => {
             this._handleCardClick();
         });

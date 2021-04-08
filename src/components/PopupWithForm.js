@@ -1,6 +1,4 @@
 import Popup from './Popup.js';
-import Section from "./Section";
-import {initialCards} from "../utils/constants";
 
 export default class PopupWithForm extends Popup {
     constructor({popupSelector, handleFormSubmit}) {
@@ -27,17 +25,8 @@ export default class PopupWithForm extends Popup {
         this.popupSelector.addEventListener('submit', (evt) => {
             evt.preventDefault();
             this._handleFormSubmit(this._getInputValues());
-
-            //this._container = document.querySelector('.elements__cell');
-            //this._container.append(this.generateForm());
             this.close();
         })
-    }
-
-    generateForm() {
-        //this._element = this._getTemplate();
-        this.setEventListeners();
-        return this._element;
     }
 
 // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
@@ -45,5 +34,10 @@ export default class PopupWithForm extends Popup {
     close() {
         this._formElementAdd.reset();
         super.close();
+        // this.popupSelector.removeEventListener('submit', (evt) => {
+        //     evt.preventDefault();
+        //     this._handleFormSubmit(this._getInputValues());
+        //     this.close();
+        // })
     }
 }
