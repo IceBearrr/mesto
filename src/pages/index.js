@@ -69,10 +69,10 @@ const popudAAd = new PopupWithForm({
     handleFormSubmit: (item) => {
         const card = new Card({
             name: item.name,
-            link: item.link,
+            link: item.foto,
             cardSelector: ".template",
             handleCardClick: () => {
-                openImg.open(item.name, item.link)
+                openImg.open(item.name, item.foto)
             }
         });
         const cardElement = card.generateCard();

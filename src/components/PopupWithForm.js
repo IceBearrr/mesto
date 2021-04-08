@@ -30,16 +30,13 @@ export default class PopupWithForm extends Popup {
 
             this._container = document.querySelector('.elements__cell');
             this._container.append(this.generateForm());
-
-
             this.close();
         })
     }
 
     generateForm() {
-        this._element = this._getTemplate();
-        this._setEventListeners();
-
+        //this._element = this._getTemplate();
+        this.setEventListeners();
         return this._element;
     }
 

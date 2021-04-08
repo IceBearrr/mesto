@@ -8,7 +8,7 @@ export default class Card {
         this._handleCardClick = handleCardClick;
     }
 
-    _getTemplate() {
+    getTemplate() {
         const newCard = document
             .querySelector(this._cardSelector)
             .content
@@ -19,7 +19,7 @@ export default class Card {
     }
 
     generateCard() {
-        this._element = this._getTemplate();
+        this._element = this.getTemplate();
         this._setEventListeners();
         this._element__image = this._element.querySelector('.element__image')
         this._element__image.src = this._image;
