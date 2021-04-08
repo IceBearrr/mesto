@@ -1,4 +1,4 @@
-import './index.css'; 
+import './index.css';
 
 import Card from '../components/Card.js';
 import UserInfo from '../components/UserInfo.js';
@@ -40,7 +40,7 @@ function createCard(item) {
             openImg.open(item.name, item.link)
         }
     });
-    
+
     const cardElement = card.generateCard();
     return cardElement;
 }
@@ -63,8 +63,8 @@ cardList.renderItems(initialCards);
 const popudAAd = new PopupWithForm({
     popupSelector: ".popup_add",
     handleFormSubmit: (item) => {
-        cardList.renderItems(    [{
-            name: item.name ,
+        cardList.renderItems([{
+            name: item.name,
             link: item.foto
         }]);
 
