@@ -1,18 +1,14 @@
 export default class FormValidator {
-
     constructor(formElement, properties) {
         this._formElement = formElement;
         this._properties = properties;
         this._buttonElement = this._formElement.querySelector('.popup__button-save');
-
     }
 
 
     _showInputError = (inputElement, errorMessage) => {
         const elem = this._formElement.querySelector("." + inputElement.classList[1]).parentNode;
-
         const errorElement = elem.querySelector("span");
-
         inputElement.classList.add('popup__input_type_error');
         errorElement.textContent = errorMessage;
         errorElement.classList.add('popup__input_type_error');
@@ -75,7 +71,7 @@ export default class FormValidator {
     disableSubmitButton(properties) {
         this._buttonElement.classList.remove(properties.inactiveButtonClass);
         this._buttonElement.classList.add(properties.deactiveButtonClass);
-        this._buttonElement.disbaled = true;
+        this._buttonElement.disabled = true;
     }
 
 

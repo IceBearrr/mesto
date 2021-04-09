@@ -26,7 +26,7 @@ cardValidationEdit.enableValidation();
 
 const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation);
 cardValidationAdd.enableValidation();
-cardValidationAdd.disableSubmitButton(propertiesValidation);
+
 
 const openImg = new PopupWithImage(popup_tag);
 
@@ -47,17 +47,13 @@ function createCard(item) {
 
 //Добавление карточек при загрузке страницы
 const cardList = new Section({
-    //items: initialCards,
     renderer: (item) => {
-        //const openImg = new PopupWithImage(item.name, item.link, popup_tag);
         return createCard(item);
     },
     containerSelector: '.elements__cell'
 });
 
-
 cardList.renderItems(initialCards);
-
 
 //Добавление карточки
 const popudAAd = new PopupWithForm({
@@ -71,17 +67,17 @@ const popudAAd = new PopupWithForm({
     }
 });
 addButton.addEventListener('click', function () {
-
+    cardValidationAdd.disableSubmitButton(propertiesValidation);
     popudAAd.open()
 });
 
 //Данные профиля
-const card = new UserInfo();
+const userInfo = new UserInfo();
 
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item) => {
-        card.setUserInfo(item.name, item.description);
+        userInfo.setUserInfo(item.name, item.description);
     }
 });
 
