@@ -31,7 +31,6 @@ export default class Card {
         this._element.querySelector('.element__remove').addEventListener('click', () => {
             this._cardDelete()
         });
-
         this._element.querySelector('.element__like').addEventListener('click', () => {
             this._cardLike()
         });
