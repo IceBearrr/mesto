@@ -7,7 +7,6 @@ export default class FormValidator {
 
     //делаем кнопку недоступной
     disableSubmitButton = (properties) => {
-        console.log("deactive");
         this._buttonElement.classList.remove(properties.inactiveButtonClass);
         this._buttonElement.classList.add(properties.deactiveButtonClass);
         this._buttonElement.disabled = true;
@@ -15,8 +14,6 @@ export default class FormValidator {
 
     _showInputError = (inputElement, errorMessage) => {
         const elem = this._formElement.querySelector("." + inputElement.classList[1]).parentNode;
-        console.log("inputElement.classList[1]" + inputElement.classList[1]);
-
         const errorElement = elem.querySelector("span");
         inputElement.classList.add('popup__input_type_error');
         errorElement.textContent = errorMessage;
@@ -66,7 +63,6 @@ export default class FormValidator {
 
     inputEvent(e) {
         const inputElement = e.target;
-
         this.newValidator._checkInputValidity(inputElement);
         let check = this.newValidator._toggleButtonState.bind(this);
         check();
@@ -80,9 +76,10 @@ export default class FormValidator {
         this._toggleButtonState(this.inputList, properties);
 
         this.inputList.forEach((inputElement) => {
-            this.newValidator = new FormValidator(this._formElement, this.inputList, inputElement)
-            this.inputElement = inputElement;
-            inputElement.addEventListener('input', this.inputEvent.bind(this));
+            inputElement.addEventListener('input', () => {
+                this._checkInputValidity(inputElement);
+                this._toggleButtonState();
+            });
         });
 
     };

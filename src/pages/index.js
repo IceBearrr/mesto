@@ -81,7 +81,6 @@ const formAutor = new PopupWithForm({
     }
 });
 
-formAutor.setEventListeners();
 
 editButton.addEventListener('click', function () {
     formAutor.open()

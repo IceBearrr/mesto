@@ -13,10 +13,8 @@ export default class Section {
     }
 
     renderItems(items) {
-        console.log("items " + items.name);
 
         items.forEach(item => {
-            console.log("item " + item.name);
             this.addItem(this._renderer(item));
         });
     }
