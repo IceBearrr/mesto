@@ -5,6 +5,9 @@ export const picPopup = document.querySelector('.popup_img');
 export const elementCell = document.querySelector('.elements__cell');
 export const addButton = document.querySelector('.profile__button-add');
 export const editButton = document.querySelector('.profile__button-edit');
+export const deletePopup = '.popup_remove';
+
+
 
 export const initialCards = [
     {

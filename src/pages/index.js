@@ -4,7 +4,8 @@ import Card from '../components/Card.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
-import {initialCards, formElementEdit, formElementAdd, addButton, editButton} from '../utils/constants.js';
+import {initialCards, formElementEdit, formElementAdd, addButton, editButton, deletePopup} from '../utils/constants.js';
+import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
@@ -29,6 +30,7 @@ cardValidationAdd.enableValidation();
 
 
 const openImg = new PopupWithImage(popup_tag);
+const openCardDelete = new Popup(deletePopup);
 
 
 function createCard(item) {
@@ -38,6 +40,9 @@ function createCard(item) {
         cardSelector: ".template",
         handleCardClick: () => {
             openImg.open(item.name, item.link)
+        },
+        handleDeleteCard: () => {
+            openCardDelete.open(item.name, item.link)
         }
     });
 
@@ -85,3 +90,26 @@ const formAutor = new PopupWithForm({
 editButton.addEventListener('click', function () {
     formAutor.open()
 });
+
+
+
+// //Счетчик лайков
+// const likeBtn = document.querySelectorAll('.element__like-btn');
+// let likeCount = document.querySelector('.element__like-sum').innerHTML;
+
+
+// likeBtn.addEventListener('click', () => {
+//     if(likeBtn.classList.contains('liked')){
+//         likeBtn.classList.remove('liked');
+//         likeCount -= 1;
+//     }
+//     else {
+//         likeCount += 1;
+//         likeBtn.classList.add('liked');
+//     }
+//     document.querySelector('.element__like-sum').innerHTML = likeCount;
+// });
+
+
+
+

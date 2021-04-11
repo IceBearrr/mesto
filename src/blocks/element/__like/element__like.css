@@ -1,25 +1,10 @@
-.element__like {
+/* .element__like {
     border: none;
     width: 22px;
     height: 19px;
     background: transparent;
     /*background-color: #FFFFFF;*/
-    padding: 0;
+    /* padding: 0;
     margin-top: 5px;
     background-image: url('../../../images/like.svg');
-}
-
-.element__like:hover {
-    opacity: 0.5;
-    cursor: pointer;
-}
-
-.element__like:active {
-    opacity: 1;
-    background-image: url('../../../images/like_active.svg');
-}
-
-.element__like_black {
-    opacity: 1;
-    background-image: url('../../../images/like_active.svg');
-}
+} */

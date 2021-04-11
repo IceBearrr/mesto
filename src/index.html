@@ -22,6 +22,7 @@
         <section class="profile">
             <div class="profile__cell">
                 <img class="profile__image" src="<%=require('./images/Jack.jpg')%>" alt="Аватар">
+                <button class="profile__button-avatar" aria-label="Добавить" type="button"></button>
             </div>
             <div class="profile__info">
                 <div class="profile__wrapper">
@@ -116,6 +117,31 @@
             </form>
         </div>
 
+        <div class="popup popup_remove">
+            <div class="popup__block popup__container">
+                <h2 class="popup__title">Вы уверены?</h2>
+                    <button class="popup__close popup__close-remove" aria-label="Закрыть" type="button"
+                            name="btn-close"></button>
+                    <button class="popup__remove-btn" aria-label="Удаление" type="submit">Да</button>
+                    <div class="popup__title-pic"></div>
+            </div>
+        </div>
+
+        <div class="popup popup_avatar">
+            <h2>Обновить аватар</h2>
+                <button class="popup__close popup__close-save" aria-label="Закрыть" type="button"
+                        name="btn-close"></button>
+                        <label class="popup__field">
+
+                            <input id="foto-input" class="popup__input popup__input_enter_foto" name="foto"
+                                   placeholder="Ссылка на аватар"
+                                   type="url" value="" required>
+                            <span class="foto-input-error popup__input-error"></span>
+
+                        </label>
+            </form>
+        </div>
+
     </main>
 
     <footer class="footer">
@@ -129,7 +155,10 @@
         <button class="element__remove" aria-label="Удаление" type="submit"></button>
         <div class="element__cell">
             <h2 class="element__place-name"></h2>
-            <button class="element__like" aria-label="Лайк" type="button"></button>
+            <div class="element__like">
+                <button class="element__like-btn" aria-label="Лайк" type="button"></button>
+                <div class="element__like-sum"></div>
+            </div>
         </div>
     </li>
 </template>
