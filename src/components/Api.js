@@ -147,7 +147,7 @@ export default class Api {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
                 body: JSON.stringify({
-                    avatar: avatar,
+                    avatar: avatar
                 })
 
             }

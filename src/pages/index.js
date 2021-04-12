@@ -5,10 +5,11 @@ import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
 import {//initialCards,
-    formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar} from '../utils/constants.js';
+    formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar} from '../utils/constants.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
+import PopupAvatar from '../components/PopupAvatar.js';
 
 import Api from '../components/Api.js';
 
@@ -94,6 +95,9 @@ cardValidationEdit.enableValidation();
 const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation);
 cardValidationAdd.enableValidation();
 
+const cardValidationAvatar = new FormValidator(formElementAvatar, propertiesValidation);
+cardValidationAvatar.enableValidation();
+
 
 const openImg = new PopupWithImage(popup_tag);
 const openCardDelete = new Popup(deletePopup);
@@ -164,17 +168,26 @@ editButton.addEventListener('click', function () {
     formAutor.open()
 });
 
-const formAvatar = new PopupWithForm({
+const formAvatar = new PopupAvatar({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
-        // userInfo.setUserInfo(item.name, item.description);
-        // api.updateProfile(item.name, item.description);
+        
+        api.updateProfilePic(item)
     }
 });
 
 
 openAvatar.addEventListener('click', function () {
+  //  cardValidationAvatar.disableSubmitButton(propertiesValidation);
     formAvatar.open()
 });
 
-
+//Кнопка ожидания   
+document.querySelector('.popup__button-save').onclick = function() {
+    if(this.innerHTML == "Сохранить")
+    {
+      this.innerHTML = "Сохранение...";
+      return;
+    }
+   // else this.innerHTML = "Hide response";
+  }

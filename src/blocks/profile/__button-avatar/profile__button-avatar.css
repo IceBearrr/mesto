@@ -3,17 +3,16 @@
     border-radius: 50%;
     width: 120px;
     height: 120px;
-    margin-left: 25px;
+    margin-left: 24.5px;
     background: transparent ;
     border: none;
-    padding: 0;
 }
 
-
 .profile__button-avatar:hover {
-    opacity: 0.8;
+    display: block;
     cursor: pointer;
-    background-image: url('../../../images/ava-button.svg');
-    background-repeat: no-repeat;
+    background: url('../../../images/ava-button.svg') no-repeat 100%;
+    background-position: center;
     z-index: 3;
+    background-color: rgba(0, 0, 0, 0.8); 
 }
