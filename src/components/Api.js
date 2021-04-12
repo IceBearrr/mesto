@@ -21,8 +21,10 @@ export default class Api {
     }
 
 
-    updateProfile(name, about) {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me', {
+    updateProfile(name, about, closeFunction) {
+        this._closeFunction = closeFunction;
+
+        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me/avatar', {
                 method: 'PATCH',
                 headers: {
                     'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
@@ -39,8 +41,12 @@ export default class Api {
                 if (res.ok) {
                     return console.log("res put new card " + res);
                 }
+                this._closeFunction();
                 return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
 
@@ -60,7 +66,9 @@ export default class Api {
     }
 
 
-    putNewCard(name, link) {
+    putNewCard(name, link, closeFunction) {
+        this._closeFunction = closeFunction;
+
         return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards', {
                 method: 'POST',
                 headers: {
@@ -78,8 +86,12 @@ export default class Api {
                 if (res.ok) {
                     return console.log("res put new card " + res);
                 }
+                this._closeFunction();
                 return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
 
@@ -98,7 +110,10 @@ export default class Api {
                     return console.log("res put new card " + res);
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
     putLike(cardId) {
@@ -116,7 +131,10 @@ export default class Api {
                     return console.log("res put new card " + res);
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
 
@@ -135,11 +153,15 @@ export default class Api {
                     return console.log("res put new card " + res);
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
 
-    updateProfilePic(avatar) {
+    updateProfilePic({avatar, closeFunction}) {
+        this._closeFunction = closeFunction;
         return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me/avatar', {
                 method: 'PATCH',
                 headers: {
@@ -156,8 +178,13 @@ export default class Api {
                 if (res.ok) {
                     return console.log("res put new card " + res);
                 }
+                this._closeFunction();
+
                 return Promise.reject(`Ошибка: ${res.status}`);
-            });
+            })
+    .catch((err) => {
+            console.log(err); // выведем ошибку в консоль
+        })
     }
 
 

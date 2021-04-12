@@ -22,8 +22,11 @@ export default class PopupWithForm extends Popup {
         super.setEventListeners();
         this.popupSelectorElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
-            this._handleFormSubmit(this._getInputValues());
-            this.close();
+
+            //Кнопка ожидания
+
+            this._handleFormSubmit(this._getInputValues(),this.close());
+            //this.close();
         })
     }
 

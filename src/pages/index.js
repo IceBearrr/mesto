@@ -155,12 +155,12 @@ addButton.addEventListener('click', function () {
 });
 
 //Данные профиля
-
+//userInfo = new userInfo();
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item) => {
         userInfo.setUserInfo(item.name, item.description);
-        api.updateProfile(item.name, item.description);
+        api.updateProfile(item.name, item.description, this.close());
     }
 });
 
@@ -171,7 +171,6 @@ editButton.addEventListener('click', function () {
 const formAvatar = new PopupAvatar({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
-        
         api.updateProfilePic(item)
     }
 });
@@ -182,12 +181,9 @@ openAvatar.addEventListener('click', function () {
     formAvatar.open()
 });
 
-//Кнопка ожидания   
 document.querySelector('.popup__button-save').onclick = function() {
     if(this.innerHTML == "Сохранить")
     {
-      this.innerHTML = "Сохранение...";
-      return;
+        this.innerHTML = "Сохранение...";
     }
-   // else this.innerHTML = "Hide response";
-  }
+}
