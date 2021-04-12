@@ -93,22 +93,24 @@ editButton.addEventListener('click', function () {
 
 
 
-// //Счетчик лайков
-// const likeBtn = document.querySelectorAll('.element__like-btn');
-// let likeCount = document.querySelector('.element__like-sum').innerHTML;
+//Счетчик лайков
+const likeBtn = document.querySelectorAll('.element__like-btn');
+let likeCount = document.querySelector('.element__like-sum').innerHTML;
 
 
-// likeBtn.addEventListener('click', () => {
-//     if(likeBtn.classList.contains('liked')){
-//         likeBtn.classList.remove('liked');
-//         likeCount -= 1;
-//     }
-//     else {
-//         likeCount += 1;
-//         likeBtn.classList.add('liked');
-//     }
-//     document.querySelector('.element__like-sum').innerHTML = likeCount;
-// });
+likeBtn.addEventListener('click', () => {
+    if(likeBtn.classList.contains('liked')){
+        likeBtn.classList.remove('liked');
+        likeCount -= 1;
+        (console.log('-1'))
+    }
+    else {
+        likeCount += 1;
+        likeBtn.classList.add('liked');
+        (console.log('+1'))
+    }
+    document.querySelector('.element__like-sum').innerHTML = likeCount;
+});
 
 
 
