@@ -127,17 +127,21 @@
             </div>
         </div>
 
+        
         <div class="popup popup_avatar">
-            <div class="popup__block popup__container">
-                <h2 class="popup__title">Обновить аватар</h2>
-                <button class="popup__close popup__close-save" aria-label="Закрыть" type="button"
-                        name="btn-close"></button>
-                        <label class="popup__field">
-                            <input id="foto-input" class="popup__input popup__input_enter_avatar" name="foto"
-                                   placeholder="Ссылка на аватар"
-                                   type="url" value="" required>
-                            <span class="foto-input-error popup__input-error"></span>
-                        </label>
+            <div class="popup__block">
+                <form class="popup__container popup__form popup__container_avatar" name="popupForm" novalidate>
+                    <h2 class="popup__title">Обновить аватар</h2>
+                    <button class="popup__close popup__close-save" aria-label="Закрыть" type="button"
+                            name="btn-close"></button>
+                    <label class="popup__field">
+                        <input id="foto-input" class="popup__input popup__input_enter_avatar" name="foto"
+                                    placeholder="Ссылка на аватар"
+                                    type="url" value="" required>
+                        <span class="foto-input-error popup__input-error"></span>
+                        <button class="popup__button-save" type="submit">Сохранить</button>
+                    </label>
+                </form>
             </div>>
 
     </main>

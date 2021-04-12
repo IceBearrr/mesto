@@ -5,8 +5,7 @@ import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
 import {//initialCards,
-    formElementEdit, formElementAdd, addButton, editButton, deletePopup
-} from '../utils/constants.js';
+    formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar} from '../utils/constants.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -161,11 +160,21 @@ const formAutor = new PopupWithForm({
     }
 });
 
-
 editButton.addEventListener('click', function () {
     formAutor.open()
 });
 
+const formAvatar = new PopupWithForm({
+    popupSelector: '.popup_avatar',
+    handleFormSubmit: (item) => {
+        // userInfo.setUserInfo(item.name, item.description);
+        // api.updateProfile(item.name, item.description);
+    }
+});
 
+
+openAvatar.addEventListener('click', function () {
+    formAvatar.open()
+});
 
 
