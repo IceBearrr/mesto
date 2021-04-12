@@ -24,7 +24,7 @@ export default class Api {
     updateProfile(name, about, closeFunction) {
         this._closeFunction = closeFunction;
 
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me/avatar', {
+        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me/', {
                 method: 'PATCH',
                 headers: {
                     'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
@@ -182,9 +182,9 @@ export default class Api {
 
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-    .catch((err) => {
-            console.log(err); // выведем ошибку в консоль
-        })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
 

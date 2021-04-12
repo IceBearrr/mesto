@@ -24,9 +24,8 @@ export default class PopupWithForm extends Popup {
             evt.preventDefault();
 
             //Кнопка ожидания
-
-            this._handleFormSubmit(this._getInputValues(),this.close());
-            //this.close();
+            this.save_button();
+            this._handleFormSubmit(this._getInputValues(), this.close());
         })
     }
 

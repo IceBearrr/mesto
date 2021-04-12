@@ -9,17 +9,14 @@ export default class Card {
         this._iLiked = false;
 
 
-
         for (let key in likes) {
-            console.log("like " + likes[key]["_id"] + "key " + key);
             if (likes[key]["_id"] === my_id)
                 this._iLiked = true;
 
         }
 
 
-
-    this._own = own;
+        this._own = own;
         this._api = api;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
@@ -48,7 +45,8 @@ export default class Card {
         this._element.querySelector('.element__place-name').textContent = this._caption;
         this._element.querySelector('.element__like-sum').textContent = this._sum_like;
         if (!this._own) this._element.querySelector('.element__remove').remove(); //если есть хозяин у карточки, то ее сделал не я и удалять нельзя
-        if (this._iLiked) this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');;
+        if (this._iLiked) this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
+        ;
 
 
         return this._element;
@@ -70,7 +68,6 @@ export default class Card {
         this._deletePopup.querySelector('.popup__remove-btn').addEventListener('click', () => {
             if (this._elementRemove) {
                 this._handleDeleteCard.close();
-                console.log("удоли");
                 this._api.deleteCard(this._id)
                 this._cardDelete();
 
@@ -85,7 +82,7 @@ export default class Card {
     }
 
 
-    _cardUpdateLike(){ // обновляем отображение кол-ва лайков и сердечка после нажатия лайки
+    _cardUpdateLike() { // обновляем отображение кол-ва лайков и сердечка после нажатия лайки
         this._element.querySelector('.element__like-sum').textContent = this._sum_like;
         this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
     }
@@ -93,14 +90,13 @@ export default class Card {
     _cardLike() {
 
         //if this._likes.includes("efbafaddf4831a0e48100782"); //есть ли я вписке лайкнущих?
-        if (this._iLiked){
+        if (this._iLiked) {
             this._sum_like--;
             this._cardUpdateLike();
             this._api.deleteLike(this._id)
             this._iLiked = false;
 
-        } else
-        {
+        } else {
             this._sum_like++;
             this._cardUpdateLike();
             this._api.putLike(this._id)

@@ -5,7 +5,8 @@ import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
 import {//initialCards,
-    formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar} from '../utils/constants.js';
+    formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar
+} from '../utils/constants.js';
 import Popup from '../components/Popup.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
@@ -48,20 +49,11 @@ api.getUserInfo()
     .then((result) => {
         // обрабатываем результат
         profile__name.textContent = result.name;
-        console.log("name user" + result.name);
         profile__about.textContent = result.about;
-        console.log("name about" + result.about);
         profile__img.src = result.avatar;
-        console.log("name avatar" + result.avatar);
-        console.log("name id " + result._id);
         my_id = result._id; //мой айди6 айли юзера
-
         const userInfo = new UserInfo();
-
         return my_id;
-
-
-        //cardList.renderItems(result)
 
     })
 
@@ -73,8 +65,6 @@ api.getUserInfo()
         console.log(err); // выведем ошибку в консоль
     })
 
-
-//console.log("initialCards[0].name" + data);
 
 const popup_tag = '.popup_img';
 
@@ -155,12 +145,12 @@ addButton.addEventListener('click', function () {
 });
 
 //Данные профиля
-//userInfo = new userInfo();
+const userInfo = new UserInfo();
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
-    handleFormSubmit: (item) => {
+    handleFormSubmit: (item, close) => {
         userInfo.setUserInfo(item.name, item.description);
-        api.updateProfile(item.name, item.description, this.close());
+        api.updateProfile(item.name, item.description, close);
     }
 });
 
@@ -177,13 +167,6 @@ const formAvatar = new PopupAvatar({
 
 
 openAvatar.addEventListener('click', function () {
-  //  cardValidationAvatar.disableSubmitButton(propertiesValidation);
+    //  cardValidationAvatar.disableSubmitButton(propertiesValidation);
     formAvatar.open()
 });
-
-document.querySelector('.popup__button-save').onclick = function() {
-    if(this.innerHTML == "Сохранить")
-    {
-        this.innerHTML = "Сохранение...";
-    }
-}

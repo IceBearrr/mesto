@@ -29,7 +29,14 @@ export default class Popup {
         this.popupSelectorElement.classList.remove('popup_opened');
         document.removeEventListener('keydown', this.handleEscClose);
         this.popupSelectorElement.removeEventListener('click', this.closePopupByOverlay);
+        this.popupSelectorElement.querySelector('.popup__button-save').innerHTML = "Сохранить"
+
     }
+
+    save_button() {
+        this.popupSelectorElement.querySelector('.popup__button-save').innerHTML = "Сохранение..."
+    }
+
 
     setEventListeners() {
         const close_popup = this.popupSelectorElement.querySelector('.popup__close');
