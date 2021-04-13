@@ -13,7 +13,8 @@ export default class Section {
     }
 
     renderItems(items) {
-
+        console.log("рисуем еще раз");
+        this.clear();
         items.forEach(item => {
             this.addItem(this._renderer(item));
         });

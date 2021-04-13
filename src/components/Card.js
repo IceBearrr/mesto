@@ -44,9 +44,9 @@ export default class Card {
         this._element__image.alt = this._caption;
         this._element.querySelector('.element__place-name').textContent = this._caption;
         this._element.querySelector('.element__like-sum').textContent = this._sum_like;
-        if (!this._own) this._element.querySelector('.element__remove').remove(); //если есть хозяин у карточки, то ее сделал не я и удалять нельзя
+        if (!this._own) this._element.querySelector('.element__remove').remove(); //я ли сделал
         if (this._iLiked) this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
-        ;
+
 
 
         return this._element;

@@ -66,8 +66,10 @@ export default class Api {
     }
 
 
-    putNewCard(name, link, closeFunction) {
+    putNewCard(name, link,closeFunction, updateFunction) {
         this._closeFunction = closeFunction;
+        this._updateFunction = updateFunction;
+
 
         return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards', {
                 method: 'POST',
@@ -86,12 +88,19 @@ export default class Api {
                 if (res.ok) {
                     return console.log("res put new card " + res);
                 }
+
                 this._closeFunction();
                 return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .then((res) => {
+                this._updateFunction();
+                return Promise.reject(`Ошибка: ${res.status}`);
+
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
             })
+
     }
 
 

@@ -7,7 +7,7 @@ import FormValidator from '../components/FormValidator.js';
 import {//initialCards,
     formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar
 } from '../utils/constants.js';
-import Popup from '../components/Popup.js';
+import PopupDelete from '../components/PopupDelete.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupAvatar from '../components/PopupAvatar.js';
@@ -28,14 +28,16 @@ const profile__name = profile.querySelector('.profile__name');
 const profile__about = profile.querySelector('.profile__description');
 const profile__img = profile.querySelector('.profile__image');
 let my_id;
+window.my_id = my_id; // сделаем свой айди глобальной переменноый
 
 
-function afterGetUser(my_id) { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
-    window.my_id = my_id; // сделаем свой айди глобальной переменноый
+function afterGetUser() { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
+
     api.getInitialCards()
         .then((result) => {
             // обрабатываем результат
-            cardList.renderItems(result)
+            cardList.renderItems(result);
+            console.log("строим" + result);
 
         })
         .catch((err) => {
@@ -90,7 +92,7 @@ cardValidationAvatar.enableValidation();
 
 
 const openImg = new PopupWithImage(popup_tag);
-const openCardDelete = new Popup(deletePopup);
+const openCardDelete = new PopupDelete(deletePopup);
 
 
 function createCard(item) {
@@ -101,9 +103,10 @@ function createCard(item) {
         likes: item.likes ? item.likes : [],
 
         my_id: window.my_id,
-        //iLiked: item.likes.includes(window.my_id), // есть ли я в списке дайкнувших?
+        //iLiked: item.likes.includes(window.my_id), // есть ли я в списке лайкнувших?
         //sum_like: item.likes ? item.likes.length: 0,
-        own: item.owner ? item.owner._id === my_id : "", //если есть хозяин карточки, то кто он?
+        own: item.owner ? item.owner._id === my_id : true, //если есть хозяин карточки, то кто он? намудрил что-то я, если есть поле
+        // item.owner то возвращаем результат сравнения item.owner._id === my_id  или тру, если нет, так
         api: api,
         cardSelector: ".template",
         handleCardClick: () => {
@@ -132,12 +135,13 @@ const cardList = new Section({
 const popudAAd = new PopupWithForm({
     popupSelector: ".popup_add",
     handleFormSubmit: (item) => {
-        cardList.renderItems([{
-            name: item.name,
-            link: item.foto
-        }]);
+        // cardList.renderItems([{ будем перестраивать все а не добавлять по одной
+        //     name: item.name,
+        //     link: item.foto
+        // }]);
         api.putNewCard(item.name, item.foto)
-    }
+    },
+    handleFormUpdate:() => {afterGetUser()}
 });
 addButton.addEventListener('click', function () {
     cardValidationAdd.disableSubmitButton(propertiesValidation);

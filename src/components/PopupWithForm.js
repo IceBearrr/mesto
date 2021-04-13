@@ -1,9 +1,11 @@
 import Popup from './Popup.js';
 
 export default class PopupWithForm extends Popup {
-    constructor({popupSelector, handleFormSubmit}) {
+    constructor({popupSelector, handleFormSubmit, handleFormUpdate}) {
         super(popupSelector);
         this._handleFormSubmit = handleFormSubmit;
+        this._handleFormUpdate = handleFormUpdate;
+
         this._inputList = this.popupSelectorElement.querySelectorAll('.popup__input');
         this._formElementAdd = document.querySelector('.popup__container_add');
     }
@@ -25,7 +27,8 @@ export default class PopupWithForm extends Popup {
 
             //Кнопка ожидания
             this.save_button();
-            this._handleFormSubmit(this._getInputValues(), this.close());
+            this._handleFormSubmit(this._getInputValues(), this.close(), this._handleFormUpdate());
+
         })
     }
 
