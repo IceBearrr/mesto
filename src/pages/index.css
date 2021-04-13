@@ -38,6 +38,7 @@
 @import url(../blocks/element/__cell/element__cell.css);
 @import url(../blocks/element/__place-name/element__place-name.css);
 @import url(../blocks/element/__like/__like-btn/element__like-btn.css);
+@import url(../blocks/element/__like/__like-sum/element__like-sum.css);
 @import url(../blocks/element/__remove/element__remove.css);
 
 @import url(../blocks/footer/footer.css);
