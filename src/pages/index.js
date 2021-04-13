@@ -31,14 +31,12 @@ let my_id;
 window.my_id = my_id; // сделаем свой айди глобальной переменноый
 
 
-function afterGetUser() { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
+const afterGetUser = ()  => { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
 
     api.getInitialCards()
         .then((result) => {
             // обрабатываем результат
             cardList.renderItems(result);
-            console.log("строим" + result);
-
         })
         .catch((err) => {
             console.log(err); // выведем ошибку в консоль
@@ -112,7 +110,9 @@ function createCard(item) {
         handleCardClick: () => {
             openImg.open(item.name, item.link)
         },
-        openCardDelete: openCardDelete
+        openCardDelete: openCardDelete,
+        handleFormUpdate:afterGetUser
+
     });
 
     const cardElement = card.generateCard();
@@ -139,9 +139,10 @@ const popudAAd = new PopupWithForm({
         //     name: item.name,
         //     link: item.foto
         // }]);
-        api.putNewCard(item.name, item.foto)
+        console.log("item.update" + item.update);
+        api.putNewCard(item.name, item.foto, item.close, item.update)
     },
-    handleFormUpdate:() => {afterGetUser()}
+    handleFormUpdate:afterGetUser
 });
 addButton.addEventListener('click', function () {
     cardValidationAdd.disableSubmitButton(propertiesValidation);
@@ -154,8 +155,10 @@ const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item, close) => {
         userInfo.setUserInfo(item.name, item.description);
-        api.updateProfile(item.name, item.description, close);
-    }
+        api.updateProfile(item.name, item.description, item.close);
+    },
+    handleFormUpdate:afterGetUser
+
 });
 
 editButton.addEventListener('click', function () {
@@ -166,7 +169,8 @@ const formAvatar = new PopupAvatar({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
         api.updateProfilePic(item)
-    }
+    },
+
 });
 
 

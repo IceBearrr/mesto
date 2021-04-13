@@ -26,8 +26,13 @@ export default class PopupWithForm extends Popup {
             evt.preventDefault();
 
             //Кнопка ожидания
+            let item = this._getInputValues();
+            //item.close = this.close;
+            item.update = this._handleFormUpdate;
+            item.close = this.close.bind(this);
+            console.log("item.update" + item.update);
             this.save_button();
-            this._handleFormSubmit(this._getInputValues(), this.close(), this._handleFormUpdate());
+            this._handleFormSubmit(item);
 
         })
     }

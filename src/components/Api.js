@@ -41,12 +41,18 @@ export default class Api {
                 if (res.ok) {
                     return console.log("res put new card " + res);
                 }
-                this._closeFunction();
                 return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .then(() => {
+                console.log('this 2 then ${this}' )
+
+                this._closeFunction();
+
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
             })
+
     }
 
 
@@ -85,16 +91,24 @@ export default class Api {
             }
         )
             .then(res => {
-                if (res.ok) {
-                    return console.log("res put new card " + res);
-                }
+                console.log('this 1 then  ${this} ' + this);
 
-                this._closeFunction();
+                if (res.ok) {
+                    return console.log('res put new card  ${res.status} ' + res);
+
+                }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
-            .then((res) => {
+            .then(() => {
+                console.log('this 2 then ${this}' )
+
                 this._updateFunction();
-                return Promise.reject(`Ошибка: ${res.status}`);
+
+            })
+            .then(() => {
+                console.log('this 2 then ${this}' )
+
+                this._closeFunction();
 
             })
             .catch((err) => {
@@ -104,7 +118,11 @@ export default class Api {
     }
 
 
-    deleteCard(cardId) {
+    deleteCard(cardId//,  updateFunction
+    ) {
+        //this._updateFunction = updateFunction;
+
+
         return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards/' + cardId, {
                 method: 'DELETE',
                 headers: {
@@ -120,6 +138,12 @@ export default class Api {
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
             })
+            // .then(() => {
+            //     console.log('this 2 then ${this}' )
+            //
+            //     this._updateFunction();
+            //
+            // })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
             })

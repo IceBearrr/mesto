@@ -1,6 +1,6 @@
 export default class Card {
-    constructor({id, name, link, likes, my_id, own, api, cardSelector, handleCardClick, openCardDelete}) {
-        this._id = id; //айди карточки
+    constructor({id, name, link, likes, my_id, own, api, cardSelector, handleCardClick, openCardDelete, handleFormUpdate}) {
+        this.id = id; //айди карточки
         this._caption = name;
         this._caption = name;
         this._image = link;
@@ -22,6 +22,7 @@ export default class Card {
         this._handleCardClick = handleCardClick;
         this._handleDeleteCard = openCardDelete
         this._deletePopup = document.querySelector('.popup_remove');
+        this._handleFormUpdate = handleFormUpdate;
 
 
     }
@@ -55,7 +56,9 @@ export default class Card {
     _setEventListeners() {
         this._element.querySelector('.element__remove').addEventListener('click', () => {
             this._elementRemove = this._element;
-            this._handleDeleteCard.open();
+
+            this._handleDeleteCard.open.bind(this);
+            this._handleDeleteCard.open(this._api.deleteCard, this.id, this.cardDelete);
         });
         this._element.querySelector('.element__like-btn').addEventListener('click', () => {
             this._cardLike()
@@ -65,19 +68,17 @@ export default class Card {
 
         });
 
-        this._deletePopup.querySelector('.popup__remove-btn').addEventListener('click', () => {
-            if (this._elementRemove) {
-                this._handleDeleteCard.close();
-                this._api.deleteCard(this._id)
-                this._cardDelete();
-
-            }
-
-        });
-
+        // this._deletePopup.querySelector('.popup__remove-btn').addEventListener('click', () => {
+        //     //if (this._elementRemove) {
+        //         this._handleDeleteCard.close();
+        //         this._api.deleteCard(this._id,  this._handleFormUpdate);
+        //         console.log("this._id " + this._id);
+        //     //}
+        //
+        // })
     }
 
-    _cardDelete() {
+    cardDelete = () => {
         this._elementRemove.remove();
     }
 
@@ -93,13 +94,13 @@ export default class Card {
         if (this._iLiked) {
             this._sum_like--;
             this._cardUpdateLike();
-            this._api.deleteLike(this._id)
+            this._api.deleteLike(this.id)
             this._iLiked = false;
 
         } else {
             this._sum_like++;
             this._cardUpdateLike();
-            this._api.putLike(this._id)
+            this._api.putLike(this.id)
             this._iLiked = true;
 
 
