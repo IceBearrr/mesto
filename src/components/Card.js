@@ -23,8 +23,6 @@ export default class Card {
         this._handleDeleteCard = openCardDelete
         this._deletePopup = document.querySelector('.popup_remove');
         this._handleFormUpdate = handleFormUpdate;
-
-
     }
 
     getTemplate() {
@@ -40,15 +38,13 @@ export default class Card {
     generateCard() {
         this._element = this.getTemplate();
         this._setEventListeners();
-        this._element__image = this._element.querySelector('.element__image')
-        this._element__image.src = this._image;
-        this._element__image.alt = this._caption;
+        this._elementImage = this._element.querySelector('.element__image')
+        this._elementImage.src = this._image;
+        this._elementImage.alt = this._caption;
         this._element.querySelector('.element__place-name').textContent = this._caption;
         this._element.querySelector('.element__like-sum').textContent = this._sum_like;
         if (!this._own) this._element.querySelector('.element__remove').remove(); //я ли сделал
         if (this._iLiked) this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
-
-
 
         return this._element;
     }
@@ -102,10 +98,7 @@ export default class Card {
             this._cardUpdateLike();
             this._api.putLike(this.id)
             this._iLiked = true;
-
-
         }
-
     }
 }
 

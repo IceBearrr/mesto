@@ -8,6 +8,27 @@ export const editButton = document.querySelector('.profile__button-edit');
 export const openAvatar = document.querySelector('.profile__button-avatar')
 export const formElementAvatar = document.querySelector('.popup__container_avatar')
 export const deletePopup = '.popup_remove';
+export const popupTag = '.popup_img';
+
+
+export const propertiesValidation = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button-inactive',
+    deactiveButtonClass: 'popup__button-deactive',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+}
+
+
+export const profile = document.querySelector('.profile');
+export const profileName = profile.querySelector('.profile__name');
+export const profileAbout = profile.querySelector('.profile__description');
+export const profileImg = profile.querySelector('.profile__image');
+
+
+
 // export const token = "31859db2-75be-407c-8c24-8ed9ee09fde1";
 // export const group = "cohort-22";
 

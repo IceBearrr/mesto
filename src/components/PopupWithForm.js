@@ -6,8 +6,10 @@ export default class PopupWithForm extends Popup {
         this._handleFormSubmit = handleFormSubmit;
         this._handleFormUpdate = handleFormUpdate;
 
-        this._inputList = this.popupSelectorElement.querySelectorAll('.popup__input');
+        this._inputList = this.popupElement.querySelectorAll('.popup__input');
         this._formElementAdd = document.querySelector('.popup__container_add');
+        this._formElementAvatar = document.querySelector('.popup__input_enter_avatar');
+        this._profileFoto = document.querySelector('.profile__image')
     }
 
     // собирает данные всех полей формы.  
@@ -17,23 +19,36 @@ export default class PopupWithForm extends Popup {
 
         return this._formValues;
     }
+            
+    
+    
+            // getNewAva() {
+            //     return this._formElementAvatar.value
+            // }
+        
+            // setNewAva(foto) {
+            //     this._profileFoto.src = foto;
+            // }
+
+
 
 // Перезаписывает родительский метод setEventListeners.
 
     setEventListeners() {
         super.setEventListeners();
-        this.popupSelectorElement.addEventListener('submit', (evt) => {
+        this.popupElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
 
             //Кнопка ожидания
-            let item = this._getInputValues();
+            const item = this._getInputValues();
             //item.close = this.close;
             item.update = this._handleFormUpdate;
             item.close = this.close.bind(this);
             console.log("item.update" + item.update);
-            this.save_button();
+            this.setSaveButtonText();
             this._handleFormSubmit(item);
-
+            // this.setNewAva(this.getNewAva());
+            // this._handleFormSubmit({avatar: this.getNewAva(), closeFunction: this.close()});
         })
     }
 
@@ -42,5 +57,12 @@ export default class PopupWithForm extends Popup {
     close() {
         this._formElementAdd.reset();
         super.close();
+        if (this.popupElement.querySelector('.popup__button-save'))
+            this.popupElement.querySelector('.popup__button-save').textContent = "Сохранить"
     }
+
+    setSaveButtonText() {
+        this.popupElement.querySelector('.popup__button-save').textContent = "Сохранение..."
+    }
+
 }

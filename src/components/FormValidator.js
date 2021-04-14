@@ -70,10 +70,10 @@ export default class FormValidator {
     };
 
     setEventListeners = () => {
-        const properties = this.properties;
+        //const properties = this.properties;
         this.inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
 
-        this._toggleButtonState(this.inputList, properties);
+        this._toggleButtonState();
 
         this.inputList.forEach((inputElement) => {
             inputElement.addEventListener('input', () => {
@@ -89,10 +89,15 @@ export default class FormValidator {
         this._formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-        const fieldsetList = Array.from(this._formElement.querySelectorAll('.popup__set'));
-        fieldsetList.forEach(() => {
             this.setEventListeners();
-        });
+
+        // this._formElement.addEventListener('submit', function (evt) {
+        //     evt.preventDefault();
+        // });
+        // const fieldsetList = Array.from(this._formElement.querySelectorAll('.popup__set'));
+        // fieldsetList.forEach(() => {
+        //     this.setEventListeners();
+        // });
     };
 
 }

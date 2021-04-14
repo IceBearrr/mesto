@@ -4,8 +4,7 @@ import Card from '../components/Card.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
-import {//initialCards,
-    formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar
+import {profile, profileName, profileAbout, profileImg, propertiesValidation, popupTag, formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar
 } from '../utils/constants.js';
 import PopupDelete from '../components/PopupDelete.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -23,10 +22,6 @@ const api = new Api({
     }
 });
 
-const profile = document.querySelector('.profile');
-const profile__name = profile.querySelector('.profile__name');
-const profile__about = profile.querySelector('.profile__description');
-const profile__img = profile.querySelector('.profile__image');
 let my_id;
 window.my_id = my_id; // сделаем свой айди глобальной переменноый
 
@@ -48,11 +43,10 @@ const afterGetUser = ()  => { // если смогли выполнить пер
 api.getUserInfo()
     .then((result) => {
         // обрабатываем результат
-        profile__name.textContent = result.name;
-        profile__about.textContent = result.about;
-        profile__img.src = result.avatar;
+        profileName.textContent = result.name;
+        profileAbout.textContent = result.about;
+        profileImg.src = result.avatar;
         my_id = result._id; //мой айди6 айли юзера
-        const userInfo = new UserInfo();
         return my_id;
 
     })
@@ -66,17 +60,8 @@ api.getUserInfo()
     })
 
 
-const popup_tag = '.popup_img';
 
-const propertiesValidation = {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button-inactive',
-    deactiveButtonClass: 'popup__button-deactive',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-}
+
 
 const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation);
 cardValidationEdit.enableValidation();
@@ -89,7 +74,7 @@ const cardValidationAvatar = new FormValidator(formElementAvatar, propertiesVali
 cardValidationAvatar.enableValidation();
 
 
-const openImg = new PopupWithImage(popup_tag);
+const openImg = new PopupWithImage(popupTag);
 const openCardDelete = new PopupDelete(deletePopup);
 
 
@@ -154,7 +139,7 @@ const userInfo = new UserInfo();
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item, close) => {
-        userInfo.setUserInfo(item.name, item.description);
+        userInfo.setUserInfo(item.name, item.description, item.avatar);
         api.updateProfile(item.name, item.description, item.close);
     },
     handleFormUpdate:afterGetUser
@@ -165,14 +150,22 @@ editButton.addEventListener('click', function () {
     formAutor.open()
 });
 
-const formAvatar = new PopupAvatar({
+// const formAvatar = new PopupAvatar({
+//     popupSelector: '.popup_avatar',
+//     handleFormSubmit: (item) => {
+//         api.updateProfilePic(item)
+//     },
+
+// });
+
+const formAvatar = new PopupWithForm({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
+        userInfo.setUserInfo(item.name, item.description, item.avatar);
         api.updateProfilePic(item)
     },
 
 });
-
 
 openAvatar.addEventListener('click', function () {
     //  cardValidationAvatar.disableSubmitButton(propertiesValidation);
