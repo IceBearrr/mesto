@@ -1,6 +1,18 @@
 export default class Card {
-    constructor({id, name, link, likes, my_id, own, api, cardSelector, handleCardClick, openCardDelete, handleFormUpdate}) {
-        this.id = id; //айди карточки
+    constructor({
+                    _id,
+                    name,
+                    link,
+                    likes,
+                    my_id,
+                    own,
+                    api,
+                    cardSelector,
+                    handleCardClick,
+                    openCardDelete,
+                    handleFormUpdate
+                }) {
+        this.id = _id; //айди карточки
         this._caption = name;
         this._caption = name;
         this._image = link;
@@ -8,14 +20,12 @@ export default class Card {
         this._sum_like = likes.length;
         this._iLiked = false;
 
-        console.log(" my_id" + my_id);
+        console.log(" my_id" + this.id);
 
 
         for (let key in likes) {
-            console.log("likes[key][\"_id\"]" + likes[key]["_id"]);
 
             if (likes[key]["_id"] === my_id) {
-                console.log("i like it");
                 this._iLiked = true;
             }
 
@@ -43,6 +53,12 @@ export default class Card {
 
     generateCard() {
         this._element = this.getTemplate();
+
+
+        this._element.setAttribute("id", this.id);
+        this._element.dataset.id = this.id;
+
+
         this._setEventListeners();
         this._elementImage = this._element.querySelector('.element__image')
         this._elementImage.src = this._image;
@@ -56,11 +72,13 @@ export default class Card {
     }
 
     _setEventListeners() {
+        this.id = this._element.dataset.id;
+
         this._element.querySelector('.element__remove').addEventListener('click', () => {
             this._elementRemove = this._element;
 
-            this._handleDeleteCard.open.bind(this);
-            this._handleDeleteCard.open(this._api.deleteCard, this.id, this.cardDelete);
+            //this._handleDeleteCard.open.bind(this);
+            this._handleDeleteCard.open(this._api, this.id, this.cardDelete);
         });
         this._element.querySelector('.element__like-btn').addEventListener('click', () => {
             this._cardLike()

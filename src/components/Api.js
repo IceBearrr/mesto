@@ -1,22 +1,24 @@
 export default class Api {
-    constructor(baseUrl, headers) {
+    constructor({baseUrl, headers}) {
         this._baseUrl = baseUrl;
         this._headers = headers;
     }
 
+    _checkResponse(res) {
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Ошибка ${res.status}`);
+    }
+
 
     getUserInfo() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me', {
-                headers: {
-                    authorization: '31859db2-75be-407c-8c24-8ed9ee09fde1'
-                }
+        return fetch(this._baseUrl + 'users/me', {
+                headers: this._headers
             }
         )
             .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
             });
     }
 
@@ -24,12 +26,9 @@ export default class Api {
     updateProfile(name, about, closeFunction) {
         this._closeFunction = closeFunction;
 
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me/', {
+        return fetch(this._baseUrl + 'users/me/', {
                 method: 'PATCH',
-                headers: {
-                    'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                headers: this._headers,
                 body: JSON.stringify({
                     name: name,
                     about: about
@@ -38,51 +37,37 @@ export default class Api {
             }
         )
             .then(res => {
-                if (res.ok) {
-                    return console.log("res put new card " + res);
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+               return this._checkResponse(res)
             })
             .then(() => {
-                console.log('this 2 then ${this}' )
+                console.log('this 2 then ${this}')
 
                 this._closeFunction();
 
-            })
-            .catch((err) => {
-                console.log(err); // выведем ошибку в консоль
             })
 
     }
 
 
     getInitialCards() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards', {
-                headers: {
-                    authorization: '31859db2-75be-407c-8c24-8ed9ee09fde1'
-                }
+        return fetch(this._baseUrl + 'cards', {
+                headers: this._headers
             }
         )
             .then(res => {
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
             });
     }
 
 
-    putNewCard(name, link,closeFunction, updateFunction) {
+    putNewCard(name, link, closeFunction, updateFunction) {
         this._closeFunction = closeFunction;
         this._updateFunction = updateFunction;
 
 
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards', {
+        return fetch(this._baseUrl + 'cards', {
                 method: 'POST',
-                headers: {
-                    'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                headers: this._headers,
                 body: JSON.stringify({
                     name: name,
                     link: link
@@ -92,21 +77,16 @@ export default class Api {
         )
             .then(res => {
                 console.log('this 1 then  ${this} ' + this);
-
-                if (res.ok) {
-                    return console.log('res put new card  ${res.status} ' + res);
-
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
             })
-            .then(() => {
-                console.log('this 2 then ${this}' )
-
-                this._updateFunction();
+            .then((res) => {
+                console.log('this 2 then ${this}' + res._id);
+                const item = {_id:res._id, name:name,link:link}
+                this._updateFunction(item);
 
             })
             .then(() => {
-                console.log('this 2 then ${this}' )
+                console.log('this 2 then ${this}')
 
                 this._closeFunction();
 
@@ -118,32 +98,25 @@ export default class Api {
     }
 
 
-    deleteCard(cardId//,  updateFunction
+    deleteCard(cardId,  deleteFunctionDom
     ) {
-        //this._updateFunction = updateFunction;
+        this._deleteFunctionDom = deleteFunctionDom;
 
 
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards/' + cardId, {
+        return fetch(this._baseUrl + 'cards/' + cardId, {
                 method: 'DELETE',
-                headers: {
-                    'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                headers: this._headers,
 
             }
         )
             .then(res => {
-                if (res.ok) {
-                    return console.log("res put new card " + res);
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
+
             })
-            // .then(() => {
-            //     console.log('this 2 then ${this}' )
-            //
-            //     this._updateFunction();
-            //
-            // })
+            .then(() => {
+                console.log('удоли карточку' );
+                this._deleteFunctionDom();
+            })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
             })
@@ -151,21 +124,15 @@ export default class Api {
 
     putLike(cardId, cardUpdateLike) {
         this.cardUpdateLike = cardUpdateLike;
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards/likes/' + cardId, {
+        return fetch(this._baseUrl + 'cards/likes/' + cardId, {
                 method: 'PUT',
-                headers: {
-                    'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                headers: this._headers,
 
             }
         )
             .then(res => {
                 console.log("apilike");
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
             })
             .then((res) => {
                 // обрабатываем результат
@@ -181,21 +148,15 @@ export default class Api {
 
     deleteLike(cardId, cardUpdateLike) {
         this.cardUpdateLike = cardUpdateLike;
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards/likes/' + cardId, {
+        return fetch(this._baseUrl + 'cards/likes/' + cardId, {
                 method: 'DELETE',
-                headers: {
-                    'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                headers: this._headers,
 
             }
         )
             .then(res => {
                 console.log("apidislike");
-                if (res.ok) {
-                    return res.json();
-                }
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
             })
             .then((res) => {
                 // обрабатываем результат
@@ -211,12 +172,9 @@ export default class Api {
 
     updateProfilePic({avatar, closeFunction}) {
         this._closeFunction = closeFunction;
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-22/users/me/avatar', {
+        return fetch(this._baseUrl + 'users/me/avatar', {
                 method: 'PATCH',
-                headers: {
-                    'authorization': '31859db2-75be-407c-8c24-8ed9ee09fde1',
-                    'Content-Type': 'application/json;charset=utf-8'
-                },
+                headers: this._headers,
                 body: JSON.stringify({
                     avatar: avatar
                 })
@@ -224,12 +182,8 @@ export default class Api {
             }
         )
             .then(res => {
-                if (res.ok) {
-                    return console.log("res put new card " + res);
-                }
                 this._closeFunction();
-
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return this._checkResponse(res)
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль

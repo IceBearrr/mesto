@@ -1,15 +1,15 @@
 export default class FormValidator {
-    constructor(formElement, properties) {
+    constructor(formElement, properties, buttonElementSave) {
         this._formElement = formElement;
         this.properties = properties;
-        this._buttonElement = this._formElement.querySelector('.popup__button-save');
+        this._buttonElementSave = this._formElement.querySelector(buttonElementSave);;
     }
 
     //делаем кнопку недоступной
     disableSubmitButton = (properties) => {
-        this._buttonElement.classList.remove(properties.inactiveButtonClass);
-        this._buttonElement.classList.add(properties.deactiveButtonClass);
-        this._buttonElement.disabled = true;
+        this._buttonElementSave.classList.remove(properties.inactiveButtonClass);
+        this._buttonElementSave.classList.add(properties.deactiveButtonClass);
+        this._buttonElementSave.disabled = true;
     }
 
     _showInputError = (inputElement, errorMessage) => {
@@ -48,14 +48,14 @@ export default class FormValidator {
     _toggleButtonState() {
         if (this._hasInvalidInput(this.inputList)) {
             this.disableSubmitButton(this.properties);
-            // this._buttonElement.classList.add(properties.deactiveButtonClass);
-            // this._buttonElement.classList.remove(properties.inactiveButtonClass);
+            // this._buttonElementSave.classList.add(properties.deactiveButtonClass);
+            // this._buttonElementSave.classList.remove(properties.inactiveButtonClass);
 
         } else {
 
-            this._buttonElement.disabled = false;
-            this._buttonElement.classList.remove(this.properties.deactiveButtonClass);
-            this._buttonElement.classList.add(this.properties.inactiveButtonClass);
+            this._buttonElementSave.disabled = false;
+            this._buttonElementSave.classList.remove(this.properties.deactiveButtonClass);
+            this._buttonElementSave.classList.add(this.properties.inactiveButtonClass);
 
         }
     };
@@ -89,7 +89,7 @@ export default class FormValidator {
         this._formElement.addEventListener('submit', function (evt) {
             evt.preventDefault();
         });
-            this.setEventListeners();
+        this.setEventListeners();
 
         // this._formElement.addEventListener('submit', function (evt) {
         //     evt.preventDefault();

@@ -5,7 +5,7 @@ export default class PopupDelete extends Popup {
         super(popupSelector);
     }
 
-    open(deleteFunction,id, deleteFunctionDom) {
+    open(deleteFunction, id, deleteFunctionDom) {
         super.open();
         this._deleteFunction = deleteFunction;
         this._deleteFunctionDom = deleteFunctionDom;
@@ -19,14 +19,13 @@ export default class PopupDelete extends Popup {
         super.setEventListeners();
         this.popupElement.addEventListener('click', (evt) => {
             evt.preventDefault();
+            const deleteFunctionDom = this._deleteFunctionDom.bind(this);
 
-            this._deleteFunction(this.id);
-            this._deleteFunctionDom()
+            this._deleteFunction.deleteCard(this.id, deleteFunctionDom);
             this.close();
 
         })
     }
-
 
 
 }

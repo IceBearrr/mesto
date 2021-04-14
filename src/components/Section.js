@@ -8,13 +8,8 @@ export default class Section {
         this._container.prepend(element);
     }
 
-    clear() {
-        this._container.innerHTML = '';
-    }
-
     renderItems(items) {
         console.log("рисуем еще раз");
-        this.clear();
         items.forEach(item => {
             this.addItem(this._renderer(item));
         });

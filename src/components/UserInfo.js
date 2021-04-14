@@ -14,7 +14,7 @@ export default class UserInfo {
         return {
             name: this._profileName.textContent,
             profession: this._profileDescription.textContent,
-            avatar:  this._avatarSelector.textContent,
+            avatar: this._avatarSelector.textContent,
         }
     }
 

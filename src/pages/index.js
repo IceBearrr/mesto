@@ -4,7 +4,23 @@ import Card from '../components/Card.js';
 import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
-import {profile, profileName, profileAbout, profileImg, propertiesValidation, popupTag, formElementEdit, formElementAdd, addButton, editButton, deletePopup, openAvatar, formElementAvatar
+import {
+    buttonElementSave,
+    headers,
+    baseUrl,
+    profile,
+    profileName,
+    profileAbout,
+    profileImg,
+    propertiesValidation,
+    popupTag,
+    formElementEdit,
+    formElementAdd,
+    addButton,
+    editButton,
+    deletePopup,
+    openAvatar,
+    formElementAvatar
 } from '../utils/constants.js';
 import PopupDelete from '../components/PopupDelete.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -15,18 +31,15 @@ import Api from '../components/Api.js';
 
 
 const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-42',
-    headers: {
-        authorization: '31859db2-75be-407c-8c24-8ed9ee09fde1',
-        'Content-Type': 'application/json'
-    }
+    baseUrl: baseUrl,
+    headers: headers
 });
 
 let my_id;
 window.my_id = my_id; // сделаем свой айди глобальной переменноый
 
 
-const afterGetUser = ()  => { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
+const afterGetUser = () => { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
 
     api.getInitialCards()
         .then((result) => {
@@ -61,17 +74,14 @@ api.getUserInfo()
     })
 
 
-
-
-
-const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation);
+const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation, buttonElementSave);
 cardValidationEdit.enableValidation();
 
 
-const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation);
+const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation, buttonElementSave);
 cardValidationAdd.enableValidation();
 
-const cardValidationAvatar = new FormValidator(formElementAvatar, propertiesValidation);
+const cardValidationAvatar = new FormValidator(formElementAvatar, propertiesValidation, buttonElementSave);
 cardValidationAvatar.enableValidation();
 
 
@@ -81,7 +91,7 @@ const openCardDelete = new PopupDelete(deletePopup);
 
 function createCard(item) {
     const card = new Card({
-        id: item._id,
+        _id: item._id,
         name: item.name,
         link: item.link,
         likes: item.likes ? item.likes : [],
@@ -97,7 +107,7 @@ function createCard(item) {
             openImg.open(item.name, item.link)
         },
         openCardDelete: openCardDelete,
-        handleFormUpdate:afterGetUser
+        handleFormUpdate: afterGetUser
 
     });
 
@@ -117,18 +127,24 @@ const cardList = new Section({
 
 //cardList.renderItems(initialCards); ждем ответ апи
 
+
+const newCard = (item) => {
+    cardList.renderItems([{ //будем перестраивать все а не добавлять по одной
+        _id: item._id,
+        name: item.name,
+        link: item.link
+    }])}
+
 //Добавление карточки
 const popudAAd = new PopupWithForm({
     popupSelector: ".popup_add",
     handleFormSubmit: (item) => {
-        // cardList.renderItems([{ будем перестраивать все а не добавлять по одной
-        //     name: item.name,
-        //     link: item.foto
-        // }]);
         console.log("item.update" + item.update);
         api.putNewCard(item.name, item.foto, item.close, item.update)
+        //api.putNewCard(item)
+
     },
-    handleFormUpdate:afterGetUser
+    handleFormUpdate: newCard
 });
 addButton.addEventListener('click', function () {
     cardValidationAdd.disableSubmitButton(propertiesValidation);
@@ -143,7 +159,7 @@ const formAutor = new PopupWithForm({
         userInfo.setUserInfo(item.name, item.description, item.avatar);
         api.updateProfile(item.name, item.description, item.close);
     },
-    handleFormUpdate:afterGetUser
+    handleFormUpdate: afterGetUser
 
 });
 
