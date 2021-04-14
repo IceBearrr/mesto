@@ -47,6 +47,7 @@ api.getUserInfo()
         profileAbout.textContent = result.about;
         profileImg.src = result.avatar;
         my_id = result._id; //мой айди6 айли юзера
+        window.my_id = my_id;
         return my_id;
 
     })

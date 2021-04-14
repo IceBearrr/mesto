@@ -149,7 +149,8 @@ export default class Api {
             })
     }
 
-    putLike(cardId) {
+    putLike(cardId, cardUpdateLike) {
+        this.cardUpdateLike = cardUpdateLike;
         return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards/likes/' + cardId, {
                 method: 'PUT',
                 headers: {
@@ -160,10 +161,17 @@ export default class Api {
             }
         )
             .then(res => {
+                console.log("apilike");
                 if (res.ok) {
-                    return console.log("res put new card " + res);
+                    return res.json();
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .then((res) => {
+                // обрабатываем результат
+                console.log(res);
+                this.cardUpdateLike(res.likes.length)
+
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
@@ -171,7 +179,8 @@ export default class Api {
     }
 
 
-    deleteLike(cardId) {
+    deleteLike(cardId, cardUpdateLike) {
+        this.cardUpdateLike = cardUpdateLike;
         return fetch('https://mesto.nomoreparties.co/v1/cohort-22/cards/likes/' + cardId, {
                 method: 'DELETE',
                 headers: {
@@ -182,10 +191,17 @@ export default class Api {
             }
         )
             .then(res => {
+                console.log("apidislike");
                 if (res.ok) {
-                    return console.log("res put new card " + res);
+                    return res.json();
                 }
                 return Promise.reject(`Ошибка: ${res.status}`);
+            })
+            .then((res) => {
+                // обрабатываем результат
+                console.log(res);
+                this.cardUpdateLike(res.likes.length)
+
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль

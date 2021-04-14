@@ -8,10 +8,16 @@ export default class Card {
         this._sum_like = likes.length;
         this._iLiked = false;
 
+        console.log(" my_id" + my_id);
+
 
         for (let key in likes) {
-            if (likes[key]["_id"] === my_id)
+            console.log("likes[key][\"_id\"]" + likes[key]["_id"]);
+
+            if (likes[key]["_id"] === my_id) {
+                console.log("i like it");
                 this._iLiked = true;
+            }
 
         }
 
@@ -79,8 +85,9 @@ export default class Card {
     }
 
 
-    _cardUpdateLike() { // обновляем отображение кол-ва лайков и сердечка после нажатия лайки
-        this._element.querySelector('.element__like-sum').textContent = this._sum_like;
+    cardUpdateLike(sum_like) { // обновляем отображение кол-ва лайков и сердечка после нажатия лайки
+        //this._element.querySelector('.element__like-sum').textContent = this._sum_like;
+        this._element.querySelector('.element__like-sum').textContent = sum_like;
         this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
     }
 
@@ -88,15 +95,19 @@ export default class Card {
 
         //if this._likes.includes("efbafaddf4831a0e48100782"); //есть ли я вписке лайкнущих?
         if (this._iLiked) {
-            this._sum_like--;
-            this._cardUpdateLike();
-            this._api.deleteLike(this.id)
+            console.log("dislike");
+            //this._sum_like--;
+            const cardUpdateLike = this.cardUpdateLike.bind(this);
+            this._api.deleteLike(this.id, cardUpdateLike)
             this._iLiked = false;
 
         } else {
-            this._sum_like++;
-            this._cardUpdateLike();
-            this._api.putLike(this.id)
+            console.log("like");
+            console.log("like");
+            //this._sum_like++;
+            //this._cardUpdateLike();
+            const cardUpdateLike = this.cardUpdateLike.bind(this);
+            this._api.putLike(this.id, cardUpdateLike)
             this._iLiked = true;
         }
     }
