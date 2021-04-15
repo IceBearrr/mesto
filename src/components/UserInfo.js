@@ -27,7 +27,6 @@ export default class UserInfo {
     }
 
 
-
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
     setUserInfo(name, description) {
         this._profileName.textContent = name;

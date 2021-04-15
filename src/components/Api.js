@@ -178,7 +178,7 @@ export default class Api {
     }
 
 
-    updateProfilePic(foto, closeFunction,updateFunction) {
+    updateProfilePic(foto, closeFunction, updateFunction) {
         this._closeFunction = closeFunction;
         this._updateFunction = updateFunction;
         return fetch(this._baseUrl + 'users/me/avatar', {
@@ -196,7 +196,7 @@ export default class Api {
             })
             .then((res) => {
                 console.log('this 2 then ${this}' + res._id);
-                const item = {foto:foto}
+                const item = {foto: foto}
                 this._updateFunction(item);
 
             })

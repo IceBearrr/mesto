@@ -190,7 +190,6 @@ editButton.addEventListener('click', function () {
 // });
 
 
-
 const userUpdateAvatarDom = (item) => {
     userInfo.setNewAva(item.foto);
 }
