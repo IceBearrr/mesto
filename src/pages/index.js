@@ -5,6 +5,7 @@ import UserInfo from '../components/UserInfo.js';
 import Section from '../components/Section.js';
 import FormValidator from '../components/FormValidator.js';
 import {
+    openAvatarTag,
     buttonElementSave,
     headers,
     baseUrl,
@@ -157,7 +158,7 @@ addButton.addEventListener('click', function () {
 //Данные профиля
 
 
-const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate);
+const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
 
 
 const userUpdateDom = (item) => {
@@ -185,16 +186,23 @@ editButton.addEventListener('click', function () {
 //     handleFormSubmit: (item) => {
 //         api.updateProfilePic(item)
 //     },
-
+//
 // });
+
+
+
+const userUpdateAvatarDom = (item) => {
+    userInfo.setNewAva(item.foto);
+}
+
 
 const formAvatar = new PopupWithForm({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
         //userInfo.setUserInfo(item.name, item.description, item.avatar);
-        api.updateProfilePic(item)
+        api.updateProfilePic(item.foto, item.close, item.update)
     },
-    handleFormUpdate: userInfo.setUserInfo
+    handleFormUpdate: userUpdateAvatarDom
 
 
 });

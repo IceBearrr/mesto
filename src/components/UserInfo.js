@@ -1,9 +1,10 @@
 export default class UserInfo {
-    constructor(profileName, profileNameTemplate, profileDescription, profileDescriptionTemplate) {
+    constructor(profileName, profileNameTemplate, profileDescription, profileDescriptionTemplate, openAvatar) {
         this._profileName = document.querySelector(profileName);
         this._profileNameTemplate = document.querySelector(profileNameTemplate);
         this._profileDescription = document.querySelector(profileDescription);
         this._profileDescriptionTemplate = document.querySelector(profileDescriptionTemplate);
+        this._profileFoto = document.querySelector(openAvatar);
 
     }
 
@@ -19,6 +20,13 @@ export default class UserInfo {
         //avatar: this._avatarSelector.textContent,
         //}
     }
+
+
+    setNewAva(avatar) {
+        this._profileFoto.src = avatar;
+    }
+
+
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
     setUserInfo(name, description) {

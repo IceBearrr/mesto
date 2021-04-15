@@ -6,6 +6,8 @@ export const elementCell = document.querySelector('.elements__cell');
 export const addButton = document.querySelector('.profile__button-add');
 export const editButton = document.querySelector('.profile__button-edit');
 export const openAvatar = document.querySelector('.profile__button-avatar')
+export const openAvatarTag = '.profile__image';
+
 export const formElementAvatar = document.querySelector('.popup__container_avatar')
 export const deletePopup = '.popup_remove';
 export const popupTag = '.popup_img';

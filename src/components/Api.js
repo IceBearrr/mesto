@@ -178,13 +178,14 @@ export default class Api {
     }
 
 
-    updateProfilePic({avatar, closeFunction}) {
+    updateProfilePic(foto, closeFunction,updateFunction) {
         this._closeFunction = closeFunction;
+        this._updateFunction = updateFunction;
         return fetch(this._baseUrl + 'users/me/avatar', {
                 method: 'PATCH',
                 headers: this._headers,
                 body: JSON.stringify({
-                    avatar: avatar
+                    avatar: foto
                 })
 
             }
@@ -192,6 +193,12 @@ export default class Api {
             .then(res => {
                 this._closeFunction();
                 return this._checkResponse(res)
+            })
+            .then((res) => {
+                console.log('this 2 then ${this}' + res._id);
+                const item = {foto:foto}
+                this._updateFunction(item);
+
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
