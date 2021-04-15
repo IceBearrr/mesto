@@ -3,6 +3,7 @@ import Popup from './Popup.js';
 export default class PopupWithForm extends Popup {
     constructor({popupSelector, handleFormSubmit, handleFormUpdate}) {
         super(popupSelector);
+        //this.popupElement =
         this._handleFormSubmit = handleFormSubmit;
         this._handleFormUpdate = handleFormUpdate;
 
@@ -53,7 +54,7 @@ export default class PopupWithForm extends Popup {
 // Перезаписывает родительский метод close, так как при закрытии попапа форма должна ещё и сбрасываться.
 
     close() {
-        this._formElementAdd.reset();
+        this.popupElement.querySelector('.popup__form').reset();
         super.close();
         if (this.popupElement.querySelector('.popup__button-save'))
             this.popupElement.querySelector('.popup__button-save').textContent = "Сохранить"

@@ -1,7 +1,7 @@
 export default class UserInfo {
     constructor(profileName, profileNameTemplate, profileDescription, profileDescriptionTemplate) {
         this._profileName = document.querySelector(profileName);
-        this._profileNameTemplate  = document.querySelector(profileNameTemplate);
+        this._profileNameTemplate = document.querySelector(profileNameTemplate);
         this._profileDescription = document.querySelector(profileDescription);
         this._profileDescriptionTemplate = document.querySelector(profileDescriptionTemplate);
 
@@ -13,17 +13,16 @@ export default class UserInfo {
 
         //return {
         this._profileNameTemplate.value =
-                this._profileName.textContent;
+            this._profileName.textContent;
         this._profileDescriptionTemplate.value =
-                this._profileDescription.textContent;
-            //avatar: this._avatarSelector.textContent,
+            this._profileDescription.textContent;
+        //avatar: this._avatarSelector.textContent,
         //}
     }
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
-    setUserInfo(name, profession, avatar) {
+    setUserInfo(name, description) {
         this._profileName.textContent = name;
-        this._profileDescription.textContent = profession;
-        this._avatarSelector.textContent = avatar;
+        this._profileDescription.textContent = description;
     }
 }

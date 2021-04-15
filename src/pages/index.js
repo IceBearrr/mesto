@@ -135,7 +135,8 @@ const newCard = (item) => {
         _id: item._id,
         name: item.name,
         link: item.link
-    }])}
+    }])
+}
 
 //Добавление карточки
 const popudAAd = new PopupWithForm({
@@ -154,14 +155,22 @@ addButton.addEventListener('click', function () {
 });
 
 //Данные профиля
+
+
 const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate);
+
+
+const userUpdateDom = (item) => {
+    userInfo.setUserInfo(item.name, item.description);
+}
+
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
-    handleFormSubmit: (item, close) => {
-        userInfo.setUserInfo(item.name, item.description, item.avatar);
-        api.updateProfile(item.name, item.description, item.close);
+    handleFormSubmit: (item) => {
+        //userInfo.setUserInfo(item.name, item.description);
+        api.updateProfile(item.name, item.description, item.close, item.update);
     },
-    handleFormUpdate: afterGetUser
+    handleFormUpdate: userUpdateDom
 
 });
 
@@ -182,9 +191,11 @@ editButton.addEventListener('click', function () {
 const formAvatar = new PopupWithForm({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
-        userInfo.setUserInfo(item.name, item.description, item.avatar);
+        //userInfo.setUserInfo(item.name, item.description, item.avatar);
         api.updateProfilePic(item)
     },
+    handleFormUpdate: userInfo.setUserInfo
+
 
 });
 

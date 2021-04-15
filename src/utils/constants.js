@@ -12,17 +12,15 @@ export const popupTag = '.popup_img';
 export const baseUrl = 'https://mesto.nomoreparties.co/v1/cohort-22/';
 export const headers = {
     authorization: '31859db2-75be-407c-8c24-8ed9ee09fde1',
-        'Content-Type': 'application/json'
+    'Content-Type': 'application/json'
 }
 export const buttonElementSave = '.popup__button-save';
 
 
-
 export const profileNameUser = '.profile__name';
-export const profileNameTemplate  = '.profile__name';
+export const profileNameTemplate = '.popup__input_enter_name';
 export const profileDescriptionUser = '.profile__description';
-export const profileDescriptionTemplate = '.profile__description';
-
+export const profileDescriptionTemplate = '.popup__input_enter_description';
 
 
 export const propertiesValidation = {

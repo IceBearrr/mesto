@@ -23,21 +23,29 @@ export default class Api {
     }
 
 
-    updateProfile(name, about, closeFunction) {
+    updateProfile(name, description, closeFunction, updateFunction) {
         this._closeFunction = closeFunction;
+        this._updateFunction = updateFunction;
+
 
         return fetch(this._baseUrl + 'users/me/', {
                 method: 'PATCH',
                 headers: this._headers,
                 body: JSON.stringify({
                     name: name,
-                    about: about
+                    about: description
                 })
 
             }
         )
             .then(res => {
-               return this._checkResponse(res)
+                return this._checkResponse(res)
+            })
+            .then((res) => {
+                console.log('this 2 then ${this}' + res._id);
+                const item = {name: name, description: description}
+                this._updateFunction(item);
+
             })
             .then(() => {
                 console.log('this 2 then ${this}')
@@ -81,7 +89,7 @@ export default class Api {
             })
             .then((res) => {
                 console.log('this 2 then ${this}' + res._id);
-                const item = {_id:res._id, name:name,link:link}
+                const item = {_id: res._id, name: name, link: link}
                 this._updateFunction(item);
 
             })
@@ -98,7 +106,7 @@ export default class Api {
     }
 
 
-    deleteCard(cardId,  deleteFunctionDom
+    deleteCard(cardId, deleteFunctionDom
     ) {
         this._deleteFunctionDom = deleteFunctionDom;
 
@@ -114,7 +122,7 @@ export default class Api {
 
             })
             .then(() => {
-                console.log('удоли карточку' );
+                console.log('удоли карточку');
                 this._deleteFunctionDom();
             })
             .catch((err) => {

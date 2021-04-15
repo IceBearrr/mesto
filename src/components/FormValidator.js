@@ -2,7 +2,8 @@ export default class FormValidator {
     constructor(formElement, properties, buttonElementSave) {
         this._formElement = formElement;
         this.properties = properties;
-        this._buttonElementSave = this._formElement.querySelector(buttonElementSave);;
+        this._buttonElementSave = this._formElement.querySelector(buttonElementSave);
+        ;
     }
 
     //делаем кнопку недоступной
