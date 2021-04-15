@@ -18,6 +18,13 @@ export const buttonElementSave = '.popup__button-save';
 
 
 
+export const profileNameUser = '.profile__name';
+export const profileNameTemplate  = '.profile__name';
+export const profileDescriptionUser = '.profile__description';
+export const profileDescriptionTemplate = '.profile__description';
+
+
+
 export const propertiesValidation = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',

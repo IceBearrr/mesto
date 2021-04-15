@@ -20,7 +20,9 @@ import {
     editButton,
     deletePopup,
     openAvatar,
-    formElementAvatar
+    formElementAvatar,
+    profileNameUser,
+    profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate
 } from '../utils/constants.js';
 import PopupDelete from '../components/PopupDelete.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -152,7 +154,7 @@ addButton.addEventListener('click', function () {
 });
 
 //Данные профиля
-const userInfo = new UserInfo();
+const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate);
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item, close) => {
@@ -164,6 +166,8 @@ const formAutor = new PopupWithForm({
 });
 
 editButton.addEventListener('click', function () {
+
+    userInfo.getUserInfo();
     formAutor.open()
 });
 
