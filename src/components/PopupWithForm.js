@@ -8,9 +8,9 @@ export default class PopupWithForm extends Popup {
         this._handleFormUpdate = handleFormUpdate;
 
         this._inputList = this.popupElement.querySelectorAll('.popup__input');
-        this._formElementAdd = this.popupElement.querySelector('.popup__container_add');
-        this._formElementAvatar = this.popupElement.querySelector('.popup__input_enter_avatar');
-        this._profileFoto = this.popupElement.querySelector('.profile__image')
+        // this._formElementAdd = this.popupElement.querySelector('.popup__container_add');
+        // this._formElementAvatar = this.popupElement.querySelector('.popup__input_enter_avatar');
+        // this._profileFoto = this.popupElement.querySelector('.profile__image')
     }
 
     // собирает данные всех полей формы.  

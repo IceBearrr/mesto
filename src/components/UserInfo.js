@@ -10,22 +10,18 @@ export default class UserInfo {
 
     // Содержит публичный метод getUserInfo, который возвращает объект с данными пользователя.
     getUserInfo() {
-        this._formValues = {};
-
-        //return {
-        this._profileNameTemplate.value =
-            this._profileName.textContent;
-        this._profileDescriptionTemplate.value =
-            this._profileDescription.textContent;
-        //avatar: this._avatarSelector.textContent,
-        //}
-    }
-
+            this._formValues = {}; 
+     
+            return { 
+                name: this._profileName.textContent, 
+                profession: this._profileDescription.textContent, 
+                avatar: this._avatarSelector.textContent,
+            } 
+        }      
 
     setNewAva(avatar) {
         this._profileFoto.src = avatar;
     }
-
 
     //Содержит публичный метод setUserInfo, который принимает новые данные пользователя и добавляет их на страницу.
     setUserInfo(name, description) {

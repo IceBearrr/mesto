@@ -9,7 +9,6 @@ import {
     buttonElementSave,
     headers,
     baseUrl,
-    profile,
     profileName,
     profileAbout,
     profileImg,
@@ -28,7 +27,6 @@ import {
 import PopupDelete from '../components/PopupDelete.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import PopupWithImage from '../components/PopupWithImage.js';
-import PopupAvatar from '../components/PopupAvatar.js';
 
 import Api from '../components/Api.js';
 
@@ -38,8 +36,8 @@ const api = new Api({
     headers: headers
 });
 
-let my_id;
-window.my_id = my_id; // сделаем свой айди глобальной переменноый
+let myId;
+window.myId = myId; // сделаем свой айди глобальной переменноый
 
 
 const afterGetUser = () => { // если смогли выполнить первый запрос к апи и получить инфо об авторе то запускаем второй запрос и получаем карточки
@@ -62,14 +60,14 @@ api.getUserInfo()
         profileName.textContent = result.name;
         profileAbout.textContent = result.about;
         profileImg.src = result.avatar;
-        my_id = result._id; //мой айди6 айли юзера
-        window.my_id = my_id;
-        return my_id;
+        myId = result._id; //мой айди6 айли юзера
+        window.myId = myId;
+        return myId;
 
     })
 
-    .then((my_id) => { // если первый запрос выполнился то делаем второй запрос на получении карточек
-        afterGetUser(my_id);
+    .then((myId) => { // если первый запрос выполнился то делаем второй запрос на получении карточек
+        afterGetUser(myId);
     })
 
     .catch((err) => {
@@ -77,14 +75,17 @@ api.getUserInfo()
     })
 
 
-const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation, buttonElementSave);
+const cardValidationEdit = new FormValidator(formElementEdit,  buttonElementSave);
+//propertiesValidation,
 cardValidationEdit.enableValidation();
 
 
-const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation, buttonElementSave);
+const cardValidationAdd = new FormValidator(formElementAdd,  buttonElementSave);
+//propertiesValidation,
 cardValidationAdd.enableValidation();
 
-const cardValidationAvatar = new FormValidator(formElementAvatar, propertiesValidation, buttonElementSave);
+const cardValidationAvatar = new FormValidator(formElementAvatar,  buttonElementSave);
+//propertiesValidation,
 cardValidationAvatar.enableValidation();
 
 
@@ -99,18 +100,18 @@ function createCard(item) {
         link: item.link,
         likes: item.likes ? item.likes : [],
 
-        my_id: window.my_id,
-        //iLiked: item.likes.includes(window.my_id), // есть ли я в списке лайкнувших?
-        //sum_like: item.likes ? item.likes.length: 0,
-        own: item.owner ? item.owner._id === my_id : true, //если есть хозяин карточки, то кто он? намудрил что-то я, если есть поле
-        // item.owner то возвращаем результат сравнения item.owner._id === my_id  или тру, если нет, так
+        myId: window.myId,
+        //iLiked: item.likes.includes(window.myId), // есть ли я в списке лайкнувших?
+        //sumLike: item.likes ? item.likes.length: 0,
+        own: item.owner ? item.owner._id === myId : true, //если есть хозяин карточки, то кто он? намудрил что-то я, если есть поле
+        // item.owner то возвращаем результат сравнения item.owner._id === myId  или тру, если нет, так
         api: api,
         cardSelector: ".template",
         handleCardClick: () => {
             openImg.open(item.name, item.link)
         },
         openCardDelete: openCardDelete,
-        handleFormUpdate: afterGetUser
+        // handleFormUpdate: afterGetUser
 
     });
 
@@ -181,15 +182,6 @@ editButton.addEventListener('click', function () {
     formAutor.open()
 });
 
-// const formAvatar = new PopupAvatar({
-//     popupSelector: '.popup_avatar',
-//     handleFormSubmit: (item) => {
-//         api.updateProfilePic(item)
-//     },
-//
-// });
-
-
 const userUpdateAvatarDom = (item) => {
     userInfo.setNewAva(item.foto);
 }
@@ -210,3 +202,6 @@ openAvatar.addEventListener('click', function () {
     //  cardValidationAvatar.disableSubmitButton(propertiesValidation);
     formAvatar.open()
 });
+
+
+const popupDelete = document.querySelector('.popup_remove');

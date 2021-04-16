@@ -19,7 +19,12 @@ export default class Api {
         )
             .then(res => {
                 return this._checkResponse(res)
-            });
+            })
+
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
+            
     }
 
 
@@ -53,6 +58,9 @@ export default class Api {
                 this._closeFunction();
 
             })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
 
     }
 
@@ -64,7 +72,10 @@ export default class Api {
         )
             .then(res => {
                 return this._checkResponse(res)
-            });
+            })
+            .catch((err) => {
+                console.log(err); // выведем ошибку в консоль
+            })
     }
 
 

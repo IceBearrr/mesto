@@ -4,7 +4,7 @@ export default class Card {
                     name,
                     link,
                     likes,
-                    my_id,
+                    myId,
                     own,
                     api,
                     cardSelector,
@@ -14,18 +14,17 @@ export default class Card {
                 }) {
         this.id = _id; //айди карточки
         this._caption = name;
-        this._caption = name;
         this._image = link;
-        this._caption = name;
-        this._sum_like = likes.length;
+        this._sumLike = likes.length;
+        this._myId = myId;
         this._iLiked = false;
 
-        console.log(" my_id" + this.id);
+        console.log(" myId" + this.id);
 
 
         for (let key in likes) {
 
-            if (likes[key]["_id"] === my_id) {
+            if (likes[key]["_id"] === myId) {
                 this._iLiked = true;
             }
 
@@ -37,7 +36,7 @@ export default class Card {
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._handleDeleteCard = openCardDelete
-        this._deletePopup = document.querySelector('.popup_remove');
+        //this._deletePopup = document.querySelector('.popup_remove');
         this._handleFormUpdate = handleFormUpdate;
     }
 
@@ -64,7 +63,7 @@ export default class Card {
         this._elementImage.src = this._image;
         this._elementImage.alt = this._caption;
         this._element.querySelector('.element__place-name').textContent = this._caption;
-        this._element.querySelector('.element__like-sum').textContent = this._sum_like;
+        this._element.querySelector('.element__like-sum').textContent = this._sumLike;
         if (!this._own) this._element.querySelector('.element__remove').remove(); //я ли сделал
         if (this._iLiked) this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
 
@@ -103,9 +102,9 @@ export default class Card {
     }
 
 
-    cardUpdateLike(sum_like) { // обновляем отображение кол-ва лайков и сердечка после нажатия лайки
-        //this._element.querySelector('.element__like-sum').textContent = this._sum_like;
-        this._element.querySelector('.element__like-sum').textContent = sum_like;
+    cardUpdateLike(sumLike) { // обновляем отображение кол-ва лайков и сердечка после нажатия лайки
+        //this._element.querySelector('.element__like-sum').textContent = this._sumLike;
+        this._element.querySelector('.element__like-sum').textContent = sumLike;
         this._element.querySelector('.element__like-btn').classList.toggle('element__like-btn_black');
     }
 
@@ -114,7 +113,7 @@ export default class Card {
         //if this._likes.includes("efbafaddf4831a0e48100782"); //есть ли я вписке лайкнущих?
         if (this._iLiked) {
             console.log("dislike");
-            //this._sum_like--;
+            //this._sumLike--;
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.deleteLike(this.id, cardUpdateLike)
             this._iLiked = false;
@@ -122,11 +121,15 @@ export default class Card {
         } else {
             console.log("like");
             console.log("like");
-            //this._sum_like++;
+            //this._sumLike++;
             //this._cardUpdateLike();
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.putLike(this.id, cardUpdateLike)
             this._iLiked = true;
+            // .then(() => {
+            //     this._iLiked = false;
+            // })
+
         }
     }
 }

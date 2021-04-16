@@ -40,8 +40,8 @@ export default class Popup {
 
 
     setEventListeners() {
-        const close_popup = this.popupElement.querySelector('.popup__close');
-        close_popup.addEventListener('click', () => {
+        const closePopup = this.popupElement.querySelector('.popup__close');
+        closePopup.addEventListener('click', () => {
             this.close();
         });
     }
