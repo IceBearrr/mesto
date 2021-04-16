@@ -1,6 +1,8 @@
 export default class FormValidator {
-    constructor(formElement, propertiesValidation) {
-        this._formElement = formElement;
+    constructor(formElement, propertiesValidation
+       // {propertiesValidation}
+       ) {
+        this._formElement = formElement; 
         this.properties = document.querySelector(propertiesValidation);
         this._buttonElement = this._formElement.querySelector('.popup__button-save');
     }
