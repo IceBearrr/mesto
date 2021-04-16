@@ -4,7 +4,6 @@ export default class Popup {
         this.handleEscClose = this.handleEscClose.bind(this);
         this.closePopupByOverlay = this.closePopupByOverlay.bind(this);
         this.setEventListeners();
-
     }
 
     handleEscClose(evt) {
@@ -29,15 +28,7 @@ export default class Popup {
         this.popupElement.classList.remove('popup_opened');
         document.removeEventListener('keydown', this.handleEscClose);
         this.popupElement.removeEventListener('click', this.closePopupByOverlay);
-        // if (this.popupElement.querySelector('.popup__button-save'))
-        //     this.popupElement.querySelector('.popup__button-save').textContent = "Сохранить"
-
     }
-
-    // setSaveButtonText() {
-    //     this.popupElement.querySelector('.popup__button-save').textContent = "Сохранение..."
-    // }
-
 
     setEventListeners() {
         const closePopup = this.popupElement.querySelector('.popup__close');

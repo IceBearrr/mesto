@@ -5,7 +5,6 @@ export default class UserInfo {
         this._profileDescription = document.querySelector(profileDescription);
         this._profileDescriptionTemplate = document.querySelector(profileDescriptionTemplate);
         this._profileFoto = document.querySelector(openAvatar);
-
     }
 
     // Содержит публичный метод getUserInfo, который возвращает объект с данными пользователя.
@@ -15,7 +14,7 @@ export default class UserInfo {
             return { 
                 name: this._profileName.textContent, 
                 profession: this._profileDescription.textContent, 
-                avatar: this._avatarSelector.textContent,
+                avatar: this._profileFoto.src,
             } 
         }      
 

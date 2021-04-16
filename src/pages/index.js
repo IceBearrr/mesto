@@ -75,17 +75,14 @@ api.getUserInfo()
     })
 
 
-const cardValidationEdit = new FormValidator(formElementEdit,  buttonElementSave);
-//propertiesValidation,
+const cardValidationEdit = new FormValidator(formElementEdit, propertiesValidation, buttonElementSave);
 cardValidationEdit.enableValidation();
 
 
-const cardValidationAdd = new FormValidator(formElementAdd,  buttonElementSave);
-//propertiesValidation,
+const cardValidationAdd = new FormValidator(formElementAdd, propertiesValidation, buttonElementSave);
 cardValidationAdd.enableValidation();
 
-const cardValidationAvatar = new FormValidator(formElementAvatar,  buttonElementSave);
-//propertiesValidation,
+const cardValidationAvatar = new FormValidator(formElementAvatar, propertiesValidation, buttonElementSave);
 cardValidationAvatar.enableValidation();
 
 
@@ -111,7 +108,6 @@ function createCard(item) {
             openImg.open(item.name, item.link)
         },
         openCardDelete: openCardDelete,
-        // handleFormUpdate: afterGetUser
 
     });
 
@@ -120,7 +116,6 @@ function createCard(item) {
 }
 
 //Добавление карточек при загрузке страницы
-
 
 const cardList = new Section({
     renderer: (item) => {
@@ -146,8 +141,6 @@ const popudAAd = new PopupWithForm({
     handleFormSubmit: (item) => {
         console.log("item.update" + item.update);
         api.putNewCard(item.name, item.foto, item.close, item.update)
-        //api.putNewCard(item)
-
     },
     handleFormUpdate: newCard
 });
@@ -161,15 +154,20 @@ addButton.addEventListener('click', function () {
 
 const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
 
-
 const userUpdateDom = (item) => {
     userInfo.setUserInfo(item.name, item.description);
+    // this._profileNameTemplate.value = this._profileName.textContent; 
+    // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
 }
 
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item) => {
-        //userInfo.setUserInfo(item.name, item.description);
+        // userInfo.setUserInfo(item.name, item.description);
+        // this._profileNameTemplate.value = this._profileName.textContent; 
+    // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
+    // this._profileNameTemplate.value = item.name; 
+    // this._profileDescriptionTemplate.value = item.description; 
         api.updateProfile(item.name, item.description, item.close, item.update);
     },
     handleFormUpdate: userUpdateDom
@@ -180,6 +178,7 @@ editButton.addEventListener('click', function () {
 
     userInfo.getUserInfo();
     formAutor.open()
+    
 });
 
 const userUpdateAvatarDom = (item) => {
@@ -190,7 +189,6 @@ const userUpdateAvatarDom = (item) => {
 const formAvatar = new PopupWithForm({
     popupSelector: '.popup_avatar',
     handleFormSubmit: (item) => {
-        //userInfo.setUserInfo(item.name, item.description, item.avatar);
         api.updateProfilePic(item.foto, item.close, item.update)
     },
     handleFormUpdate: userUpdateAvatarDom
@@ -199,9 +197,5 @@ const formAvatar = new PopupWithForm({
 });
 
 openAvatar.addEventListener('click', function () {
-    //  cardValidationAvatar.disableSubmitButton(propertiesValidation);
     formAvatar.open()
 });
-
-
-const popupDelete = document.querySelector('.popup_remove');
