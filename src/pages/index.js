@@ -156,6 +156,8 @@ const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescr
 
 const userUpdateDom = (item) => {
     userInfo.setUserInfo(item.name, item.description);
+    // profileNameTemplate.value = profileName.textContent;
+    // profileDescriptionTemplate.setUserInfo(item.description);
     // this._profileNameTemplate.value = this._profileName.textContent; 
     // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
 }
