@@ -63,7 +63,6 @@ api.getUserInfo()
         myId = result._id; //мой айди6 айли юзера
         window.myId = myId;
         return myId;
-
     })
 
     .then((myId) => { // если первый запрос выполнился то делаем второй запрос на получении карточек
@@ -156,20 +155,11 @@ const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescr
 
 const userUpdateDom = (item) => {
     userInfo.setUserInfo(item.name, item.description);
-    // profileNameTemplate.value = profileName.textContent;
-    // profileDescriptionTemplate.setUserInfo(item.description);
-    // this._profileNameTemplate.value = this._profileName.textContent; 
-    // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
-}
+    }
 
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
     handleFormSubmit: (item) => {
-        // userInfo.setUserInfo(item.name, item.description);
-        // this._profileNameTemplate.value = this._profileName.textContent; 
-    // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
-    // this._profileNameTemplate.value = item.name; 
-    // this._profileDescriptionTemplate.value = item.description; 
         api.updateProfile(item.name, item.description, item.close, item.update);
     },
     handleFormUpdate: userUpdateDom
@@ -179,7 +169,6 @@ const formAutor = new PopupWithForm({
 editButton.addEventListener('click', function () {
     cardValidationEdit.disableSubmitButton(propertiesValidation);
     formAutor.open(    userInfo.getUserInfo())
-    
 });
 
 const userUpdateAvatarDom = (item) => {
@@ -193,8 +182,6 @@ const formAvatar = new PopupWithForm({
         api.updateProfilePic(item.foto, item.close, item.update)
     },
     handleFormUpdate: userUpdateAvatarDom
-
-
 });
 
 openAvatar.addEventListener('click', function () {
