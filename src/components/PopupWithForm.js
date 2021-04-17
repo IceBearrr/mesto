@@ -47,14 +47,10 @@ export default class PopupWithForm extends Popup {
         super.open();
         if (formValues){
             this._inputList.forEach(input => input.value = formValues[input.name]);
-
         }
-
     }
-
 
     setSaveButtonText() {
         this.popupElement.querySelector('.popup__button-save').textContent = "Сохранение..."
     }
-
 }

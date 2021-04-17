@@ -16,9 +16,7 @@ export default class UserInfo {
                 description: this._profileDescription.textContent,
                 foto: this._profileFoto.src,
             } 
-        //     this._profileNameTemplate.value = this._profileName.textContent; 
-        // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
-        }      
+      }      
 
     setNewAva(avatar) {
         this._profileFoto.src = avatar;
