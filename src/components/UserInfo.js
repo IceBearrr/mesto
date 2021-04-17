@@ -16,6 +16,8 @@ export default class UserInfo {
                 profession: this._profileDescription.textContent, 
                 avatar: this._profileFoto.src,
             } 
+        //     this._profileNameTemplate.value = this._profileName.textContent; 
+        // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 
         }      
 
     setNewAva(avatar) {

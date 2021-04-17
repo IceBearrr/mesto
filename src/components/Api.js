@@ -142,15 +142,15 @@ export default class Api {
                 console.log("apilike"); 
                 return this._checkResponse(res) 
             }) 
-            .then((res) => { 
-                // обрабатываем результат 
-                console.log(res); 
-                this.cardUpdateLike(res.likes.length) 
+            // .then((res) => { 
+            //     // обрабатываем результат 
+            //     console.log(res); 
+            //     this.cardUpdateLike(res.likes.length) 
  
-            }) 
-            .catch((err) => { 
-                console.log(err); // выведем ошибку в консоль 
-            }) 
+            // }) 
+            // .catch((err) => { 
+            //     console.log(err); // выведем ошибку в консоль 
+            // }) 
     } 
  
  
@@ -166,15 +166,15 @@ export default class Api {
                 console.log("apidislike"); 
                 return this._checkResponse(res) 
             }) 
-            .then((res) => { 
-                // обрабатываем результат 
-                console.log(res); 
-                this.cardUpdateLike(res.likes.length) 
+            // .then((res) => { 
+            //     // обрабатываем результат 
+            //     console.log(res); 
+            //     this.cardUpdateLike(res.likes.length) 
  
-            }) 
-            .catch((err) => { 
-                console.log(err); // выведем ошибку в консоль 
-            }) 
+            // }) 
+            // .catch((err) => { 
+            //     console.log(err); // выведем ошибку в консоль 
+            // }) 
     } 
  
  

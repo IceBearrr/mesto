@@ -97,13 +97,35 @@ export default class Card {
             console.log("dislike");
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.deleteLike(this.id, cardUpdateLike)
+             .then((res) => { 
+                // обрабатываем результат 
+                console.log(res); 
+                this.cardUpdateLike(res.likes.length) 
+ 
+            }) 
+            .catch((err) => { 
+                console.log(err); // выведем ошибку в консоль 
+            }) 
             this._iLiked = false;
 
         } else {
             console.log("like");
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.putLike(this.id, cardUpdateLike)
-            this._iLiked = true;
+            .then((res) => { 
+                // обрабатываем результат 
+                console.log(res); 
+                this.cardUpdateLike(res.likes.length) 
+ 
+            }) 
+            .catch((err) => { 
+                console.log(err); // выведем ошибку в консоль 
+            }) 
+            // this._iLiked = true;
+            .then(() => {
+                this._iLiked = false;
+            })
+
         }
     }
 }
