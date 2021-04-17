@@ -91,40 +91,38 @@ export default class Card {
     }
 
     _cardLike() {
-
         //if this._likes.includes("efbafaddf4831a0e48100782"); //есть ли я вписке лайкнущих?
         if (this._iLiked) {
             console.log("dislike");
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.deleteLike(this.id, cardUpdateLike)
-             .then((res) => { 
-                // обрабатываем результат 
-                console.log(res); 
-                this.cardUpdateLike(res.likes.length) 
- 
-            }) 
-            .catch((err) => { 
-                console.log(err); // выведем ошибку в консоль 
-            }) 
-            this._iLiked = false;
+                .then((res) => {
+                    // обрабатываем результат
+                    console.log(res);
+                    this.cardUpdateLike(res.likes.length)
+                })
+                .then((res) => {
+                    this._iLiked = false;
+                })
+                .catch((err) => {
+                    console.log(err); // выведем ошибку в консоль
+                })
 
         } else {
             console.log("like");
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.putLike(this.id, cardUpdateLike)
-            .then((res) => { 
-                // обрабатываем результат 
-                console.log(res); 
-                this.cardUpdateLike(res.likes.length) 
- 
-            }) 
-            .catch((err) => { 
-                console.log(err); // выведем ошибку в консоль 
-            }) 
-            // this._iLiked = true;
-            .then(() => {
-                this._iLiked = false;
-            })
+                .then((res) => {
+                    // обрабатываем результат
+                    console.log(res);
+                    this.cardUpdateLike(res.likes.length)
+                })
+                .then(() => {
+                    this._iLiked = true;
+                })
+                .catch((err) => {
+                    console.log(err); // выведем ошибку в консоль
+                })
 
         }
     }

@@ -14,7 +14,8 @@ export default class PopupDelete extends Popup {
 
     setEventListeners() {
         super.setEventListeners();
-        this.popupElement.addEventListener('click', (evt) => {
+
+        this.popupElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
             const deleteFunctionDom = this._deleteFunctionDom.bind(this);
             // this._deleteFunction.deleteCard(this.id, deleteFunctionDom);

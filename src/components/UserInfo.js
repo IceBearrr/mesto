@@ -12,9 +12,9 @@ export default class UserInfo {
             this._formValues = {}; 
      
             return { 
-                name: this._profileName.textContent, 
-                profession: this._profileDescription.textContent, 
-                avatar: this._profileFoto.src,
+                name: this._profileName.textContent,
+                description: this._profileDescription.textContent,
+                foto: this._profileFoto.src,
             } 
         //     this._profileNameTemplate.value = this._profileName.textContent; 
         // this._profileDescriptionTemplate.value = this._profileDescription.textContent; 

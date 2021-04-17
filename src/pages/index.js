@@ -177,9 +177,8 @@ const formAutor = new PopupWithForm({
 });
 
 editButton.addEventListener('click', function () {
-
-    userInfo.getUserInfo();
-    formAutor.open()
+    cardValidationEdit.disableSubmitButton(propertiesValidation);
+    formAutor.open(    userInfo.getUserInfo())
     
 });
 
@@ -199,5 +198,6 @@ const formAvatar = new PopupWithForm({
 });
 
 openAvatar.addEventListener('click', function () {
-    formAvatar.open()
+    cardValidationAvatar.disableSubmitButton(propertiesValidation);
+    formAvatar.open(    userInfo.getUserInfo())
 });
