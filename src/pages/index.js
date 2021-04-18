@@ -57,9 +57,9 @@ const afterGetUser = () => { // если смогли выполнить пер�
 api.getUserInfo()
     .then((result) => {
         // обрабатываем результат
-        profileName.textContent = result.name;
-        profileAbout.textContent = result.about;
-        profileImg.src = result.avatar;
+         const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
+        userInfo.setNewAva(result.avatar);
+        userInfo.setUserInfo(result.name, result.about);
         myId = result._id; //мой айди6 айли юзера
         window.myId = myId;
         return myId;

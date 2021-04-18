@@ -3,7 +3,7 @@ export default class FormValidator {
     constructor(formElement, properties) {
         this._formElement = formElement;
         this.properties = properties;
-        this._buttonElement = this._formElement.querySelector('.popup__button-save');
+        this._buttonElement = this._formElement.querySelector(properties.buttonElementSave);
     }
 
     //делаем кнопку недоступной
@@ -56,14 +56,6 @@ export default class FormValidator {
             this._buttonElement.classList.remove(this.properties.deactiveButtonClass);
             this._buttonElement.classList.add(this.properties.inactiveButtonClass);
         }
-    };
-
-
-    inputEvent(e) {
-        const inputElement = e.target;
-        this.newValidator._checkInputValidity(inputElement);
-        let check = this.newValidator._toggleButtonState.bind(this);
-        check();
     };
 
     setEventListeners = () => {
