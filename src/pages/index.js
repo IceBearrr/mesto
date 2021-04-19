@@ -147,9 +147,6 @@ addButton.addEventListener('click', function () {
 
 //Данные профиля
 
-
-const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
-
 const userUpdateDom = (item) => {
     userInfo.setUserInfo(item.name, item.description);
     }
