@@ -57,9 +57,13 @@ const afterGetUser = () => { // если смогли выполнить пер�
 api.getUserInfo()
     .then((result) => {
         // обрабатываем результат
-        profileName.textContent = result.name;
-        profileAbout.textContent = result.about;
-        profileImg.src = result.avatar;
+        // profileName.textContent = result.name;
+        // profileAbout.textContent = result.about;
+        // profileImg.src = result.avatar;
+        const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
+        userInfo.setNewAva(result.avatar);
+        userInfo.setUserInfo(result.name, result.about);
+
         myId = result._id; //мой айди6 айли юзера
         window.myId = myId;
         return myId;
@@ -155,7 +159,7 @@ const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescr
 
 const userUpdateDom = (item) => {
     userInfo.setUserInfo(item.name, item.description);
-    }
+}
 
 const formAutor = new PopupWithForm({
     popupSelector: '.popup_edit',
@@ -168,7 +172,7 @@ const formAutor = new PopupWithForm({
 
 editButton.addEventListener('click', function () {
     cardValidationEdit.disableSubmitButton(propertiesValidation);
-    formAutor.open(    userInfo.getUserInfo())
+    formAutor.open(userInfo.getUserInfo())
 });
 
 const userUpdateAvatarDom = (item) => {
@@ -186,5 +190,5 @@ const formAvatar = new PopupWithForm({
 
 openAvatar.addEventListener('click', function () {
     cardValidationAvatar.disableSubmitButton(propertiesValidation);
-    formAvatar.open(    userInfo.getUserInfo())
+    formAvatar.open(userInfo.getUserInfo())
 });

@@ -19,12 +19,13 @@ export default class PopupDelete extends Popup {
             evt.preventDefault();
             const deleteFunctionDom = this._deleteFunctionDom.bind(this);
             this._deleteFunction.deleteCard(this.id, deleteFunctionDom)
-            .then(() => {
-                this.close();
-            })
-            .catch((err) => {
-                console.log(err);})
-    })
-}
+                .then(() => {
+                    this.close();
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        })
+    }
 
 }

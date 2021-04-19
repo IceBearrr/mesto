@@ -1,4 +1,3 @@
-
 export default class FormValidator {
     constructor(formElement, properties) {
         this._formElement = formElement;
@@ -79,11 +78,11 @@ export default class FormValidator {
     };
 
 
-    enableValidation() { 
-        this._formElement.addEventListener('submit', function (evt) { 
-            evt.preventDefault(); 
-        }); 
-        this.setEventListeners(); 
+    enableValidation() {
+        this._formElement.addEventListener('submit', function (evt) {
+            evt.preventDefault();
+        });
+        this.setEventListeners();
     };
 
 }
