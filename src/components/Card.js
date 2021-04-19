@@ -96,12 +96,7 @@ export default class Card {
             console.log("dislike");
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.deleteLike(this.id, cardUpdateLike)
-                .then((res) => {
-                    // обрабатываем результат
-                    console.log(res);
-                    this.cardUpdateLike(res.likes.length)
-                })
-                .then((res) => {
+                .then(() => {
                     this._iLiked = false;
                 })
                 .catch((err) => {
@@ -112,11 +107,6 @@ export default class Card {
             console.log("like");
             const cardUpdateLike = this.cardUpdateLike.bind(this);
             this._api.putLike(this.id, cardUpdateLike)
-                .then((res) => {
-                    // обрабатываем результат
-                    console.log(res);
-                    this.cardUpdateLike(res.likes.length)
-                })
                 .then(() => {
                     this._iLiked = true;
                 })

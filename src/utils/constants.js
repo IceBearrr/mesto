@@ -29,6 +29,7 @@ export const propertiesValidation = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
+    buttonElementSave: '.popup__button-save',
     inactiveButtonClass: 'popup__button-inactive',
     deactiveButtonClass: 'popup__button-deactive',
     inputErrorClass: 'popup__input_type_error',

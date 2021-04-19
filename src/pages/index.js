@@ -9,9 +9,6 @@ import {
     buttonElementSave,
     headers,
     baseUrl,
-    profileName,
-    profileAbout,
-    profileImg,
     propertiesValidation,
     popupTag,
     formElementEdit,
@@ -52,18 +49,14 @@ const afterGetUser = () => { // если смогли выполнить пер�
         })
 }
 
+const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
 
 //заполняем шапку профиля, первый запрос  на получение инфо  о пользователе
 api.getUserInfo()
     .then((result) => {
         // обрабатываем результат
-        // profileName.textContent = result.name;
-        // profileAbout.textContent = result.about;
-        // profileImg.src = result.avatar;
-        const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
         userInfo.setNewAva(result.avatar);
         userInfo.setUserInfo(result.name, result.about);
-
         myId = result._id; //мой айди6 айли юзера
         window.myId = myId;
         return myId;
@@ -153,9 +146,6 @@ addButton.addEventListener('click', function () {
 });
 
 //Данные профиля
-
-
-const userInfo = new UserInfo(profileNameUser, profileNameTemplate, profileDescriptionUser, profileDescriptionTemplate, openAvatarTag);
 
 const userUpdateDom = (item) => {
     userInfo.setUserInfo(item.name, item.description);

@@ -124,9 +124,14 @@ export default class Api {
                 return this._checkResponse(res)
 
             })
-            .then(() => {
+            .then((res) => {
                 console.log('удоли карточку');
                 this._deleteFunctionDom();
+            })
+            .then((res) => {
+                // обрабатываем результат
+                console.log(res);
+                this.cardUpdateLike(res.likes.length)
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
@@ -138,18 +143,16 @@ export default class Api {
         return fetch(this._baseUrl + 'cards/likes/' + cardId, {
                 method: 'PUT',
                 headers: this._headers,
-
             }
         )
             .then(res => {
-                console.log("apilike");
+                console.log("apilike" + res);
                 return this._checkResponse(res)
             })
             .then((res) => {
                 // обрабатываем результат
                 console.log(res);
                 this.cardUpdateLike(res.likes.length)
-
             })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
