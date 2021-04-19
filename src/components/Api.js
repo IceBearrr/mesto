@@ -128,11 +128,6 @@ export default class Api {
                 console.log('удоли карточку');
                 this._deleteFunctionDom();
             })
-            .then((res) => {
-                // обрабатываем результат
-                console.log(res);
-                this.cardUpdateLike(res.likes.length)
-            })
             .catch((err) => {
                 console.log(err); // выведем ошибку в консоль
             })
